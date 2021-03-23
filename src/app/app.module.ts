@@ -6,12 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/Layout.module';
-import { DashboardComponent } from './modules/home/pages/dashboard/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
   ],
   imports: [
     BrowserModule,
