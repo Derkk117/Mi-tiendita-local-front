@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+//Ruta de SideBar
+import { SideBarComponent } from './modules/home/components/side-bar/side-bar.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -18,6 +20,9 @@ const routes: Routes = [
 			{
 				path: 'products',
 				loadChildren: () => import('./modules/home/pages/products/products.module').then(m => m.HomeModule)
+			},
+			{	//Direccion de SIDE-BAR
+				path: 'sideBar', component: SideBarComponent
 			},
 			// {
 			// 	path: 'clients',

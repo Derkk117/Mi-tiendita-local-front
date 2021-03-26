@@ -1,4 +1,46 @@
-.nav{
+.pagecontainer
+{
     display: flex;
-    flex-direction: row;
+    height: 100%;
+    background: #5C9EAD;
+}
+
+.sideBar{
+    position: absolute;
+    width: 250px;
+    height: 100%;
+    background: #326273;
+    color: #fff;
+    outline: 1px solid #2a2a2a;
+}
+
+.sideBar h2{
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    background: #2a2a2a;
+}
+
+.sideBar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sideBar li{
+    outline: 1px solid #2a2a2a;
+    transition: all 0.3s;
+}
+
+.sideBar li:hover
+{
+    background: rgb(199, 134, 74);
+    border-left: 5px solid #eee;
+}
+
+.sideBar a{
+    display: block;
+    color: #fff; 
+    text-decoration: none;
+    padding: 10px;
 }
