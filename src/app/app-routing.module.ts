@@ -17,7 +17,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'suppliers',
-				loadChildren: () => import('./modules/home/pages/suppliers/suppliers.module').then(m => m.HomeModule)
+				//oadChildren: () => import('./modules/home/pages/suppliers/suppliers.module').then(m => m.HomeModule)
 			},
 			{
 				path: 'clients',
