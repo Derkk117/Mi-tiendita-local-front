@@ -1,46 +1,51 @@
-.pagecontainer
+.example-container 
 {
     display: flex;
-    height: 100%;
-    background: #5C9EAD;
-}
-
-.sideBar{
+    flex-direction: column;
     position: absolute;
-    width: 250px;
-    height: 100%;
-    background: #326273;
-    color: #fff;
-    outline: 1px solid #2a2a2a;
-}
-
-.sideBar h2{
-    text-align: center;
-    margin: 0;
-    padding: 10px;
-    background: #2a2a2a;
-}
-
-.sideBar ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sideBar li{
-    outline: 1px solid #2a2a2a;
-    transition: all 0.3s;
-}
-
-.sideBar li:hover
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}  
+  
+.example-is-mobile .example-toolbar 
 {
-    background: rgb(199, 134, 74);
-    border-left: 5px solid #eee;
+  position: fixed;
+  z-index: 2;
+}
+  
+//Titulo 
+h1.example-app-name 
+{
+  margin-left: 8px;
+}
+  
+.example-sidenav-container 
+{
+  flex: 1;    
+  background: #c2bbb8;
+}
+  
+.example-is-mobile .example-sidenav-container 
+{
+    flex: 1 0 auto;
 }
 
-.sideBar a{
-    display: block;
-    color: #fff; 
-    text-decoration: none;
-    padding: 10px;
+.icono
+{
+margin-right: 20px;
+}
+
+//Menu de iconos
+.mat-sidenav
+{
+  background: #326273;
+
+}
+
+//Parte de arriba
+.example-toolbar
+{
+  background: #5C9EAD;  
 }

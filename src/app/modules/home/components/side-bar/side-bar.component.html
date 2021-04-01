@@ -1,50 +1,45 @@
-<div style="background: #E39774; display: flex">
-    <span class="material-icons" style="padding: 10px 20px; font-size:30px;
-    cursor:pointer; color: black;">reorder</span>
-    <p style="color: black; font-weight: bold;  padding: 10px 20px; text-transform: uppercase;">
-        Haga clic en el elemento que desea abrir 
-        en el menú de navegación lateral.</p>        
-</div>
-<div style="background: black">
-  <div class="sideBar">
-          <h2>MI TIENDITA LOCAL</h2>
-          <ul>
-              <li>
-                  <a href="#">
-                      <span class="material-icons">receipt</span>
-                      Ventas
-                  </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="material-icons">shopping_cart</span>Articulos
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="material-icons">app_registration</span>Inventarios
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="material-icons">supervisor_account</span>Clientes
-                </a>
-                </li>
-              <li>
-                <a href="#">
-                  <span class="material-icons">supervised_user_circle</span>Proveedores
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="material-icons ">shuffle</span>Cortes
-                </a>
-              </li>        
-              <li>
-                <a href="#">
-                  <span class="material-icons">airport_shuttle</span>Entregas
-                </a>
-              </li>
-          </ul>
-  </div>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name">Mi Tiendita Local</h1>
+    <div style="margin-left: auto;">
+      <span style="font-size: 16px;">Usuario</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navegar('')">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item (click)="navegar('')">
+          <mat-icon>account_circle</mat-icon>
+          <span>Ver perfil</span>
+        </button>
+      </mat-menu>  
+    </div>
+    
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 10 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="10">
+      <mat-nav-list>          
+        <a style ="color: white;" mat-list-item [routerLink]="nav.route" 
+        *ngFor="let nav of fillerNav">
+          <mat-icon class="icono">{{nav.icon}}</mat-icon>
+          {{nav.name}}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!--Aqui va el contenido cuando se da click en alguna de las opciones de side nav-->
+      <!--<p *ngFor="let content of fillerContent">{{content}}</p>-->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
