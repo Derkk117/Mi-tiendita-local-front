@@ -21,7 +21,7 @@ const routes: Routes = [
 				loadChildren: () => import('./modules/home/pages/products/products.module').then(m => m.HomeModule)
 			},
 			{
-				path: 'clients',
+				path: 'clients', 
 				loadChildren: () => import('./modules/home/pages/clients/clients.module').then(m => m.HomeModule)
 			},
 			{	//Direccion de SIDE-BAR
