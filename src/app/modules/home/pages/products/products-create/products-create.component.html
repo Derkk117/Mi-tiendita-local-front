@@ -1,1 +1,50 @@
-<p>products-create works!</p>
+<div class="container-form">
+    <form action="">
+        <div fxLayout="column" fxLayoutGap="50px">
+            <div fxLayoutAlign="space-between center" fxLayout="column" fxLayoutGap="30px">
+                
+                <div fxLayout="column" fxLayoutGap="20px">
+                
+                    <div fxLayoutAlign="center" fxLayoutGap="20px">
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <label for="">Name</label>
+                            <label for="">Description</label>
+                            <label for="">Price</label>
+                            <label for="">Cost</label>
+                            <label for="">Stock</label>
+                        </div>
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <input type="text">
+                            <input type="text">
+                            <input type="text">
+                            <input type="text">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div fxLayoutAlign="center"  >
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <label for="">Seleccionar imagen</label>
+                            <input type="file" accept="image/png,image/jpeg" id="file" (change)="File($event)" #file>
+                        </div>
+                    </div>
+                    <div fxLayoutAlign="center" fxLayoutGap="20px">
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <label for="">Category</label>
+                        </div>
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <select name="" id="">
+                                <option value="" selected>Select category</option>
+                                <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div fxLayoutAlign="center">
+                <button mat-button> Create </button>
+            </div>
+        </div>
+    </form>
+</div>
