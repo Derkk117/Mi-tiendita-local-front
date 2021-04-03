@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-// import { SwiperModule } from 'swiper/angular';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { SuppliersRoutingModule } from './suppliers-routing.module';
@@ -15,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { SuppliersEditComponent } from './suppliers-edit/suppliers-edit.component';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { SuppliersEditComponent } from './suppliers-edit/suppliers-edit.componen
     FormsModule,
     MatListModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ]
 })
 export class HomeModule { }
