@@ -1,22 +1,40 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { LayoutModule } from './layout/Layout.module';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './modules/home/pages/dashboard/dashboard/dashboard.component';
+import { SideBarComponent } from './modules/home/components/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
+    SideBarComponent,
   ],
   imports: [
+    AppRoutingModule, 
     BrowserModule,
-    RouterModule,
+    BrowserAnimationsModule,
+    HttpClientModule,        
     LayoutModule,
-    AppRoutingModule,
-    HttpClientModule,
+    MatButtonModule,    
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
