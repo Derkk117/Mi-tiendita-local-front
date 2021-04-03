@@ -1,0 +1,33 @@
+<div class="container">
+    <div fxLayout="row">
+        <form action="">
+            <div fxLayout="column" fxLayoutGap="20px">
+                <div fxLayoutAlign="center"  >
+                    <div fxLayout="column" fxLayoutGap="20px">
+                        <label for="">Select logo</label>
+                        <input type="file" accept="image/png,image/jpeg" id="file" (change)="File($event)" #file>
+                    </div>
+                </div>
+                <div fxLayoutAlign="center" fxLayoutGap="20px">
+                    <div fxLayout="column" fxLayoutGap="20px">
+                        <label for="">Name Store</label>
+                        <label for="">Address</label>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="20px">
+                        <input type="text">
+                        <select name="" id="">
+                            <option value="Select Address">Select Address</option>
+                            <option value="Address 1">Address 1</option>
+                            <option value="Address 2">Address 2</option>
+                        </select>
+                    </div>
+                </div>
+                <div fxLayoutAlign="flex-end">
+                    <button mat-button>Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    

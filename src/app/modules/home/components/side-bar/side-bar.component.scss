@@ -1,4 +1,51 @@
-.nav{
+.example-container 
+{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}  
+  
+.example-is-mobile .example-toolbar 
+{
+  position: fixed;
+  z-index: 2;
+}
+  
+//Titulo 
+h1.example-app-name 
+{
+  margin-left: 8px;
+}
+  
+.example-sidenav-container 
+{
+  flex: 1;    
+  background: #c2bbb8;
+}
+  
+.example-is-mobile .example-sidenav-container 
+{
+    flex: 1 0 auto;
+}
+
+.icono
+{
+margin-right: 20px;
+}
+
+//Menu de iconos
+.mat-sidenav
+{
+  background: #326273;
+
+}
+
+//Parte de arriba
+.example-toolbar
+{
+  background: #5C9EAD;  
 }

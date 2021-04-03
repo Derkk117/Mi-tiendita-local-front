@@ -1,6 +1,7 @@
 
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table'
 
 export interface Proveedores {
@@ -12,6 +13,21 @@ export interface Proveedores {
 }
 
 const ELEMENT_DATA: Proveedores[] = [
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Mario', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Luis', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Marcos', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Marina', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Mandarina', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
+  {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
   {name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'uncorreo@hotmail.com', address: '1'},
 ];
 
@@ -95,6 +111,12 @@ export class SuppliersIndexComponent implements OnInit {
   dataSource = new MatTableDataSource<Proveedores>(ELEMENT_DATA);
   selection = new SelectionModel<Proveedores>(true, []);
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit(){
+    this.dataSource.paginator = this.paginator;
+  }
+  
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
@@ -118,6 +140,5 @@ export class SuppliersIndexComponent implements OnInit {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
-
 }
 

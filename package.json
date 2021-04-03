@@ -11,14 +11,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^11.2.5",
-    "@angular/cdk": "^11.2.4",
+    "@angular/animations": "^11.2.7",
+    "@angular/cdk": "^11.2.7",
     "@angular/common": "~11.2.5",
     "@angular/compiler": "~11.2.5",
     "@angular/core": "~11.2.5",
     "@angular/flex-layout": "^11.0.0-beta.33",
     "@angular/forms": "~11.2.5",
-    "@angular/material": "^11.2.4",
+    "@angular/material": "^11.2.7",
     "@angular/platform-browser": "~11.2.5",
     "@angular/platform-browser-dynamic": "~11.2.5",
     "@angular/router": "~11.2.5",
@@ -30,10 +30,14 @@
   },
   "devDependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.1102.4",
 =======
     "@angular-devkit/build-angular": "^0.1102.6",
 >>>>>>> origin/module-products
+=======
+    "@angular-devkit/build-angular": "^0.1102.6",
+>>>>>>> cc5a7d90a2b7886559e1414bff32ff3f0fd877d7
     "@angular/cli": "~11.2.4",
     "@angular/compiler-cli": "~11.2.5",
     "@types/jasmine": "~3.6.0",
