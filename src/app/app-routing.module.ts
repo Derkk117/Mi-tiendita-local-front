@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
-//Ruta de SideBar
 import { SideBarComponent } from './modules/home/components/side-bar/side-bar.component';
 
 const routes: Routes = [
