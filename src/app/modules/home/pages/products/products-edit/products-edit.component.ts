@@ -1,22 +1,22 @@
-
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit,  ViewChild, ElementRef  } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
-  selector: 'app-products-create',
-  templateUrl: './products-create.component.html',
+  selector: 'app-products-edit',
+  templateUrl: './products-edit.component.html',
   styles: [`
   .outer{
     height:200px;
     line-height: 200px;
   }
-  .container-form{
-    width: 35%;
+
+  .container{
+    width: 45%;
     margin: 1rem auto;
-    box-shadow: -1px 3px 66px 0px rgba(92,158,173,1);
+    box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
     padding: 1rem;
     border-radius: 10px;
-  }
+   } 
   select{
     border-radius: 10px;
   }
@@ -36,9 +36,13 @@ import { FormBuilder, FormGroup } from "@angular/forms";
     border: 1px;
     border-radius: 10px;
    }
+   img{
+    width: 40px;
+    height: 40px;
+  }
   `]
 })
-export class ProductsCreateComponent implements OnInit {
+export class ProductsEditComponent implements OnInit {
 
   public form: FormGroup;
   constructor() { }
@@ -59,6 +63,4 @@ export class ProductsCreateComponent implements OnInit {
     }
     console.log("entre");
   }
-
-  
 }
