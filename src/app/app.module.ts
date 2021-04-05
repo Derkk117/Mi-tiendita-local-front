@@ -13,14 +13,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './modules/home/pages/dashboard/dashboard/dashboard.component';
+import { TopBarComponent } from './modules/home/components/top-bar/top-bar.component';
 import { SideBarComponent } from './modules/home/components/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     SideBarComponent,
+    TopBarComponent
   ],
   imports: [
     AppRoutingModule, 

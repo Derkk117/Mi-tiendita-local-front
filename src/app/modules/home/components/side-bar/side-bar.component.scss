@@ -1,3 +1,5 @@
+@import '../../../../../styles/colors.scss';
+
 .example-container 
 {
     display: flex;
@@ -40,12 +42,11 @@ margin-right: 20px;
 //Menu de iconos
 .mat-sidenav
 {
-  background: #326273;
-
+  background: $side-bar-color;
 }
 
 //Parte de arriba
 .example-toolbar
 {
-  background: #5C9EAD;  
+  background: $top-bar-color;  
 }
