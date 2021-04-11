@@ -1,0 +1,23 @@
+<div class="container-form">
+    <mat-form-field>
+        <div fxLayout="column" fxLayoutGap="50px">
+            <div fxLayoutAlign="space-between center" fxLayout="column" fxLayoutGap="30px">
+                <input type="text" placeholder="IdCliente">
+          
+                <input type="text" placeholder="IdEntrepreneur">
+          
+                
+                <textarea  rows="10" cols="40" placeholder="Products"></textarea>
+                
+                <select name="" id=""  >
+                    <option value="" selected>Select Payment</option>
+                    <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+                </select>
+                
+            </div>
+            <div fxLayoutAlign="center">
+                <button mat-button> Create </button>
+            </div>
+        </div>
+    </mat-form-field>
+</div>

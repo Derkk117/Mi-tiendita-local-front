@@ -1,0 +1,87 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+<div class="container"> 
+    <mat-form-field>
+        <mat-label> </mat-label>
+    
+        <div fxLayoutAlign="space-between">
+            <div>
+                <button class="btn">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+                
+            </div>
+    
+            <div id="input_container">
+                <input matInput (keyup) = "Buscar($event)" placeholder="Search" #input> 
+                <mat-icon id="input_icon">search</mat-icon>
+            </div>        
+        </div>
+    </mat-form-field>    
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="IdCliente">
+    <th mat-header-cell *matHeaderCellDef> IdCliente </th>
+    <td mat-cell *matCellDef="let element"> {{element.IdCliente}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="IdEntrepreneur">
+    <th mat-header-cell *matHeaderCellDef> IdEntrepreneur </th>
+    <td mat-cell *matCellDef="let element"> {{element.IdEntrepreneur}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Products">
+    <th mat-header-cell *matHeaderCellDef> Products </th>
+    <td mat-cell *matCellDef="let element"> {{element.Products}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Payment">
+    <th mat-header-cell *matHeaderCellDef> Payment </th>
+    <td mat-cell *matCellDef="let element"> {{element.Payment}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> Edit</th>
+    <td mat-cell *matCellDef="let element"> 
+        <button class="btn"> <mat-icon >create</mat-icon> </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the search "{{input.value}}"</td>
+  </tr>
+</table>
+
+<div class="container">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+<div class="container">
+    <div fxLayoutAlign="end">
+        <button mat-button > Delete </button>
+    </div>
+</div>
