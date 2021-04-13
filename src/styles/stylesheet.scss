@@ -49,7 +49,7 @@ body {
     max-width: 250px;
     min-width: 50px;
     transition: 0.3s;
-    width: 25%;
+    width: 18%;
 }
 
 .toggle-contrait{
@@ -67,10 +67,9 @@ body {
 }
 
 .content{
-    width: max-content;
     background-color: $background-content;
-    height: 100%;
     width: 100%;
+    overflow: auto;
 }
 
 .body{
@@ -79,7 +78,11 @@ body {
 }
 
 .toggle{
-    width: 100%;
+    width: 82%;
+}
+
+.content-short{
+    width: calc(100% - 60px) !important;
 }
 
 .btn-primary{

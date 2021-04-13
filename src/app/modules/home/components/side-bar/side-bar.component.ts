@@ -67,7 +67,6 @@ export class SideBarComponent implements OnInit {
 
   ngOnChanges(changes: any) {
     this.width = this.size;
-    console.log(this.width);
   }
 
   selectActive(element){

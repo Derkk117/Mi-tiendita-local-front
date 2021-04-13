@@ -20,5 +20,9 @@ export class TopBarComponent implements OnInit {
 
   collapse_sidebar(){
     document.getElementById("sidebar").classList.toggle("toggle-contrait");
+    
+    if(document.getElementById('content').classList.contains('content-short')) 
+      document.getElementById('content').classList.remove('content-short');
+    else document.getElementById('content').classList.add('content-short');
   }
 }

@@ -16,5 +16,4 @@ export class AppComponent implements OnInit{
   onResized($event){
     this.width = document.getElementById('sidebar').clientWidth;
   }
-
 }
