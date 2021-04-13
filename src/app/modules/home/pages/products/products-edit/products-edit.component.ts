@@ -4,43 +4,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 @Component({
   selector: 'app-products-edit',
   templateUrl: './products-edit.component.html',
-  styles: [`
-  .outer{
-    height:200px;
-    line-height: 200px;
-  }
-
-  .container{
-    width: 45%;
-    margin: 1rem auto;
-    box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
-    padding: 1rem;
-    border-radius: 10px;
-   } 
-  select{
-    border-radius: 10px;
-  }
-
-  input{
-    border-radius: ;
-  }
-  .mat-button{
-    color: #FFFFFF;
-    background-color: #326273;
-  }
-  form{
-    font-size: 14px;
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem auto;
-    border: 1px;
-    border-radius: 10px;
-   }
-   img{
-    width: 40px;
-    height: 40px;
-  }
-  `]
+  styles: []
 })
 export class ProductsEditComponent implements OnInit {
 

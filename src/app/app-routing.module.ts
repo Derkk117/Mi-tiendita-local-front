@@ -6,10 +6,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-	{
-		path: '',
-		component: ContentLayoutComponent,
-		canActivate: [NoAuthGuard],
+	{ path: '', component: ContentLayoutComponent, canActivate: [NoAuthGuard],
 		children: [			
 			{
 				path: 'dashboard',

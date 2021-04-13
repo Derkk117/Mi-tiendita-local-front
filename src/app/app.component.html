@@ -1,42 +1,16 @@
+<!-- this line shouldn't be here... but if it's removed, icons show plain text instead icon. -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="row body">
-    <div class="sidebar">
-        hello from sidebar
+    <div class="sidebar" id="sidebar" (resized)="onResized($event)">
+        <app-side-bar [size]="width"></app-side-bar>
     </div>
     <div class="column toggle">
         <div class="topbar">
-            <div class="topbar-padding">
-                <button class="btn-primary">    
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <div class="user-dropdown">
-                    <button class="btn-dropdown" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                        <div class="row user-dropdown-components">
-                            <div class="row" style="align-items: center; justify-content: space-around;">
-                                <img src="https://picsum.photos/40" alt="">
-                                <h3>User Very Large Name</h3>
-                            </div>
-                            <mat-icon>keyboard_arrow_down</mat-icon>
-                        </div>
-                    </button>
-                      <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                          <mat-icon>dialpad</mat-icon>
-                          <span>Redial</span>
-                        </button>
-                        <button mat-menu-item disabled>
-                          <mat-icon>voicemail</mat-icon>
-                          <span>Check voice mail</span>
-                        </button>
-                        <button mat-menu-item>
-                          <mat-icon>notifications_off</mat-icon>
-                          <span>Disable alerts</span>
-                        </button>
-                      </mat-menu>
-                </div>
-            </div>
+            <app-top-bar></app-top-bar>
         </div>
         <div class="content">
             <router-outlet></router-outlet>
         </div>
     </div>
-</div>
+  </div>
