@@ -1,0 +1,35 @@
+<div class="topbar-padding">
+    <button class="btn-primary" (click)="collapse_sidebar()">    
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div class="user-dropdown" id="user-drop">
+        <button class="btn-dropdown" aria-label="Example icon-button with a menu" (click)="user_info()">
+            <div class="row user-dropdown-components">
+                <div class="row" style="align-items: center; justify-content: space-around;">
+                    <img src="{{user_image_profile}}" alt="">
+                    <h3>User Very Large Name</h3>
+                </div>
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </div>
+        </button>
+        <div id="user-info" class="column drop-content">
+            <a href="">
+                <div class="drop-content-item">
+                    <mat-icon>update</mat-icon> <p style="padding: 0 10px;">Actualizar mis datos</p>
+                </div>
+            </a>
+            <div class="separator"></div>
+            <a href="">
+                <div class="drop-content-item">
+                    <mat-icon>settings</mat-icon> <p style="padding: 0 10px;">Configuración</p>
+                </div>
+            </a>
+            <div class="separator"></div>
+            <a href="">
+                <div class="drop-content-item">
+                    <mat-icon>logout</mat-icon> <p style="padding: 0 10px;">Cerrar sesión</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

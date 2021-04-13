@@ -1,0 +1,75 @@
+@import "../../../../../styles/stylesheet.scss";
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/fonts.scss";
+
+.logo{
+    display: flex;
+    width: 100%;
+    padding: 50px 0;
+
+    img{
+        margin: auto;
+        width: 200px;
+        height: 100px;
+        border-radius: 12px;
+    }
+
+}
+
+.logo-short{
+    display: flex;
+    width: 60px;
+    padding: 50px 0;
+
+    img{
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        border-radius: 25%;
+    }
+}
+
+.route{
+    align-items: center;
+    color: $quartenary;
+    border-bottom: solid 1px $primary;
+    height: 45px;
+    justify-content: flex-start;
+    margin: 0;   
+    text-decoration: none;
+    padding: 0 15px;
+    cursor: pointer;
+    
+    @include  sidebar-font;
+
+    mat-icon{
+        padding: 0 15px;
+    }
+
+    &:hover{
+        transition: 0.2s;
+        background-color: $primary;
+    }
+}
+
+.route-short{
+    align-items: center;
+    color: $quartenary;
+    border-bottom: solid 1px $primary;
+    height: 45px;
+    justify-content: center;
+    margin: auto;   
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover{
+        transition: 0.2s;
+        background-color: $primary;
+    }
+}
+
+.active{
+    background-color: $primary;
+}
