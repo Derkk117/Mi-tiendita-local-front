@@ -1,0 +1,116 @@
+@import '../../../../../styles/colors.scss';
+@import '../../../../../styles/stylesheet.scss';
+
+.topbar{
+    background-color: $top-bar-color;
+    height: 60px;
+    min-height: 60px;
+    width: 100%;
+}
+
+.topbar-padding{
+    height: 60px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+
+.content{
+    width: max-content;
+    background-color: $background-content;
+    height: 100%;
+    width: 100%;
+}
+
+.body{
+    height: 100%;
+    width: 100%;
+}
+
+.toggle{
+    width: 100%;
+}
+
+.btn-dropdown{
+    background-color: transparent;
+    border: none !important;
+    border-radius: 8px;
+    color: $quartenary;
+    padding: 5px 0;
+    &:hover{
+        border-radius: 8px;
+        @include primary-hover();
+    }
+}
+
+.user-dropdown{
+    min-width: 200px;
+    max-width: 300px;
+    width: 250px;
+}   
+
+.user-dropdown-components{
+    align-items: center;
+    color: $secondary;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: calc(200px - 16px);
+    max-width: 300px;
+    padding: 0 8px;
+    width: calc(250px - 16px);
+}
+
+.back-toggle{
+    background-color: $tertiary-back;
+}
+
+.drop-content{
+    height: 0;
+    opacity: 0;
+}
+
+.drop-content-transition{
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    transition: 0.3s;
+    opacity: 1;
+    position: absolute;
+
+    a{
+        text-decoration: none;
+    }
+    
+    .drop-content-item{
+        align-items: center;
+        background-color: $tertiary-back; 
+        color: $secondary;
+        display: flex;
+        flex-direction: row;
+        height: 40px;
+        padding: 0 8px;
+        min-width: calc(200px - 20px);
+        max-width: 300px;
+        padding: 10px;
+        width: calc(250px - 20px);
+
+        &:hover{
+            background-color: rgba($tertiary-back, $alpha: 0.8); 
+            transition: 0.3s;
+        }
+    }
+
+    .separator{
+        background-color: $secondary;
+        height: 1px;
+        min-width: calc(200px - 20px);
+        max-width: 300px;
+        padding: 0 10px;
+        width: calc(250px - 20px);
+    }
+}
+

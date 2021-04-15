@@ -35,69 +35,7 @@ const ELEMENT_DATA: Proveedores[] = [
 @Component({
   selector: 'app-suppliers-index',
   templateUrl: './suppliers-index.component.html',
-  styles: [`
-    table{
-      width: 90%;
-      margin: 1rem auto;
-      box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
-      padding: 1rem;
-      border-radius: 10px;
-    }
-
-    .container{
-      width: 90%;
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 10px;
-    }
-
-    button{
-      background-color: transparent;
-      border: none;
-    }
-
-    mat-icon{
-      color: #FE6D73;
-    }
-
-    mat-form-field{
-      font-size: 14px;
-      width: 100%;
-      padding: 1rem;
-      margin: 1rem auto;
-      border: 1px;
-      border-radius: 10px;
-    }
-
-    #input_container{
-      position:relative;
-      padding:0 0 0 20px;
-      margin:0 20px;
-      background:#ddd;
-      direction: rtl;
-      width: 200px;
-      height: 23px;
-      left: 0px;
-      border-radius: 10px;
-    }
-
-    #input_icon{
-      position:absolute;
-      bottom: .1px;
-      right: 6px;
-      width: ;
-      height: ;
-    }
-
-    .mat-button{
-      color: #FFFFFF;
-      background-color: #326273;
-    }
-
-    .btn{
-      cursor:pointer;
-    }
-  `]
+  styles: []
 })
 
 export class SuppliersIndexComponent implements OnInit {

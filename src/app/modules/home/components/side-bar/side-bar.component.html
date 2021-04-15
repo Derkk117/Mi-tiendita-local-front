@@ -1,0 +1,23 @@
+<div class="column">
+    <div class="logo" *ngIf="width > 60">    
+        <img src="https://picsum.photos/200/100" alt="">
+    </div>
+    <div class="logo-short" *ngIf="width < 200 || width == 60">    
+        <img src="https://picsum.photos/50" alt="">
+    </div>
+    <div class="separator"></div>
+    <div class="column" *ngFor="let ref of refs;let i = index">
+        <a class="route row active" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name == active && width > 60">
+            <mat-icon>{{ref.icon}}</mat-icon> <p>{{ref.name}}</p>
+        </a>
+        <a class="route row" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name != active && width > 60">
+            <mat-icon>{{ref.icon}}</mat-icon> <p>{{ref.name}}</p>
+        </a>
+        <a class="route-short row active" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name == active && (width < 60 || width == 60)">
+            <mat-icon>{{ref.icon}}</mat-icon>
+        </a>
+        <a class="route-short row" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name != active && (width < 60 || width == 60)">
+            <mat-icon>{{ref.icon}}</mat-icon>
+        </a>
+    </div>
+</div>
