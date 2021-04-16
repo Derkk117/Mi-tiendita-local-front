@@ -1,10 +1,10 @@
 import { Component, OnInit,  ViewChild, ElementRef  } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-products-edit',
   templateUrl: './products-edit.component.html',
-  styles: []
+  styleUrls: ['./products-edit.component.scss']
 })
 export class ProductsEditComponent implements OnInit {
 

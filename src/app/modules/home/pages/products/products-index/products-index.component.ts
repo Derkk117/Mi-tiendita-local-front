@@ -6,7 +6,7 @@ import { MatTableDataSource} from '@angular/material/table'
 @Component({
   selector: 'app-products-index',
   templateUrl: './products-index.component.html',
-  styles: []
+  styleUrls: ['./products-index.component.scss']
 })
 
 export class ProductsIndexComponent implements AfterViewInit {
@@ -66,5 +66,5 @@ export interface Productos {
 }
 
 const ELEMENT_DATA: Productos[] = [
-  {name: 'Sabritas', description: 'bolsa amarrilla', price: '$13', cost:'10',stock:'20', image: 'https://www.chedraui.com.mx/medias/7501011133884-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8ODM2OTJ8aW1hZ2UvanBlZ3xoNDMvaGJkLzEwODIzNzA3NzIxNzU4LmpwZ3w3ZmI3NDU2ZGUxMDJjM2JmZTg0NWY2NzIxZGNiYzI5OTk0MmM0ZDM4NGRjMGE5YjU3M2U1ZTBjMDU2ZmNkMTkx', category:'botana' },
+  {name: 'Sabritas', description: 'bolsa amarrilla', price: '$13', cost:'$10',stock:'20', image: 'https://www.chedraui.com.mx/medias/7501011133884-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8ODM2OTJ8aW1hZ2UvanBlZ3xoNDMvaGJkLzEwODIzNzA3NzIxNzU4LmpwZ3w3ZmI3NDU2ZGUxMDJjM2JmZTg0NWY2NzIxZGNiYzI5OTk0MmM0ZDM4NGRjMGE5YjU3M2U1ZTBjMDU2ZmNkMTkx', category:'botana' },
 ];
