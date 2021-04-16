@@ -30,6 +30,14 @@ const routes: Routes = [
 				path: 'sales',
 				loadChildren: () => import('./modules/home/pages/sales/sales.module').then(m => m.HomeModule)
 			},
+			{
+				path: 'store',
+				loadChildren: () => import('./modules/home/pages/store/store.module').then(m => m.HomeModule)
+			},
+			{
+				path: 'deliveries',
+				loadChildren: () => import('./modules/home/pages/deliveries/deliveries.module').then(m => m.HomeModule)
+			},
 		]
 	},
 	{ path: 'login', component: LoginComponent},

@@ -1,0 +1,38 @@
+<div class="container">
+    <form action="">
+        <div fxLayout="column" fxLayoutGap="50px">
+            <div fxLayoutAlign="space-between center" fxLayout="column" fxLayoutGap="30px">
+                
+                <div fxLayout="column" fxLayoutGap="20px">
+                
+                    <div fxLayoutAlign="center" fxLayoutGap="20px">
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <label for="">Date</label>
+                            <label for="">Place</label>
+                        </div>
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <input type="date" >
+                            <input type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div fxLayoutAlign="center" fxLayoutGap="20px">
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <label for="">Status</label>
+                        </div>
+                        <div fxLayout="column" fxLayoutGap="20px">
+                            <select name="" id="" >
+                                <option value="" selected>Select Status</option>
+                                <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div fxLayoutAlign="center">
+                <button mat-button>Create</button>
+            </div>
+        </div>
+    </form>
+</div>
