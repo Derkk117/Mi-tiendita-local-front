@@ -14,12 +14,15 @@ export class TopBarComponent implements OnInit {
   }
 
   user_info() {
-    document.getElementById("user-info").classList.toggle("drop-content-transition");
-    document.getElementById("user-drop").classList.toggle("back-toggle");
+    if(document.getElementById("user-info")){
+      document.getElementById("user-info").classList.toggle("drop-content-transition");
+      document.getElementById("user-drop").classList.toggle("back-toggle");
+    }
   }
 
   collapse_sidebar(){
-    document.getElementById("sidebar").classList.toggle("toggle-contrait");
+    if(document.getElementById("sidebar"))
+      document.getElementById("sidebar").classList.toggle("toggle-contrait");
     
     if(document.getElementById('content').classList.contains('content-short')) 
       document.getElementById('content').classList.remove('content-short');

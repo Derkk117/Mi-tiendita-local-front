@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,7 +16,8 @@ import { RegisterComponent } from './pages/register/register.component';
     CommonModule,
     AuthRoutingModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   exports: [
 
