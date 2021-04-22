@@ -1,12 +1,20 @@
+@import '../../../../../styles/colors.scss';
+
 :root {
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem;
   }
   
   body {
-    background: #d0d5da;
+    background-image: linear-gradient(to top right, $quartenary, $primary);
+    min-height: 100vh;
   }
   
+  .card{  
+    top: 15%;
+    height: 100%;
+  }
+
   .card-signin {
     border: 0;
     border-radius: 1rem;
@@ -30,22 +38,23 @@
     padding: 2rem;
   }
   
+  .btn:hover
+  {
+    color: $quinary;
+  }
   
   .btn
   {
     font-weight: bold;
     background-color: rgb(31, 97, 160);
-  }
-
-  .btn:hover {
     color: white;
   }
   
-
-.color {
+    
+  .new {
     background-color: #216d6d;
-}
-
-.color:hover {
-  color: white;
-}
+  }
+  
+  .new:hover {
+    color: $quinary;
+  }

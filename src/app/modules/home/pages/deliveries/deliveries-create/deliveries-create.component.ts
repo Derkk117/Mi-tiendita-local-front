@@ -1,21 +1,22 @@
-import { Component, OnInit,  ViewChild, ElementRef  } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { Component, OnInit,  ViewChild, ElementRef } from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-products-edit',
-  templateUrl: './products-edit.component.html',
-  styleUrls: ['./products-edit.component.scss']
+  selector: 'app-deliveries-create',
+  templateUrl: './deliveries-create.component.html',
+  styleUrls: ['./deliveries-create.component.scss']
 })
-export class ProductsEditComponent implements OnInit {
+export class DeliveriesCreateComponent implements OnInit {
 
   public form: FormGroup;
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  lista:string[]=["botana", "abarrotes"];
+  
+  lista:string[]=["Delivered", "Pending", "Canceled", "On the way"];
   seleccionado = "";
+  
 
   @ViewChild('fileInput', {read: ElementRef}) private fileInput: ElementRef;
   

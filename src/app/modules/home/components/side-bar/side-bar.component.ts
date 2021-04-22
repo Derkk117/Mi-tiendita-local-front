@@ -62,7 +62,8 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.width = this.size;
     this.active = "Dashboard";
-    document.getElementById("ref" + this.active).classList.add("active"); 
+    if(document.getElementById("ref" + this.active))
+      document.getElementById("ref" + this.active).classList.add("active"); 
   }
 
   ngOnChanges(changes: any) {
@@ -70,8 +71,10 @@ export class SideBarComponent implements OnInit {
   }
 
   selectActive(element){
-    document.getElementById("ref" + this.active).classList.remove("active"); 
-    this.active = this.refs[element].name;
-    document.getElementById("ref" + this.active).classList.add("active"); 
+    if(document.getElementById("ref" + this.active)){
+      document.getElementById("ref" + this.active).classList.remove("active"); 
+      this.active = this.refs[element].name;
+      document.getElementById("ref" + this.active).classList.add("active"); 
+    }
   }
 }

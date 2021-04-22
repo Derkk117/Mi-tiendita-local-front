@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'Mi-tiendita-local-front';
   width = 0;
-  
+  constructor(public router: Router) {
+
+  }
   ngOnInit(){
-    this.width = document.getElementById('sidebar').clientWidth;
+    if(document.getElementById('sidebar'))
+      this.width = document.getElementById('sidebar').clientWidth;
   }
 
   onResized($event){
-    this.width = document.getElementById('sidebar').clientWidth;
+    if(document.getElementById('sidebar'))
+      this.width = document.getElementById('sidebar').clientWidth;
   }
 }
