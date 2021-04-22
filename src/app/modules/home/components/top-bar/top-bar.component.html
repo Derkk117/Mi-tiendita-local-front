@@ -7,7 +7,7 @@
             <div class="row user-dropdown-components">
                 <div class="row" style="align-items: center; justify-content: space-around;">
                     <img src="{{user_image_profile}}" alt="">
-                    <h3>User Very Large Name</h3>
+                    <h3>{{identity.name}} {{identity.last_name}}</h3>
                 </div>
                 <mat-icon>keyboard_arrow_down</mat-icon>
             </div>
@@ -26,7 +26,7 @@
             </a>
             <div class="separator"></div>
             <a href="">
-                <div class="drop-content-item">
+                <div class="drop-content-item" (click)="logOut()">
                     <mat-icon>logout</mat-icon> <p style="padding: 0 10px;">Cerrar sesión</p>
                 </div>
             </a>

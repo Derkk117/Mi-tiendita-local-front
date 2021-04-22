@@ -7,7 +7,7 @@ import {LoginComponent} from './modules/auth/pages/login/login.component';
 import {RegisterComponent} from './modules/auth/pages/register/register.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+	{ path: '', redirectTo: '/auth/login', pathMatch: 'full' },
 	{ path: '', component: ContentLayoutComponent, canActivate: [NoAuthGuard],
 		children: [			
 			{
@@ -47,7 +47,7 @@ const routes: Routes = [
 	},
 	{
 		path: '**',
-		redirectTo: '/dashboard',
+		redirectTo: '/auth/login',
 		pathMatch: 'full'
 	}
 ];

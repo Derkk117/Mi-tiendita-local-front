@@ -3,14 +3,15 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 //import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from './global';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
+
+import { User } from '../models/User_model';
 
 @Injectable()
 export class UserService {
 
     public url: string;
-    public identity;
-    public token;
+    public identity; 
 
     constructor(private _http: HttpClient) {
         this.url = GLOBAL.url;
@@ -79,13 +80,20 @@ export class UserService {
 
     // //servicio que se ejecuta al iniciar la aplicación, si existe un usuario
     // //en el local storage lo regresa, sino regresa null.
-    // getIdentity() {
-    //     let identity = JSON.parse(localStorage.getItem('identity'));
+    getIdentity(token) {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
 
-    //     if (identity != "undefinded") this.identity = identity;
-    //     else this.identity = null;
-    //     return this.identity;
-    // }
+        let identity = 
+            this._http.get(
+                this.url + 'current', { headers: headers }
+            ).pipe(map(res => res)
+        );
+        //localStorage.setItem('identity', identity);
+        return identity;
+    }
 
     // //servicio que se ejecuta al inciar la aplicación, si existe un usuario
     // //en el local storage lo regresa en forma de token, sino regresa null.
