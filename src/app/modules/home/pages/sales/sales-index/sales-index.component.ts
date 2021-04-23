@@ -31,7 +31,7 @@ const ELEMENT_DATA: sales[] = [
     table{
       width: 90%;
       margin: 1rem auto;
-      box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
+      box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.1);
       padding: 1rem;
       border-radius: 10px;
     }
@@ -89,6 +89,12 @@ const ELEMENT_DATA: sales[] = [
     .btn{
       cursor:pointer;
     }
+
+    .mat-elevation-z8 th{
+      background-color: #FE6D73;
+      color: white;
+      height: 35px;
+  }
   `]
 })
 
