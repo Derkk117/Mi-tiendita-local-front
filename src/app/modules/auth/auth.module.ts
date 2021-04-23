@@ -6,11 +6,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     LoginComponent, 
-    RegisterComponent
+    RegisterComponent, 
+    LandingPageComponent
   ],
   imports: [
     CommonModule,

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   public token = "";
 
   constructor(
-    private _userService:  UserService,
+    private _userService: UserService,
     private router: Router,  
   ) { 
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         response => {
           this.token = response.access_token
           localStorage.setItem('session', this.token);
-          this._userService.getIdentity(this.token).subscribe(
+          this._userService.getIdentity(this.token, this.email ).subscribe(
             response =>{
               localStorage.setItem('identity', JSON.stringify(response));
             },
@@ -47,6 +47,5 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-
 }
 

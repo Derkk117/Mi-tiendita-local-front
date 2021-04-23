@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'Mi-tiendita-local-front';
   width = 0;
-  constructor(public router: Router) {
+  constructor(public router: Router, private renderer: Renderer2) {
 
   }
   ngOnInit(){
@@ -20,5 +21,10 @@ export class AppComponent implements OnInit{
   onResized($event){
     if(document.getElementById('sidebar'))
       this.width = document.getElementById('sidebar').clientWidth;
+  }
+
+  ngAfterViewInit() {
+    let loader = this.renderer.selectRootElement('#loader');
+    this.renderer.setStyle(loader, 'display', 'none');
   }
 }
