@@ -1,21 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { throttleTime } from 'rxjs/operators';
+import { UserService } from 'src/app/shared/services/User_service';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss']
+  styleUrls: ['./top-bar.component.scss'],
+  providers: [UserService]
 })
 export class TopBarComponent implements OnInit {
   user_image_profile = "https://picsum.photos/40";
-  identity = null;
+  identity;
+  token;
 
   constructor(
 		private router: Router, 
-  ) { }
+    private _userService: UserService
+  ) { 
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.token = localStorage.getItem('session');
+  }
 
   ngOnInit(): void {
-    this.identity = JSON.parse(localStorage.getItem('identity'));
   }
 
   user_info() {
@@ -35,6 +42,16 @@ export class TopBarComponent implements OnInit {
   }
 
   logOut(){
-    localStorage.removeItem('session');
+    this._userService.logout(this.token).subscribe(
+      response =>{
+        console.log(response);
+        localStorage.removeItem('session');
+        localStorage.removeItem('identity');
+        this.router.navigate(['/auth/login']);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }

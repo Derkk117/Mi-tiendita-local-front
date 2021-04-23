@@ -7,26 +7,26 @@
             <div class="row user-dropdown-components">
                 <div class="row" style="align-items: center; justify-content: space-around;">
                     <img src="{{user_image_profile}}" alt="">
-                    <h3>{{identity.name}} {{identity.last_name}}</h3>
+                    <h3>{{identity?.name}} {{identity?.last_name}}</h3>
                 </div>
                 <mat-icon>keyboard_arrow_down</mat-icon>
             </div>
-        </button>
+        </button> 
         <div id="user-info" class="column drop-content">
-            <a href="">
+            <a style="cursor: pointer;">
                 <div class="drop-content-item">
                     <mat-icon>update</mat-icon> <p style="padding: 0 10px;">Actualizar mis datos</p>
                 </div>
             </a>
             <div class="separator"></div>
-            <a href="">
+            <a style="cursor: pointer;">
                 <div class="drop-content-item">
                     <mat-icon>settings</mat-icon> <p style="padding: 0 10px;">Configuración</p>
                 </div>
             </a>
             <div class="separator"></div>
-            <a href="">
-                <div class="drop-content-item" (click)="logOut()">
+            <a style="cursor: pointer;" (click)="logOut()">
+                <div class="drop-content-item">
                     <mat-icon>logout</mat-icon> <p style="padding: 0 10px;">Cerrar sesión</p>
                 </div>
             </a>

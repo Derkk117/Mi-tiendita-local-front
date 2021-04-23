@@ -18,13 +18,43 @@ export class UserService {
     }
 
     login(user) : Observable<any> {
-        //Creamos un json del usuario a loguear.
         let json = JSON.stringify(user);
         let params = json;
 
-        // console.log(params);
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this._http.post(this.url + 'login', params, { headers: headers }).pipe(map(res => res));
+    }
+
+    logout(token): Observable<any> {
+        let headers = new HttpHeaders({ 
+            'Authorization': "Bearer " + token
+        });
+        return this._http.post(this.url + 'logout', [], { headers: headers }).pipe(map(res => res));
+    }
+
+    signUp(user) :Observable<any> {
+        let json = JSON.stringify(user);
+        let params = json;
+
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this._http.post(this.url + 'sign-up', params, { headers: headers }).pipe(map(res => res));
+    }
+
+    getIdentity(token, user) {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        let json = JSON.stringify(user);
+        let params = json;
+
+        let identity = 
+            this._http.get(
+                this.url + 'current/'+ user, { headers: headers }
+            ).pipe(map(res => res)
+        );
+        //localStorage.setItem('identity', identity);
+        return identity;
     }
 
     //servicio que registra una nueva suscripción.
@@ -80,20 +110,7 @@ export class UserService {
 
     // //servicio que se ejecuta al iniciar la aplicación, si existe un usuario
     // //en el local storage lo regresa, sino regresa null.
-    getIdentity(token) {
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': "Bearer " + token
-        });
 
-        let identity = 
-            this._http.get(
-                this.url + 'current', { headers: headers }
-            ).pipe(map(res => res)
-        );
-        //localStorage.setItem('identity', identity);
-        return identity;
-    }
 
     // //servicio que se ejecuta al inciar la aplicación, si existe un usuario
     // //en el local storage lo regresa en forma de token, sino regresa null.
