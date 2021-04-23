@@ -11,6 +11,7 @@ import { UserService } from 'src/app/shared/services/User_service';
 export class LoginComponent implements OnInit {
   public email = "";
   public password ="";
+  public token = "";
 
   constructor(
     private _userService:  UserService,
@@ -20,22 +21,28 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.token = (localStorage.getItem('session')) ? localStorage.getItem('session') : null;
+    if(this.token != null && this.token != "") this.router.navigate(['/dashboard']);
   }
 
   login(){
-    console.log("ok");
     if (this.email != "" && this.password != "") {
       this._userService.login(
         {username: this.email, password: this.password}).subscribe(
         response => {
-          let token = response.access_token
-          console.log(token);
-          
+          this.token = response.access_token
+          localStorage.setItem('session', this.token);
+          this._userService.getIdentity(this.token).subscribe(
+            response =>{
+              localStorage.setItem('identity', JSON.stringify(response));
+            },
+            error =>{
+
+            }
+          );
           this.router.navigate(['dashboard']);
         },
         error => {
-          console.log('error identity');
         }
       );
     }

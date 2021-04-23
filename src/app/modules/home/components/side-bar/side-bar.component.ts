@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -13,51 +14,53 @@ export class SideBarComponent implements OnInit {
     {
       icon: "local_convenience_store",
       name: "Dashboard",
-      route: ""
+      route: "dashboard"
     },
     {
       icon: "local_convenience_store",
       name: "Mi tienda",
-      route: ""
+      route: "store"
     },
     {
       icon: "groups",
       name: "Clientes",
-      route: ""
+      route: "clients"
     },
     {
       icon: "local_cafe",
       name: "Productos",
-      route: ""
+      route: "products"
     },
     {
       icon: "sell",
       name: "Ventas",
-      route: ""
+      route: "sales"
     },
     {
       icon: "connect_without_contact",
       name: "Proveedores",
-      route: ""
+      route: "suppliers"
     },
     {
       icon: "point_of_sale",
       name: "Cortes",
-      route: ""
+      route: "cutoffs"
     },
     {
       icon: "check",
       name: "Entregas",
-      route: ""
+      route: "deliveries"
     },
     {
       icon: "menu",
       name: "Historial",
-      route: ""
+      route: "history"
     }
   ];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.width = this.size;
@@ -76,5 +79,7 @@ export class SideBarComponent implements OnInit {
       this.active = this.refs[element].name;
       document.getElementById("ref" + this.active).classList.add("active"); 
     }
+
+    this.router.navigate([this.refs[element].route]);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-bar',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
   user_image_profile = "https://picsum.photos/40";
+  identity = null;
 
-  constructor() { }
+  constructor(
+		private router: Router, 
+  ) { }
 
   ngOnInit(): void {
+    this.identity = JSON.parse(localStorage.getItem('identity'));
   }
 
   user_info() {
@@ -27,5 +32,9 @@ export class TopBarComponent implements OnInit {
     if(document.getElementById('content').classList.contains('content-short')) 
       document.getElementById('content').classList.remove('content-short');
     else document.getElementById('content').classList.add('content-short');
+  }
+
+  logOut(){
+    localStorage.removeItem('session');
   }
 }

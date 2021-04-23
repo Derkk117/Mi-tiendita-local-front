@@ -7,7 +7,7 @@
     </div>
     <div class="separator"></div>
     <div class="column" *ngFor="let ref of refs;let i = index">
-        <a class="route row active" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name == active && width > 60">
+        <a class="route row active" (click)="selectActive(i)" [attr.id]="'ref' + ref.name" *ngIf="ref.name == active && width > 60">
             <mat-icon>{{ref.icon}}</mat-icon> <p>{{ref.name}}</p>
         </a>
         <a class="route row" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name != active && width > 60">
