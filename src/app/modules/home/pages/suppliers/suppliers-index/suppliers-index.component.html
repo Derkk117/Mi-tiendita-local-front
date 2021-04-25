@@ -4,13 +4,13 @@
     <mat-form-field>
         <mat-label> </mat-label>
     
-        <div fxLayoutAlign="space-between">
-            <div>
+        <div fxLayoutAlign="start">
+            <!--<div>
                 <button class="btn">
                     <mat-icon>add_circle</mat-icon>
                 </button>
                 
-            </div>
+            </div>-->
     
             <div id="input_container">
                 <input matInput (keyup) = "Buscar($event)" placeholder="Search" #input> 
@@ -19,7 +19,6 @@
         </div>
     </mat-form-field>    
 </div>
-
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -86,7 +85,8 @@
 </div>
 
 <div class="container">
-    <div fxLayoutAlign="end">
+    <div fxLayoutAlign="end" fxLayoutGap="10px">
+        <button mat-button > Add </button>
         <button mat-button > Delete </button>
     </div>
 </div>

@@ -9,7 +9,6 @@ export const routes: Routes = [
   { path: 'index', component: SuppliersIndexComponent },
   { path: 'create', component: SuppliersCreateComponent },
   { path: 'edit', component: SuppliersEditComponent}
-//   { path: 'products/:id', component:  productseditcompo},
 ];
 
 @NgModule({

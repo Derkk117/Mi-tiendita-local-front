@@ -35,7 +35,7 @@ const ELEMENT_DATA: Proveedores[] = [
 @Component({
   selector: 'app-suppliers-index',
   templateUrl: './suppliers-index.component.html',
-  styles: []
+  styleUrls: ['./suppliers-index.component.scss']
 })
 
 export class SuppliersIndexComponent implements OnInit {
