@@ -12,8 +12,8 @@
                         <p>State:</p>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
-                        <input type="text">
-                        <input type="email" placeholder="example@example.exa">
+                        <input type="text" name="name" [(ngModel)]="supplier.name">
+                        <input type="email" placeholder="example@example.exa" name="email" [(ngModel)]="supplier.email">
                         <input type="text">
                         <select name="" id="" [(ngModel)]="seleccionado" >
                             <option value="" selected>Select address</option>
@@ -30,7 +30,7 @@
                         <p>Country:</p>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
-                        <input type="text">
+                        <input type="text" name="last_name" [(ngModel)]="supplier.last_name">
                         <input type="text">
                         <input type="number">
                         <select name="" id="" [(ngModel)]="seleccionado" >
@@ -48,7 +48,7 @@
                         <p>Zip Code:</p>
                     </div>
                     <div fxLayout="column" fxLayoutGap="10px">
-                        <input type="tel">
+                        <input type="tel" name="phone" [(ngModel)]="supplier.phone">
                         <input type="text">
                         <input type="text">
                         <input type="number">
@@ -58,7 +58,7 @@
             </div> 
 
             <div fxLayoutAlign="end">
-                <button mat-button> Create </button>
+                <button mat-button (click)="create()"> Create </button>
             </div>  
         </fieldset>
     </div>

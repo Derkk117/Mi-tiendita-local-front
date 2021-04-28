@@ -1,14 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { Address } from 'src/app/shared/models/Address_model';
+import { Router } from '@angular/router';
+import { SupplierService } from 'src/app/shared/services/Supplier_service';
+import { Supplier } from 'src/app/shared/models/Supplier_model';
+import { UserService } from 'src/app/shared/services/User_service';
 
 @Component({
   selector: 'app-suppliers-create',
   templateUrl: './suppliers-create.component.html',
-  styleUrls: ['./suppliers-create.component.scss']
+  styleUrls: ['./suppliers-create.component.scss'],
+  providers:[SupplierService, UserService],
 })
+
 export class SuppliersCreateComponent implements OnInit {
 
-  constructor() { }
+  public supplier;
+  public supplierAddress;
+  identity;
+  token;
+
+  constructor(
+    private _supplierService: SupplierService,
+    private router: Router,
+    private _userService: UserService
+  ){ 
+    this.supplier = new Supplier(null,"","","",null);
+    this.supplierAddress = new Address(null, "", "", "", "", "", "", "", "");
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.token = localStorage.getItem('session');
+  }
 
   ngOnInit(): void {
   }
@@ -24,5 +45,19 @@ export class SuppliersCreateComponent implements OnInit {
     }
 
     return this.email.hasError('email') ? 'Email invalid' : '';
+  }
+
+  create(){
+    console.log(this.supplier);
+    console.log(this.token);
+    //console.log("holi");*
+    if(this.supplier.name != "" && this.supplier.last_name &&
+        this.supplier.email != ""){
+        this._supplierService.create(this.supplier,this.token).subscribe(
+          response => {
+            //this.router.navigate(['suppliers']);
+          }//response
+        )///create-subscribe
+    }////if campos
   }
 }
