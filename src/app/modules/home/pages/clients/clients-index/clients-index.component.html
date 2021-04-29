@@ -1,1 +1,89 @@
-<h1>hello from clients</h1>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<h2 style="text-align: center; margin-top: 10px">Lista Clientes</h2>
+<div class="container">  
+  <div fxLayoutAlign="end" fxLayoutGap="10px">     
+      <div id="input_container" style="left: -10px;">
+        <input matInput (keyup) = "Buscar($event)" placeholder="Buscar" #input style=" height: 34px;
+        background: #f4fcfd;
+        border: none;
+        border-radius: 2px !important;"> 
+        <mat-icon id="input_icon">search</mat-icon>
+      </div>    
+      <button mat-button > Insertar Cliente </button>
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="background-color: rgb(162, 195, 211)">
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="id" >
+    <th mat-header-cell *matHeaderCellDef > Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef> Last name </th>
+    <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> Phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="payment_method">
+    <th mat-header-cell *matHeaderCellDef> payment_method </th>
+    <td mat-cell *matCellDef="let element"> {{element.payment_method}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Editar">
+    <th mat-header-cell *matHeaderCellDef> Editar</th>
+    <td mat-cell *matCellDef="let element"> 
+        <button class="btn"> <mat-icon style="color: rgb(211, 209, 83)" >create</mat-icon> </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Eliminar">
+    <th mat-header-cell *matHeaderCellDef> Eliminar</th>
+    <td mat-cell *matCellDef="let element"> 
+        <button class="btn"> <mat-icon style="color: red" >delete</mat-icon> </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No hay datos que coincidan con la búsqueda "{{input.value}}"</td>
+  </tr>
+</table>
+
+<div class="container_">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

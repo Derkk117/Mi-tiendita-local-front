@@ -1,12 +1,10 @@
-
-  button{
+ .button{
     background-color: transparent;
     border: none;
   }
-  mat-icon{
-    color: #FE6D73;
-  }
-  mat-form-field{
+  
+  .mat-form-field
+  {
     font-size: 14px;
     width: 100%;
     padding: 1rem;
@@ -15,49 +13,59 @@
     border-radius: 10px;
   }
   
-  #input_icon{
+  #input_icon
+  {
     position:absolute;
     bottom: .1px;
     right: 6px;
   }
-  .mat-button{
+
+  .mat-button
+  {
     color: #FFFFFF;
     background-color: #326273;
   }
-  .btn{
+
+  .btn
+  {
     cursor:pointer;
   }
-  img{
+
+  img
+  {
     width: 40px;
     height: 40px;
   }
 
-  table{
-    //box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
+  table
+  {
     width: 90%;
-    margin: auto;
-    
-    //padding: 1rem;
-    
+    margin: auto;    
     border-radius: 10px;
     border-style: solid;
     border-color: gray;
   }
-
-  
-  .container{
+  .container
+  {
     width: 90%;
     margin: 1rem auto;
     //padding: 1rem;
     border-radius: 10px;
   }
 
-  #input_container{
+  .container_
+  {
+    width: 90%;
+    margin: 1rem auto;
+    border-radius: 10px;
+  }
+
+  #input_container
+  {
     position: relative;
     //padding:0 0 0 0px;
     //margin:0 0px;
     background:#ddd;
-    //direction: rtl;
     width: 200px;
     height: 23px;
     //left: 0px;

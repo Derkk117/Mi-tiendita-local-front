@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 export class LandingPageComponent implements OnInit {
   public token = "";
-  
+
   constructor(
     private router: Router,  
   ) { 
