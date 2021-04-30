@@ -15,13 +15,13 @@ export interface Proveedores {
 
 const ELEMENT_DATA: Proveedores[] = [
   {id: "1", name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "1", name: 'Mario', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "1", name: 'Luis', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "1", name: 'Marcos', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "1", name: 'Marina', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "1", name: 'Mandarina', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "1", name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "1", name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
+  {id: "2", name: 'Mario', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
+  {id: "3", name: 'Luis', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
+  {id: "4", name: 'Marcos', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
+  {id: "5", name: 'Marina', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
+  {id: "6", name: 'Martha', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
+  {id: "7", name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
+  {id: "8", name: 'Pablo', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
 ];
 
 

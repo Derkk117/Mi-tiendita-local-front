@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
-import {LoginComponent} from './modules/auth/pages/login/login.component';
-import {RegisterComponent} from './modules/auth/pages/register/register.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/auth/welcome', pathMatch: 'full' },
@@ -37,6 +35,10 @@ const routes: Routes = [
 			{
 				path: 'deliveries',
 				loadChildren: () => import('./modules/home/pages/deliveries/deliveries.module').then(m => m.HomeModule)
+			},
+			{
+				path: 'cortes',
+				loadChildren: () => import('./modules/home/pages/cortes/cortes.module').then(m => m.HomeModule)
 			},
 		]
 	},

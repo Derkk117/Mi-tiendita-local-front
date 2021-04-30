@@ -5,6 +5,7 @@ import { MatTableDataSource} from '@angular/material/table'
 
 export interface Productos {
   id : string;
+  user_id: string;
   name: string;
   description: string;
   price: string;
@@ -15,15 +16,17 @@ export interface Productos {
 }
 
 const ELEMENT_DATA: Productos[] = [
-  {id: "1", name: 'Sabritas', description: 'bolsa amarrilla', 
+  {id: "1", user_id:'2',name: 'Sabritas', description: 'botana', 
   price: '$13', cost:'$10',stock:'20', 
   image: 'https://www.superama.com.mx/Content/images/products/img_large/0750101111561L.jpg', category:'botana' },
-  {id: "1", name: 'Sabritas', description: 'bolsa amarrilla', 
+
+  {id: "2", user_id:'3', name: 'Coca Cola', description: 'refresco', 
   price: '$13', cost:'$10',stock:'20', 
-  image: 'https://www.superama.com.mx/Content/images/products/img_large/0750101111561L.jpg', category:'botana' },
-  {id: "1", name: 'Ruffles', description: 'bolsa verde', 
+  image: 'https://www.superama.com.mx/Content/images/products/img_large/0750105533217L.jpg', category:'refresco' },
+
+  {id: "3", user_id:'4', name: 'Ruffles', description: 'botana', 
   price: '$13', cost:'$10',stock:'20', 
-  image: 'https://http2.mlstatic.com/D_NQ_NP_678140-MLM40168271778_122019-O.jpg', category:'botana' },
+  image: 'https://http2.mlstatic.com/D_NQ_NP_678140-MLM40168271778_122019-O.jpg', category:'botana'},
 ];
 
 @Component({
@@ -39,7 +42,7 @@ export class ProductsIndexComponent implements OnInit {
   ngOnInit(): void {
   }  
 
-  displayedColumns: string[] = ['select', 'id' ,'name','description','price','cost','stock','image','category','editar', 'eliminar'];
+  displayedColumns: string[] = ['select', 'id', 'user_id','name','description','price','cost','stock','image','category','editar', 'eliminar'];
 
   dataSource = new MatTableDataSource<Productos>(ELEMENT_DATA);
   selection = new SelectionModel<Productos>(true, []);

@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<h2 style="text-align: center; margin-top: 10px">Lista Entregas</h2>
+<h2 style="text-align: center; margin-top: 10px">Lista Cortes</h2>
 <div class="container">  
   <div fxLayoutAlign="end" fxLayoutGap="10px">     
       <div id="input_container" style="left: -10px;">
@@ -10,7 +10,7 @@
         border-radius: 2px !important;"> 
         <mat-icon id="input_icon">search</mat-icon>
       </div>    
-      <button mat-button > Insertar Entrega </button>
+      <button mat-button > Insertar Corte </button>
   </div>
 </div>
 
@@ -33,24 +33,29 @@
     </ng-container>
 
     <ng-container matColumnDef="id" >
-        <th mat-header-cell *matHeaderCellDef > Id Entrega </th>
+        <th mat-header-cell *matHeaderCellDef > Id Corte </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="sale_id">
-        <th mat-header-cell *matHeaderCellDef> Id Tienda </th>
-        <td mat-cell *matCellDef="let row"> {{row.sale_id}} </td>
+    <ng-container matColumnDef="user_id" >
+      <th mat-header-cell *matHeaderCellDef > Id Usuario </th>
+      <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="dateInicio">
+        <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
+        <td mat-cell *matCellDef="let row"> {{row.dateInicio}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="place">
-        <th mat-header-cell *matHeaderCellDef> Lugar </th>
-        <td mat-cell *matCellDef="let row"> {{row.place}} </td>
+    <ng-container matColumnDef="dateFinal">
+        <th mat-header-cell *matHeaderCellDef> Fecha Final </th>
+        <td mat-cell *matCellDef="let row"> {{row.dateFinal}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Estatus </th>
-        <td mat-cell *matCellDef="let row"> {{row.status}} </td>
-    </ng-container>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef> Total </th>
+      <td mat-cell *matCellDef="let row"> {{row.total}} </td>
+  </ng-container>
 
     <ng-container matColumnDef="Editar">
       <th mat-header-cell *matHeaderCellDef> Editar</th>

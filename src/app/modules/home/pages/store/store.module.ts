@@ -34,7 +34,7 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     FormsModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class HomeModule { }

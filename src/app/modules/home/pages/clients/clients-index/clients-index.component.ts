@@ -6,35 +6,32 @@ import { MatTableDataSource} from '@angular/material/table'
 
 export interface UserData {
   id: string;
+  id_user: string;
   name: string;
-  last_name: string;
-  phone: string;
+  last_name: string;  
   email: string;
   payment_method: string;
-  //progress: string;
-  //color: string;
+  phone: string;
+  client_type: string;
 }
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
-
 const ELEMENT_DATA: UserData[] = [
-  {id: "1", name: 'Jose', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-  {id: "1", name: 'Mario', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-  {id: "1", name: 'Luis', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-  {id: "1", name: 'Marcos', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-  {id: "1", name: 'Marina', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-  {id: "1", name: 'Juan', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-  {id: "1", name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-  {id: "1", name: 'Julio', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', payment_method: 'Tarjeta'},
-];
+  {id: "1", id_user: '2', name: 'Jose', 
+  last_name: 'Rodriguez', email: 'jose@hotmail.com', 
+  payment_method: 'Tarjeta', phone: '456123789', client_type: 'Proveedor'},
+  {id: "2", id_user: '3', name: 'Mariana', 
+  last_name: 'Rodriguez', email: 'mariana@hotmail.com', 
+  payment_method: 'Tarjeta', phone: '456123789', client_type: 'Proveedor'},
+  {id: "3", id_user: '4', name: 'Julian', 
+  last_name: 'Rodriguez', email: 'Julian@hotmail.com', 
+  payment_method: 'Tarjeta', phone: '456123789', client_type: 'Proveedor'},
+  {id: "4", id_user: '5', name: 'Juan', 
+  last_name: 'Rodriguez', email: 'Juan@hotmail.com', 
+  payment_method: 'Tarjeta', phone: '456123789', client_type: 'Proveedor'},
+  {id: "6", id_user: '7', name: 'Maria', 
+  last_name: 'Rodriguez', email: 'Maria@hotmail.com', 
+  payment_method: 'Tarjeta', phone: '456123789', client_type: 'Proveedor'},
+]
 
 @Component({
   selector: 'app-clients-index',
@@ -46,8 +43,8 @@ export class ClientsIndexComponent implements OnInit {
 
   ngOnInit(): void {} 
 
-  displayedColumns: string[] = ['select', 'id', 'name',
-  'last_name', 'phone', 'email','payment_method','Editar', 'Eliminar'];
+  displayedColumns: string[] = ['select', 'id', 'id_user', 'name', 'last_name', 'email',
+  'payment_method','phone', 'client_type', 'Editar', 'Eliminar'];
 
   dataSource = new MatTableDataSource<UserData>(ELEMENT_DATA);
   selection = new SelectionModel<UserData>(true, []);

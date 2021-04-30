@@ -44,7 +44,7 @@ export class SideBarComponent implements OnInit {
     {
       icon: "point_of_sale",
       name: "Cortes",
-      route: "cutoffs"
+      route: "cortes"
     },
     {
       icon: "check",
