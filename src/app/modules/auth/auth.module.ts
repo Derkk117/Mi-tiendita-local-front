@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -19,7 +20,10 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     AuthRoutingModule,
     RouterModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-top-right'
+    })
   ],
   exports: [
 

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { throttleTime } from 'rxjs/operators';
 import { UserService } from 'src/app/shared/services/User_service';
 
 @Component({
@@ -18,11 +17,11 @@ export class TopBarComponent implements OnInit {
 		private router: Router, 
     private _userService: UserService
   ) { 
-    this.identity = JSON.parse(localStorage.getItem('identity'));
-    this.token = localStorage.getItem('session');
   }
 
   ngOnInit(): void {
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.token = localStorage.getItem('session');
   }
 
   user_info() {

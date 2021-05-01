@@ -27,6 +27,7 @@
     "flx-ui-datatable": "^1.1.5",
     "material-design-icons": "^3.0.1",
     "material-icons": "^0.5.4",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
