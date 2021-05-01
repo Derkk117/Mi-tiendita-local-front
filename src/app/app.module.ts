@@ -21,7 +21,7 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     TopBarComponent,
-    SideBarComponent
+    SideBarComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -36,7 +36,7 @@ import { AppComponent } from './app.component';
     MatSidenavModule,
     MatListModule,
     RouterModule,
-    AngularResizedEventModule
+    AngularResizedEventModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

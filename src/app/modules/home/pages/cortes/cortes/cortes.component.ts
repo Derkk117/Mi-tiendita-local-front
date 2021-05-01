@@ -3,38 +3,38 @@ import { AfterViewInit, ViewChild, Component, OnInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table'
 
-export interface Entregas {
+export interface Cortes {
   id: string;
-  sale_id: string;
-  place: string;
-  status: string;
+  user_id: string;
+  dateInicio: string;
+  dateFinal: string;
+  total: string;
 }
 
-const ELEMENT_DATA: Entregas[] = [
-  {id: '1', sale_id: '5', place: 'Calle Benito Juarez', status: 'Pendiente'},
-  {id: '2', sale_id: '4', place: 'Calle Español', status: 'Pendiente'},
-  {id: '3', sale_id: '3', place: 'Calle Soledad', status: 'Pendiente'},
-  {id: '4', sale_id: '2', place: 'Calle 123', status: 'Pendiente'},
-  {id: '5', sale_id: '1', place: 'Calle Amatista', status: 'Pendiente'},
+const ELEMENT_DATA: Cortes[] = [
+  {id: '1', user_id: '2', dateInicio: '09-04-2021', dateFinal: '10-04-2021', total: '$500'},
+  {id: '2', user_id: '3', dateInicio: '10-04-2021', dateFinal: '11-04-2021', total: '$500'},
+  {id: '3', user_id: '4', dateInicio: '11-04-2021', dateFinal: '12-04-2021', total: '$500'},
+  {id: '4', user_id: '5', dateInicio: '12-04-2021', dateFinal: '13-04-2021', total: '$500'},
+  {id: '5', user_id: '6', dateInicio: '13-04-2021', dateFinal: '14-04-2021', total: '$500'},
 ];
 
-
 @Component({
-  selector: 'app-deliveries-index',
-  templateUrl: './deliveries-index.component.html',
-  styleUrls: ['./deliveries-index.component.scss']
+  selector: 'app-cortes',
+  templateUrl: './cortes.component.html',
+  styleUrls: ['./cortes.component.scss']
 })
-export class DeliveriesIndexComponent implements OnInit {
+export class CortesComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  displayedColumns: string[] = ['select','id','sale_id','place','status','Editar','Eliminar'];
+  displayedColumns: string[] = ['select','id','user_id','dateInicio','dateFinal','total','Editar','Eliminar'];
 
-  dataSource = new MatTableDataSource<Entregas>(ELEMENT_DATA);
-  selection = new SelectionModel<Entregas>(true, []);
+  dataSource = new MatTableDataSource<Cortes>(ELEMENT_DATA);
+  selection = new SelectionModel<Cortes>(true, []);
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -53,7 +53,7 @@ export class DeliveriesIndexComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  checkboxLabel(row?: Entregas): string {
+  checkboxLabel(row?: Cortes): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
@@ -64,4 +64,5 @@ export class DeliveriesIndexComponent implements OnInit {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
+
 }

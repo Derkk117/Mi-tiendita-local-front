@@ -10,16 +10,22 @@ export interface sales {
   Products: string;
   payment_method: string;
   Card_Number:string;
+  Card_cvc:string;
+  expiration:string;
 }
 
 const ELEMENT_DATA: sales[] = [
-  {id: '1', Client_Id: '1', User_Id: '2', Products: 'CocaCola' ,payment_method: 'CASH', Card_Number: '125469'},
-  {id: '1', Client_Id: '1', User_Id: '2', Products: 'CocaCola' ,payment_method: 'CASH', Card_Number: '125469'},
-  {id: '1', Client_Id: '1', User_Id: '2', Products: 'CocaCola' ,payment_method: 'CASH', Card_Number: '125469'},
-  {id: '1', Client_Id: '1', User_Id: '2', Products: 'CocaCola' ,payment_method: 'CASH', Card_Number: '125469'},
-  {id: '1', Client_Id: '1', User_Id: '2', Products: 'CocaCola' ,payment_method: 'CASH', Card_Number: '125469'},
-  {id: '1', Client_Id: '1', User_Id: '2', Products: 'CocaCola' ,payment_method: 'CASH', Card_Number: '125469'},
-  {id: '1', Client_Id: '1', User_Id: '2', Products: 'CocaCola' ,payment_method: 'CASH', Card_Number: '125469'},
+  {id: '1', Client_Id: '2', User_Id: '3', Products: 'CocaCola' ,payment_method: 'Tarjeta', Card_Number: '125469',
+  Card_cvc: '12', expiration: '2021'},
+
+  {id: '2', Client_Id: '3', User_Id: '4', Products: 'Sabritas' ,payment_method: 'Tarjeta', Card_Number: '125469',
+  Card_cvc: '12', expiration: '2021'},
+
+  {id: '3', Client_Id: '4', User_Id: '5', Products: 'Agua' ,payment_method: 'Tarjeta', Card_Number: '125469',
+  Card_cvc: '12', expiration: '2021'},
+
+  {id: '4', Client_Id: '5', User_Id: '6', Products: 'Chocolate' ,payment_method: 'Tarjeta', Card_Number: '125469',
+  Card_cvc: '12', expiration: '2021'}
 ];
 
 
@@ -36,7 +42,7 @@ export class SalesIndexComponent implements OnInit {
   ngOnInit(): void {} 
 
   displayedColumns: string[] = ['select', 'id', 'Client_Id',
-  'User_Id', 'Products','payment_method','Card_Number','Editar', 'Eliminar'];
+  'User_Id', 'Products','payment_method','Card_Number','Card_cvc','expiration','Editar', 'Eliminar'];
 
   dataSource = new MatTableDataSource<sales>(ELEMENT_DATA);
   selection = new SelectionModel<sales>(true, []);
