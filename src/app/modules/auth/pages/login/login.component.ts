@@ -1,12 +1,13 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/User_service';
+import { StoreService } from 'src/app/shared/services/Store_service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [UserService]
+  providers: [UserService,StoreService]
 })
 export class LoginComponent implements OnInit {
   public email = "";
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
+    private _storeService: StoreService,
     private router: Router,  
   ) { 
 
@@ -35,6 +37,11 @@ export class LoginComponent implements OnInit {
           this._userService.getIdentity(this.token, this.email ).subscribe(
             response =>{
               localStorage.setItem('identity', JSON.stringify(response));
+              this._storeService.getStore((JSON.parse(localStorage.getItem('identity'))).store_id,this.token).subscribe(
+                response => {
+                  localStorage.setItem('store',JSON.stringify(response));
+                }      
+              );
             },
             error =>{
 
