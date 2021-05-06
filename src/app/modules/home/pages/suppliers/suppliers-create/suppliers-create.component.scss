@@ -1,3 +1,7 @@
+ @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+
 .outer{
     height:200px;
     line-height: 200px;
@@ -6,7 +10,7 @@
   .container-form{
     width: 25%;
     margin: 1rem auto;
-    box-shadow: -1px 3px 66px 0px rgba(92,158,173,1);
+    //box-shadow: -1px 3px 66px 0px rgba(92,158,173,1);
     padding: 1rem;
     border-radius: 10px;
   }
@@ -14,7 +18,8 @@
   .mat-button{
     color: #FFFFFF;
     background-color: #326273;
-    margin: 10px;
+    //right: 0%;
+    //position: inherit;
   }
 
   fieldset {
@@ -42,4 +47,10 @@ input {
 
 select{
     border-radius: 10px;
+}
+
+input:hover{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
