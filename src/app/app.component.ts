@@ -10,9 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'Mi-tiendita-local-front';
   width = 0;
-
-  constructor(public router: Router, private renderer: Renderer2) {
-  }
+  constructor(public router: Router, private renderer: Renderer2) {  }
   ngOnInit(){
     if(document.getElementById('sidebar'))
       this.width = document.getElementById('sidebar').clientWidth;

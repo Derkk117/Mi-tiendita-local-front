@@ -12,16 +12,17 @@ export class TopBarComponent implements OnInit {
   user_image_profile = "https://picsum.photos/40";
   identity;
   token;
-
   constructor(
 		private router: Router, 
     private _userService: UserService
   ) { 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log(localStorage.getItem('identity'));
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
+    
   }
 
   user_info() {

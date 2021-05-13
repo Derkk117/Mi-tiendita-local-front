@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.token = (localStorage.getItem('session')) ? localStorage.getItem('session') : null;
-    if(this.token != null && this.token != "") this.router.navigate(['/dashboard']);
   }
 
   login(){
@@ -43,12 +41,12 @@ export class LoginComponent implements OnInit {
             response =>{
               this.toastr.success(':)', 'Bienvenido');
               localStorage.setItem('identity', JSON.stringify(response));
+              this.router.navigate(['dashboard']);
             },
             error =>{
               this.toastr.error(error.message, 'Error');
             }
           );
-          this.router.navigate(['dashboard']);
         },
         error => {
           this.toastr.error("Algo salió mal, intentalo de nuevo.", 'Error');
