@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/User_service';
 import { ToastrService } from 'ngx-toastr';
+import { StoreService } from 'src/app/shared/services/Store_service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   providers: [
     UserService,
     ToastrService,
+    StoreService
   ]
 })
 export class LoginComponent implements OnInit {
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
+    private _storeService: StoreService,
     private router: Router,  
     private toastr: ToastrService
   ) { 
@@ -42,6 +45,11 @@ export class LoginComponent implements OnInit {
               this.toastr.success(':)', 'Bienvenido');
               localStorage.setItem('identity', JSON.stringify(response));
               this.router.navigate(['dashboard']);
+              this._storeService.getStore((JSON.parse(localStorage.getItem('identity'))).store_id,this.token).subscribe(
+                response => {
+                  localStorage.setItem('store',JSON.stringify(response));
+                }      
+              );
             },
             error =>{
               this.toastr.error(error.message, 'Error');

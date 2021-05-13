@@ -1,3 +1,4 @@
+<!----
 <div fxLayout="column" fxLayoutAlign="">
     <div fxLayoutAlign="center">
         <fieldset>
@@ -61,5 +62,46 @@
                 <button mat-button (click)="create()"> Create </button>
             </div>  
         </fieldset>
+    </div>
+</div>
+--->
+<div class="container-form">
+    <div fxLayout="column" fxLayoutGap="10px">
+        <div fxLayoutAlign="space-around center">
+            <p style="font-weight: bold;">New Supplier</p>
+        </div>
+        <div fxLayoutAlign="space-around center">
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        
+        <div fxLayoutAlign="space-around center">
+            <mat-form-field appearance="fill">
+                <mat-label>Apellido</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+
+        <div fxLayoutAlign="space-around center">
+            <mat-form-field appearance="fill">
+                <mat-label>Telefono</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+
+        <div fxLayoutAlign="space-around center">
+            <mat-form-field appearance="fill">
+                <mat-label>Correo</mat-label>
+                <input matInput>
+                <mat-hint>example@example.com</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div fxLayoutAlign="space-around center">
+            <button mat-button (click)="back()"> <mat-icon>arrow_left</mat-icon> </button>
+            <button mat-button>Crear</button>
+        </div>
     </div>
 </div>

@@ -3,6 +3,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table'
+import { Router } from '@angular/router';
 
 export interface Proveedores {
   id: string;
@@ -33,11 +34,11 @@ const ELEMENT_DATA: Proveedores[] = [
 
 export class SuppliersIndexComponent implements OnInit {
 
-  constructor() {}
+  constructor(private router: Router,) {}
 
   ngOnInit(): void {}  
 
-  displayedColumns: string[] = ['select', 'id', 'name',
+  displayedColumns: string[] = ['select', 'name',
   'last_name', 'phone', 'email','address','Editar', 'Eliminar'];
 
   dataSource = new MatTableDataSource<Proveedores>(ELEMENT_DATA);
@@ -78,4 +79,7 @@ export class SuppliersIndexComponent implements OnInit {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
+
+  insert(){
+    this.router.navigate(['suppliers/create']);  }
 }

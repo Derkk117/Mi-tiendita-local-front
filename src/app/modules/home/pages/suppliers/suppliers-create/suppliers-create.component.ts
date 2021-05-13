@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { SupplierService } from 'src/app/shared/services/Supplier_service';
 import { Supplier } from 'src/app/shared/models/Supplier_model';
 import { UserService } from 'src/app/shared/services/User_service';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-suppliers-create',
@@ -59,5 +62,9 @@ export class SuppliersCreateComponent implements OnInit {
           }//response
         )///create-subscribe
     }////if campos
+  }
+
+  back(){
+    this.router.navigate(['suppliers']);
   }
 }
