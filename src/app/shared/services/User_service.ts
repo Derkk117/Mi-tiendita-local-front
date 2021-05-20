@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 import { GLOBAL } from './global';
 import { from, Observable } from 'rxjs';
 
-import { User } from '../models/User_model';
 
 @Injectable()
 export class UserService {
@@ -40,14 +39,11 @@ export class UserService {
         return this._http.post(this.url + 'sign-up', params, { headers: headers }).pipe(map(res => res));
     }
 
-    getIdentity(token, user) {
+    getIdentity(token, user) :Observable<any> {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
         });
-        let json = JSON.stringify(user);
-        let params = json;
-
         let identity = 
             this._http.get(
                 this.url + 'current/'+ user, { headers: headers }

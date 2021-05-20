@@ -19,7 +19,6 @@ export class TopBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(localStorage.getItem('identity'));
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
     
