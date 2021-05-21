@@ -1,52 +1,14 @@
 @import '../../../../../../styles/colors.scss';
 
-.button{
-  background-color: transparent;
-  border: none;
-}
-
-.mat-form-field
-{
-  font-size: 14px;
-  width: 100%;
-  padding: 1rem;
-  margin: 1rem auto;
-  border: 1px;
-  border-radius: 10px;
-}
-
-#input_icon
-{
-  position:absolute;
-  bottom: .1px;
-  right: 6px;
-}
-
-.mat-button
-{
-  color: $quartenary;
-  background-color: $tertiary;
-}
-
-.btn
-{
-  cursor:pointer;
-}
-
-img
-{
-  width: 40px;
-  height: 40px;
-}
-
-table
+.estiloTabla
 {
   width: 90%;
   margin: auto;    
-  border-radius: 10px;
-  border-style: solid;
-  border-color: gray;
+  background-color: $secondary;
+  border: none;
 }
+
+//Aqui es todo el espacio del boton de agregar y el de busqueda
 .container
 {
   width: 90%;
@@ -54,30 +16,50 @@ table
   border-radius: 10px;
 }
 
+//Aqui es todo el espacio del items y la paginacion
 .container_
 {
   width: 90%;
   margin: 1rem auto;
   border-radius: 10px;
+  
 }
 
-#input_container
+.estiloBotonAgregar
+{
+  color: $quartenary;
+  background-color: $tertiary;
+}
+
+.iconoBusqueda
+{
+  position:absolute;
+  bottom: .1px;
+  right: 6px;  
+}
+
+.inputBuscar
 {
   position: relative;
   background:#ddd;
   width: 200px;
   height: 23px;
-  border-radius: 10px;
+  border-radius: 10px;  
 }
 
-th{
+.btnEliminarEditar
+{
+  cursor:pointer; 
+  border: none; 
+  background-color: white;
+  padding: 10px;
+}
+
+th
+{
   font-style: normal;
   font-size: 100%;
   color: black;
-  font-weight: bold;
-}
-
-table{
-  background-color: $secondary;
-  border: none;
+  font-weight: bold;    
+  background-color: rgb(194, 194, 194);
 }
