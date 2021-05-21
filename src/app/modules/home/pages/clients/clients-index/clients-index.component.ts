@@ -36,9 +36,6 @@ export class ClientsIndexComponent implements OnInit {
       });
   }
 
-  loadData(){
-    
-  }
   displayedColumns: string[] = [
     'name', 
     'last_name', 
