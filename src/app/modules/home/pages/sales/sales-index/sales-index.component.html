@@ -11,10 +11,30 @@
   </div>
 </div>
 
-<table mat-table [dataSource]="dataSource" class= "estiloTabla">
+<div id="loader" *ngIf="!dataSource">
+<style>
+  .application-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .application-loading-box {
+    width: 300px;
+    margin: 5px;
+    text-align: center;
+  }
+</style>
+
+<div class="application-loading-container">
+  <div class="application-loading-box"><h2>Loading...</h2></div>
+</div>
+</div>
+<table *ngIf="dataSource" mat-table [dataSource]="dataSource" class= "estiloTabla">
   <ng-container matColumnDef="Products">
     <th mat-header-cell *matHeaderCellDef> Productos </th>
-    <td mat-cell *matCellDef="let element"> {{element.Products}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.products}} </td>
   </ng-container>
 
     <ng-container matColumnDef="payment_method">
@@ -24,17 +44,17 @@
 
   <ng-container matColumnDef="Card_Number">
     <th mat-header-cell *matHeaderCellDef> Numero de tarjeta </th>
-    <td mat-cell *matCellDef="let element"> {{element.Card_Number}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.card_number}} </td>
   </ng-container>
 
   <ng-container matColumnDef="Card_cvc">
     <th mat-header-cell *matHeaderCellDef> Numero de cvc </th>
-    <td mat-cell *matCellDef="let element"> {{element.Card_cvc}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.card_cvc}} </td>
   </ng-container>
 
   <ng-container matColumnDef="expiration">
     <th mat-header-cell *matHeaderCellDef> Numero de expiracion </th>
-    <td mat-cell *matCellDef="let element"> {{element.expiration}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.expiration_date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="Acciones">
