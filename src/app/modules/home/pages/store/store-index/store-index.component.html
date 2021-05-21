@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="">
+    <form action="" *ngIf="store && address">
         <div fxLayout="column" fxLayoutGap="20px">
             <div fxLayoutAlign="center">
                 <div class="logo">
@@ -14,9 +14,9 @@
                     <label for="">Telefono</label>
                 </div>
                 <div fxLayout="column" fxLayoutGap="20px">
-                    <input type="text" disabled="true" id="name">
-                    <input type="text"  disabled="true" id="address">
-                    <input type="text"  disabled="true" id="phone">
+                    <input type="text" disabled="true" [(ngModel)]="store.name" name="name">
+                    <input type="text" disabled="true" value="{{address.street}}  #{{address.external_number}} {{address.neighborhood}}" name="street">
+                    <input type="text" disabled="true" [(ngModel)]="store.phone" name="phone">
                 </div>
             </div>
             <div class="button" fxLayoutAlign="flex-end">

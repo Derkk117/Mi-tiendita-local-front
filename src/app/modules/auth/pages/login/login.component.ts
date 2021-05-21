@@ -64,4 +64,3 @@ export class LoginComponent implements OnInit {
       this.toastr.error("Debes llenar ambos campos", 'Error');
   }
 }
-
