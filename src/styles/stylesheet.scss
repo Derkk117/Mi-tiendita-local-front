@@ -86,6 +86,17 @@ body {
 }
 
 .btn-primary{
+    background-color: $tertiary;
+    color: $quartenary;
+    margin-left: 25px;
+}
+
+.btn-secondary{
+    background-color: $background-btn-secondary;
+    color: $color-btn-secondary;
+}
+
+.menu-button{
     background-color: transparent;
     border: none !important;
     border-radius: 50%;
@@ -97,3 +108,22 @@ body {
         @include primary-hover();
     }
 }
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: $primary !important;
+   }
+  
+   ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: $primary !important;
+  } 
+  
+  ::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: $primary !important;;
+  }
+  ::ng-deep.mat-form-field-wrapper, .mat-form-field-flex{
+      background-color: quartenary;
+      color: black;
+  }

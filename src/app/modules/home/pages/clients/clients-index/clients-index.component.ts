@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table'
@@ -19,8 +20,19 @@ export class ClientsIndexComponent implements OnInit {
   dataSource:any;
   selection = new SelectionModel<Client>(true, []);
 
+  displayedColumns: string[] = [
+    'name', 
+    'last_name', 
+    'email',
+    'payment_method', 
+    'phone', 
+    'client_type',
+    'actions'
+  ];
+
   constructor(
-    private _clientService: ClientService
+    private _clientService: ClientService,
+    private router: Router,
   ) {
   }
 
@@ -36,20 +48,10 @@ export class ClientsIndexComponent implements OnInit {
       });
   }
 
-  displayedColumns: string[] = [
-    'name', 
-    'last_name', 
-    'email',
-    'payment_method', 
-    'phone', 
-    'client_type',
-    'actions'
-  ];
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    if(this.dataSource != null) this.dataSource.paginator = this.paginator;
   }
 
   Buscar(event: Event) {
@@ -57,8 +59,7 @@ export class ClientsIndexComponent implements OnInit {
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
 
-  // changeLabelFromTable(){
-  //   var div = <HTMLInputElement>document.getElementById("mat-paginator-page-size-label");
-  //   div.textContent = "Elementos por página: ";
-  // }
+  edit(element){
+    this.router.navigate(['/clients/edit', element.sku]);
+  }
 }

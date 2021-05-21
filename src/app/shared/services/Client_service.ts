@@ -22,4 +22,11 @@ export class ClientService {
         return this._http.get(this.url + 'clients/'+ user_id, { headers: headers }).pipe(map(res => res));
     }
 
+    getClient(token, sku) :Observable<any>{
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        return this._http.get(this.url + 'client/'+ sku + '/edit', { headers: headers }).pipe(map(res => res));
+    }
 }

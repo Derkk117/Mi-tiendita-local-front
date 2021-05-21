@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/User_service';
-import { ToastrService } from 'ngx-toastr';
 import { StoreService } from 'src/app/shared/services/Store_service';
 
 @Component({
