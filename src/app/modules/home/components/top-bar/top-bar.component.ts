@@ -47,7 +47,6 @@ export class TopBarComponent implements OnInit {
         console.log(response);
         localStorage.removeItem('session');
         localStorage.removeItem('identity');
-        localStorage.removeItem('store');
         this.router.navigate(['/auth/login']);
       },
       error => {

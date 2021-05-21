@@ -37,11 +37,6 @@ export class LoginComponent implements OnInit {
           this._userService.getIdentity(this.token, this.email ).subscribe(
             response =>{
               localStorage.setItem('identity', JSON.stringify(response));
-              this._storeService.getStore((JSON.parse(localStorage.getItem('identity'))).store_id,this.token).subscribe(
-                response => {
-                  localStorage.setItem('store',JSON.stringify(response));
-                }      
-              );
             },
             error =>{
 

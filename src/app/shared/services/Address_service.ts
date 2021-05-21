@@ -4,18 +4,17 @@ import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {GLOBAL} from './global';
 
-import {Store} from '../models/Store_model';
+import {Address} from '../models/Address_model';
 
 @Injectable()
-export class StoreService {
-
+export class AddressService{
     public url: string;
 
     constructor(private _http: HttpClient) {
         this.url = GLOBAL.url;
     }
 
-    getStore(store_id, token):Observable<any>{
+    getAddress(address_id, token):Observable<any>{
         let headers = new HttpHeaders(
             {
                 'Content-Type':'application/json',
@@ -25,6 +24,6 @@ export class StoreService {
 
         let options = {headers: headers};
 
-        return this._http.get(this.url+ 'store/' + store_id + '/edit', options).pipe(map(res => res));
+        return this._http.get(this.url+ 'address/' + address_id + '/edit', options).pipe(map(res => res));
     }
 }
