@@ -1,30 +1,39 @@
-import { Component, OnInit,  ViewChild, ElementRef  } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+//Se importa el modelo y el servidor de producto
+import { Product } from 'src/app/shared/models/Product_model';
+import { ProductService } from 'src/app/shared/services/Product_service';
 
 @Component({
   selector: 'app-products-edit',
   templateUrl: './products-edit.component.html',
-  styleUrls: ['./products-edit.component.scss']
+  styleUrls: ['./products-edit.component.scss'],
+  providers: [ProductService],
 })
-export class ProductsEditComponent implements OnInit {
 
-  public form: FormGroup;
-  constructor() { }
+export class ProductsEditComponent implements OnInit 
+{
+  productSku = null;
+  product: Product;
+  token;
 
-  ngOnInit(): void {
-  }
+  constructor(private activatedRoute: ActivatedRoute, private _productService: ProductService) 
+  {
+    this.productSku = this.activatedRoute.snapshot.paramMap.get('sku');
+  }  
 
-  lista:string[]=["botana", "abarrotes"];
-  seleccionado = "";
-
-  @ViewChild('fileInput', {read: ElementRef}) private fileInput: ElementRef;
-  
-  File(event){
-    if(event.target.files.length > 0 ){
-      let file = event.target.files[0];
-      this.form.get('file').setValue(file);
-      console.log(file.toString());
-    }
-    console.log("entre");
+  ngOnInit(): void 
+  {
+    this.token = localStorage.getItem('session');
+    if(this.productSku && this.token != null)
+    {
+      this._productService.getProduct(this.token, this.productSku).subscribe(response=>{
+        this.product = response;
+        console.log(this.product);
+      },
+      error =>{
+        console.log(error)
+      });
+    }    
   }
 }

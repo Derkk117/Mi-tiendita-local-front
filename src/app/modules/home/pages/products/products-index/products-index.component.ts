@@ -1,7 +1,10 @@
+import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ViewChild, Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource} from '@angular/material/table'
+import { MatTableDataSource} from '@angular/material/table';
+
+//Se importa el modelo y el servidor de producto
 import { Product } from 'src/app/shared/models/Product_model';
 import { ProductService } from 'src/app/shared/services/Product_service';
 
@@ -22,7 +25,13 @@ export class ProductsIndexComponent implements OnInit {
   dataSource:any;
   selection = new SelectionModel<Product>(true, []);
 
-  constructor(private productoService: ProductService) 
+  displayedColumns: string[] = 
+  [
+    'name','description','price',
+    'cost','stock','image','category','Acciones'
+  ];
+
+  constructor(private productoService: ProductService, private router: Router,) 
   {}
 
   ngOnInit() {
@@ -35,15 +44,14 @@ export class ProductsIndexComponent implements OnInit {
       error => {
         console.log(error);
       });
-  }
-
-  displayedColumns: string[] = [
-  'name','description','price','cost','stock','image','category','Acciones'];
+  } 
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   //Metodo de las paginas de las tabla que tiene
-  ngAfterViewInit() {
+  ngAfterViewInit() 
+  {
+   if(this.dataSource != null) 
     this.dataSource.paginator = this.paginator;
   }
 
@@ -51,5 +59,20 @@ export class ProductsIndexComponent implements OnInit {
   Buscar(event: Event) {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
+  }
+
+  //Funcion para ir a la pagina de Editar
+  edit(element){
+    this.router.navigate(['products/edit/'+ element.sku]);
+  }
+
+  //Funcion para ir a la pagina de agregar
+  add(){    
+    this.router.navigate(['products/create/']);
+  }
+
+  //Funcion para ir a la pagina de regresar
+  regresar(){    
+    this.router.navigate(['products/index/']);
   }
 }

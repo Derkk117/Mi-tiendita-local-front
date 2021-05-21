@@ -1,6 +1,7 @@
 //Se crea el modelo de producto con todos los datos que se necesita
 export class Product {
-    constructor(
+    constructor(        
+        public sku: string,
         public name: string,
         public description: string,
         public price: string,
@@ -8,6 +9,6 @@ export class Product {
         public stock: string,
         public image: string,
         public category: string,
-        //public slug: string
+        public slug: string,
     ){}
 }
