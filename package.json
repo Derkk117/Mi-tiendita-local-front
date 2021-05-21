@@ -22,6 +22,10 @@
     "@angular/platform-browser": "~11.2.5",
     "@angular/platform-browser-dynamic": "~11.2.5",
     "@angular/router": "~11.2.5",
+    "@syncfusion/ej2-angular-buttons": "^19.1.63",
+    "@syncfusion/ej2-angular-dropdowns": "^19.1.64",
+    "@syncfusion/ej2-angular-lists": "^19.1.63",
+    "@syncfusion/ej2-angular-navigations": "^19.1.63",
     "angular-resize-event": "^2.1.0",
     "composer": "^4.1.0",
     "flx-ui-datatable": "^1.1.5",
@@ -33,7 +37,7 @@
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1102.11",
+    "@angular-devkit/build-angular": "^0.1102.13",
     "@angular/cli": "~11.2.4",
     "@angular/compiler-cli": "~11.2.5",
     "@types/jasmine": "~3.6.0",

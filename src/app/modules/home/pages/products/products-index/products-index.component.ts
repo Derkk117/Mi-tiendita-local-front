@@ -2,77 +2,53 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { ViewChild, Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table'
-
-export interface Productos {
-  id : string;
-  user_id: string;
-  name: string;
-  description: string;
-  price: string;
-  cost: string;
-  stock: string;
-  image: string;
-  category: string;
-}
-
-const ELEMENT_DATA: Productos[] = [
-  {id: "1", user_id:'2',name: 'Sabritas', description: 'botana', 
-  price: '$13', cost:'$10',stock:'20', 
-  image: 'https://www.superama.com.mx/Content/images/products/img_large/0750101111561L.jpg', category:'botana' },
-
-  {id: "2", user_id:'3', name: 'Coca Cola', description: 'refresco', 
-  price: '$13', cost:'$10',stock:'20', 
-  image: 'https://www.superama.com.mx/Content/images/products/img_large/0750105533217L.jpg', category:'refresco' },
-
-  {id: "3", user_id:'4', name: 'Ruffles', description: 'botana', 
-  price: '$13', cost:'$10',stock:'20', 
-  image: 'https://http2.mlstatic.com/D_NQ_NP_678140-MLM40168271778_122019-O.jpg', category:'botana'},
-];
+import { Product } from 'src/app/shared/models/Product_model';
+import { ProductService } from 'src/app/shared/services/Product_service';
 
 @Component({
   selector: 'app-products-index',
   templateUrl: './products-index.component.html',
-  styleUrls: ['./products-index.component.scss']
+  styleUrls: ['./products-index.component.scss'],
+  //Se llama al servidor de producto
+  providers: [ProductService]
 })
 
 export class ProductsIndexComponent implements OnInit {
 
-  constructor() { }
+  token;
+  identity;
+  //Se declara un arreglo de productos
+  products = [];
+  dataSource:any;
+  selection = new SelectionModel<Product>(true, []);
 
-  ngOnInit(): void {
-  }  
+  constructor(private productoService: ProductService) 
+  {}
 
-  displayedColumns: string[] = ['select', 'id', 'user_id','name','description','price','cost','stock','image','category','editar', 'eliminar'];
+  ngOnInit() {
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.token = localStorage.getItem('session');
+    this.productoService.getProducts(this.token, this.identity.id).subscribe(response => {
+      this.products = response;
+      this.dataSource = new MatTableDataSource<Product>(this.products);
+    },
+      error => {
+        console.log(error);
+      });
+  }
 
-  dataSource = new MatTableDataSource<Productos>(ELEMENT_DATA);
-  selection = new SelectionModel<Productos>(true, []);
-
+  displayedColumns: string[] = [
+  'name','description','price','cost','stock','image','category','Acciones'];
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  //Metodo de las paginas de las tabla que tiene
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  checkboxLabel(row?: Productos): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.name + 1}`;
-  }
-
-  Buscar(event: Event){
+  //Metodo para buscar dentro de la tabla 
+  Buscar(event: Event) {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
