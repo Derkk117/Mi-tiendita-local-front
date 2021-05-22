@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table'
+import { MatTableDataSource } from '@angular/material/table';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Client } from '../../../../../shared/models/Client_model';
 import { ClientService } from 'src/app/shared/services/Client_service';

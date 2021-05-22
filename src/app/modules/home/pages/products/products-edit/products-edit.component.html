@@ -1,49 +1,56 @@
 <div class="container">
-    <div fxLayout="row">
-        <form action="">
-            <div fxLayout="column" fxLayoutGap="20px">
-                
-                <div fxLayoutAlign="center" fxLayoutGap="20px">
-                    <div fxLayout="column" fxLayoutGap="20px">
-                        <label for="">Name</label>
-                        <label for="">Description</label>
-                        <label for="">Price</label>
-                        <label for="">Cost</label>
-                        <label for="">Stock</label>
-                    </div>
-                    <div fxLayout="column" fxLayoutGap="20px">
-                        <input type="text">
-                        <input type="text">
-                        <input type="text">
-                        <input type="text">
-                        <input type="text">
-                    </div>
-                </div>
-                <div fxLayoutAlign="center"  >
-                    <div fxLayout="column" fxLayoutGap="20px">
-                        <label for="">Imagen actual del producto</label>
-                        <img src="https://www.chedraui.com.mx/medias/7501011133884-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8ODM2OTJ8aW1hZ2UvanBlZ3xoNDMvaGJkLzEwODIzNzA3NzIxNzU4LmpwZ3w3ZmI3NDU2ZGUxMDJjM2JmZTg0NWY2NzIxZGNiYzI5OTk0MmM0ZDM4NGRjMGE5YjU3M2U1ZTBjMDU2ZmNkMTkx" alt="">
-                        <label for="">Seleccionar nueva imagen</label>
-                        <input type="file" accept="image/png,image/jpeg" id="file" (change)="File($event)" #file>
-                    </div>
-                </div>
-                <div fxLayoutAlign="center" fxLayoutGap="20px">
-                    <div fxLayout="column" fxLayoutGap="20px">
-                        <label for="">Category</label>
-                    </div>
-                    <div fxLayout="column" fxLayoutGap="20px">
-                        <select name="" id="">
-                            <option value="Select Category">Select Category</option>
-                            <option value="category1">botana</option>
-                            <option value="category2">abarrotes</option>
-                        </select>
-                    </div>
-                </div>
+    <div class="form column" *ngIf="product">
+        <h1 class="title">Editar Producto</h1>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre *</mat-label>
+            <input matInput [ngModel]="product.name">
+        </mat-form-field>
 
-                <div fxLayoutAlign="flex-end">
-                    <button mat-button>Save</button>
-                </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput [ngModel]="product.description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" [ngModel]="product.price" class="example-right-align">
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Costo</mat-label>
+            <input matInput type="number" [ngModel]="product.cost" class="example-right-align">
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Stock</mat-label>
+            <input matInput type="number" [ngModel]="product.stock" class="example-right-align">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Categoria *</mat-label>
+            <mat-select [(value)]="product.category">
+                <mat-option value="drinks">Bebidas</mat-option>
+                <mat-option value="food">Comida</mat-option>
+                <mat-option value="dessert">Postres</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayoutAlign="center" style="border: 1px solid rgb(148, 144, 144);">
+            <div fxLayout="column" fxLayoutGap="20px">
+                <label for="">Seleccionar nueva imagen</label>
+                <input type="file" accept="image/png,image/jpeg" id="file" (change)="File($event)" #file>
             </div>
-        </form>
+        </div>
+       <br>   
+
+        <div class="row actions">
+            <button class="btn-secondary" mat-button> Cancelar </button>
+            <button class="btn-primary" mat-button> Guardar </button>
+        </div>
     </div>
 </div>
