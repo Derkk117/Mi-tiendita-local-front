@@ -2,47 +2,50 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource} from '@angular/material/table'
+import { MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
-
-export interface Proveedores {
-  id: string;
-  name: string;
-  last_name: string;
-  phone: string;
-  email: string;
-  address: string;
-}
-
-const ELEMENT_DATA: Proveedores[] = [
-  {id: "1", name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "2", name: 'Mario', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "3", name: 'Luis', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "4", name: 'Marcos', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "5", name: 'Marina', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "6", name: 'Martha', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "7", name: 'Roberto', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-  {id: "8", name: 'Pablo', last_name: 'Rodriguez', phone: '456123789' ,email: 'correo@hotmail.com', address: 'Calle 123'},
-];
+import { Supplier} from '../../../../../shared/models/Supplier_model';
+import { Address} from '../../../../../shared/models/Address_model';
+import { SupplierService} from '../../../../../shared/services/Supplier_service';
+import { AddressService} from '../../../../../shared/services/Address_service';
 
 
 @Component({
   selector: 'app-suppliers-index',
   templateUrl: './suppliers-index.component.html',
-  styleUrls: ['./suppliers-index.component.scss']
+  styleUrls: ['./suppliers-index.component.scss'],
+  providers: [AddressService, SupplierService]
 })
 
 export class SuppliersIndexComponent implements OnInit {
 
-  constructor(private router: Router,) {}
+  token;
+  identity;
+  suppliers = [];
+  dataSource:any;
+  selection = new SelectionModel<Supplier>(true, []);
 
-  ngOnInit(): void {}  
+  constructor(
+    private router: Router,
+    private _addressService: AddressService,
+    private _supplierService: SupplierService,
+    ) {}
 
-  displayedColumns: string[] = ['select', 'name',
-  'last_name', 'phone', 'email','address','Editar', 'Eliminar'];
+  ngOnInit() {
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.token = localStorage.getItem('session');
+    this._supplierService.getSuppliers(this.token).subscribe(response => {
+      this.suppliers = response;
+      console.log(response);
+      this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
+    },
+      error => {
+        console.log(error);
+      });
+  }  
 
-  dataSource = new MatTableDataSource<Proveedores>(ELEMENT_DATA);
-  selection = new SelectionModel<Proveedores>(true, []);
+  displayedColumns: string[] = ['name',
+  'last_name', 'phone', 'email','address','actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -51,29 +54,6 @@ export class SuppliersIndexComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   
-  isAllSelected() 
-  {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  masterToggle() 
-  {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  checkboxLabel(row?: Proveedores): string 
-  {
-    if (!row) 
-    {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.address + 1}`;
-  }
-
   Buscar(event: Event)
   {
     const Busqueda = (event.target as HTMLInputElement).value;
@@ -81,5 +61,7 @@ export class SuppliersIndexComponent implements OnInit {
   }
 
   insert(){
-    this.router.navigate(['suppliers/create']);  }
+    this.router.navigate(['suppliers/create']);
+  }
+
 }
