@@ -16,6 +16,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule} from '@angular/material/select';
 import { MatPaginatorModule} from '@angular/material/paginator';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+
 @NgModule({
   declarations: [
     SalesIndexComponent,
@@ -35,7 +39,10 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     MatListModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ]
 })
 export class HomeModule { }
