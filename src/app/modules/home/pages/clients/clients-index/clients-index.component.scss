@@ -25,20 +25,12 @@
   
 }
 
-.iconoBusqueda
-{
-  position:absolute;
-  bottom: .1px;
-  right: 6px;  
-}
-
-.inputBuscar
-{
-  position: relative;
+.inputBuscar{
   background:#ddd;
+  border-radius: 5px;  
+  padding: 8px;
+  height: 20px;
   width: 200px;
-  height: 23px;
-  border-radius: 10px;  
 }
 
 .btnEliminarEditar
