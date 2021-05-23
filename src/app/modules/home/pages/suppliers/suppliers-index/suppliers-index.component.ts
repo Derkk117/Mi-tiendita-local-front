@@ -22,6 +22,7 @@ export class SuppliersIndexComponent implements OnInit {
   token;
   identity;
   suppliers = [];
+  address = [];
   dataSource:any;
   selection = new SelectionModel<Supplier>(true, []);
 
@@ -37,7 +38,21 @@ export class SuppliersIndexComponent implements OnInit {
     this._supplierService.getSuppliers(this.token).subscribe(response => {
       this.suppliers = response;
       console.log(response);
-      this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
+      this.suppliers.forEach(element => {
+          this._addressService.getAddress(element.address, this.token).subscribe( response => {
+
+            element["address"] = response["street"] + " #" + response["external_number"] + " " + response["neighborhood"];
+          },
+        )
+      });
+
+      ///Necesitaba esperar una respuesta para que no se actualizara despues la direccion
+      this._addressService.getAddress(1, this.token).subscribe( response => {
+        this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
+        },
+      )
+
+      console.log(this.suppliers);
     },
       error => {
         console.log(error);
@@ -62,6 +77,11 @@ export class SuppliersIndexComponent implements OnInit {
 
   insert(){
     this.router.navigate(['suppliers/create']);
+  }
+
+  edit($e){
+    console.log($e);
+    this.router.navigate(['/suppliers/edit', $e.slug]);
   }
 
 }

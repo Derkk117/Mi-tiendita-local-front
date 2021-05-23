@@ -8,7 +8,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'index', component: SuppliersIndexComponent },
   { path: 'create', component: SuppliersCreateComponent },
-  { path: 'edit', component: SuppliersEditComponent}
+  { path: 'edit/:slug', component: SuppliersEditComponent}
 ];
 
 @NgModule({
