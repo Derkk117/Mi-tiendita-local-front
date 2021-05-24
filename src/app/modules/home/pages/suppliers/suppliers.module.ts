@@ -17,6 +17,8 @@ import { MatSelectModule} from '@angular/material/select';
 import { SuppliersEditComponent } from './suppliers-edit/suppliers-edit.component';
 import { MatPaginatorModule} from '@angular/material/paginator';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     SuppliersCreateComponent,
@@ -25,6 +27,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 ],
   imports: [
     CommonModule,
+    MatProgressSpinnerModule,
     SuppliersRoutingModule,
     MatIconModule,
     MatTableModule,

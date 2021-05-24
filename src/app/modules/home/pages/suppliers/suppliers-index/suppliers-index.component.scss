@@ -1,86 +1,51 @@
- .button{
-    background-color: transparent;
-    border: none;
-  }
+@import '../../../../../../styles/colors.scss';
+
+.estiloTabla
+{
+  width: 90%;
+  margin: auto;    
+  background-color: $secondary;
+  border: none;
+}
+
+//Aqui es todo el espacio del boton de agregar y el de busqueda
+.container
+{
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+//Aqui es todo el espacio del items y la paginacion
+.container_
+{
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 10px;
   
-  .mat-form-field
-  {
-    font-size: 14px;
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem auto;
-    border: 1px;
-    border-radius: 10px;
-  }
-  
-  #input_icon
-  {
-    position:absolute;
-    bottom: .1px;
-    right: 6px;
-  }
+}
 
-  .mat-button
-  {
-    color: #FFFFFF;
-    background-color: #326273;
-  }
+.inputBuscar{
+  background:#ddd;
+  border-radius: 5px;  
+  padding: 8px;
+  height: 20px;
+  width: 200px;
+}
 
-  .btn
-  {
-    cursor:pointer;
-  }
+.btnEliminarEditar
+{
+  cursor:pointer; 
+  border: none; 
+  background-color: white;
+  padding: 10px;
+}
 
-  img
-  {
-    width: 40px;
-    height: 40px;
-  }
-
-  table
-  {
-    width: 90%;
-    margin: auto;    
-    border-radius: 10px;
-    border-style: solid;
-    border-color: gray;
-  }
-  .container
-  {
-    width: 90%;
-    margin: 1rem auto;
-    //padding: 1rem;
-    border-radius: 10px;
-  }
-
-  .container_
-  {
-    width: 90%;
-    margin: 1rem auto;
-    border-radius: 10px;
-  }
-
-  #input_container
-  {
-    position: relative;
-    //padding:0 0 0 0px;
-    //margin:0 0px;
-    background:#ddd;
-    width: 200px;
-    height: 23px;
-    //left: 0px;
-    border-radius: 10px;
-  }
-
-  
-
-  th{
-    font-style: normal;
-    font-size: 100%;
-    color: black;
-    font-weight: bold;
-  }
-
-  table{
-    background-color: rgb(196, 228, 243);
-  }
+th
+{
+  font-style: normal;
+  font-size: 100%;
+  color: black;
+  font-weight: bold;    
+  background-color: rgb(194, 194, 194);
+}

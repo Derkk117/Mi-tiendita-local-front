@@ -59,8 +59,7 @@ export class SuppliersIndexComponent implements OnInit {
       });
   }  
 
-  displayedColumns: string[] = ['name',
-  'last_name', 'phone', 'email','address','actions'];
+  displayedColumns: string[] = ['name','last_name', 'phone', 'email','address','actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
