@@ -16,9 +16,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CortesCreateComponent } from './cortes-create/cortes-create.component';
 
 @NgModule({
-  declarations: [CortesComponent],
+  declarations: [CortesComponent, CortesCreateComponent],
   imports: [
     MatDatepickerModule,
     MatProgressSpinnerModule,
