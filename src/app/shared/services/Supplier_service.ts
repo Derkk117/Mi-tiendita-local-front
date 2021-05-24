@@ -27,4 +27,25 @@ export class SupplierService{
             ).pipe(map(res => res)
         );
     }
+    
+    getSuppliers(token) :Observable<any>{
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        return this._http.get(
+            this.url + "suppliers" , { headers: headers }
+            ).pipe(map(res => res)
+        );
+    }
+
+    getSupplier(token, slug){
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        return this._http.get(this.url + 'supplier/'+ slug + '/edit', { headers: headers }).pipe(map(res => res));
+    }
 }

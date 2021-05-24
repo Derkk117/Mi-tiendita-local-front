@@ -4,6 +4,7 @@ import { ClientsRoutingModule } from './clients-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientEditComponent } from './client-edit/client-edit.component';
 import { ClientsIndexComponent } from './clients-index/clients-index.component';
+import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -17,11 +18,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     ClientsIndexComponent,
-    ClientEditComponent
+    ClientEditComponent,
+    DialogOverviewDelete
   ],
   imports: [
     CommonModule,
@@ -30,6 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatIconModule,
 
     MatTableModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
@@ -39,7 +44,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatListModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-top-right'
+    })
   ]
 })
 export class HomeModule { }

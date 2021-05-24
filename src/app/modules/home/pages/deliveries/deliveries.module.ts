@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-// import { SwiperModule } from 'swiper/angular';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { DeliveriesRoutingModule } from './deliveries-routing.module';
@@ -18,18 +17,16 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
  
 @NgModule({
   declarations: [
     DeliveriesIndexComponent,
     DeliveriesCreateComponent,
-    DeliveriesEditComponent,
-
-   
+    DeliveriesEditComponent,   
 ],
   imports: [
+    MatProgressSpinnerModule,
     MatDatepickerModule,
     MatNativeDateModule,
     CommonModule,

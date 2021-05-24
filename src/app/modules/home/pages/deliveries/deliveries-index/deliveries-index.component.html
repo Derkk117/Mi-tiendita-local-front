@@ -1,15 +1,40 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<<<<<<< HEAD
+=======
 
   <h2 style="text-align: center; margin-top: 10px;font-weight: bold;">Lista Entregas</h2>
   <div class="container">  
-    <div fxLayoutAlign="end" fxLayoutGap="10px">     
-        <div class="inputBuscar" style="left: -10px;">
-          <input matInput (keyup) = "Buscar($event)" placeholder="Buscar"  #input id="search_bar"> 
-          <mat-icon class="iconoBusqueda">search</mat-icon>
-        </div>    
-        <button class="estiloBotonAgregar" mat-button> Agregar Entrega </button>
-    </div>
+    <div class="row" style="justify-content: space-between;">     
+      <div class="inputBuscar row" style="left: -10px;">
+        <input matInput (keyup) = "Buscar($event)" placeholder="Buscar" #input id="search_bar"> 
+        <mat-icon>search</mat-icon>
+      </div>    
+      <button class="btn-primary" mat-button> Nueva Entrega </button>
   </div>
+  </div>
+  
+<div id="loader" *ngIf="!dataSource">
+  <style>
+    .application-loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .application-loading-box {
+      width: 300px;
+      margin: 5px;
+      text-align: center;
+    }
+  </style>
+  <div class="application-loading-container">
+    <mat-spinner></mat-spinner>
+>>>>>>> 31fc57b992c6d7cbb84d6eba814547157351795f
+
+    <div class="application-loading-box"><h2>Loading...</h2></div>
+  </div>
+<<<<<<< HEAD
   <div id="loader" *ngIf="!dataSource">
     <style>
       .application-loading-container {
@@ -30,6 +55,10 @@
       <div class="application-loading-box"><h2>Loading...</h2></div>
     </div>
   </div>
+=======
+</div>
+  
+>>>>>>> 31fc57b992c6d7cbb84d6eba814547157351795f
   <table mat-table [dataSource]="dataSource" class= "estiloTabla">      
     <ng-container matColumnDef="place">
       <th mat-header-cell *matHeaderCellDef> Lugar de entrega </th>
@@ -59,5 +88,5 @@
   
   <!--Numero de paginas que se mostrara-->
   <div class="container_">
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
   </div>

@@ -1,23 +1,87 @@
-<div class="container-form">
-    <mat-form-field>
-        <div fxLayout="column" fxLayoutGap="50px">
-            <div fxLayoutAlign="space-between center" fxLayout="column" fxLayoutGap="30px">
-                <input type="text" placeholder="IdCliente">
-          
-                <input type="text" placeholder="IdEntrepreneur">
-          
-                
-                <textarea  rows="10" cols="40" placeholder="Products"></textarea>
-                
-                <select name="" id=""  >
-                    <option value="" selected>Select Payment</option>
-                    <option [value]="item" *ngFor="let item of lista">{{item}}</option>
-                </select>
-                
-            </div>
-            <div fxLayoutAlign="center">
-                <button mat-button> Create </button>
-            </div>
+<div class="container">
+    <div class="form column">
+        <h1 class="title">Agregar Venta</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Productos</mat-label>
+            <input matInput type="text" name="products">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Método de pago</mat-label>
+            <input matInput type="text" name="payment_method">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Número de tarjeta</mat-label>
+            <input matInput type="number" class="example-right-align" name="card_number">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Card cvc</mat-label>
+            <input matInput type="number" class="example-right-align" name="card_cvc">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Expiración</mat-label>
+            <input matInput type="number"class="example-right-align" name="expiration_date">
+        </mat-form-field>
+        
+       <br>  
+
+        <div class="row actions">
+            <button class="btn-secondary" (click)="addregreso()" mat-button> Cancelar </button>
+            <button class="btn-primary" (click)="addregreso()" mat-button> Guardar </button>
         </div>
-    </mat-form-field>
+    </div>
 </div>
+
+<style>
+    .container{
+    width: 90%;
+    margin: 20px 5%;
+}
+
+.title{
+    padding: 0 0 30px 0;
+    text-align: center;
+}
+
+.form{
+    margin: auto;
+    width: 40%;
+}
+
+.actions{
+    justify-content: flex-end;
+}
+
+input{
+    text-align: left;
+}
+.example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: left;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  .mat-form-field{
+      padding:0;
+      margin-bottom: 0;
+      margin-top: 0;
+  }
+
+  button{
+      margin-left: 10px;
+  }
+</style>

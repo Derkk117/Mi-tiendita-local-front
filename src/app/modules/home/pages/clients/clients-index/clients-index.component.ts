@@ -2,30 +2,42 @@ import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Inject } from '@angular/core';
 import { Client } from '../../../../../shared/models/Client_model';
 import { ClientService } from 'src/app/shared/services/Client_service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-clients-index',
   templateUrl: './clients-index.component.html',
   styleUrls: ['./clients-index.component.scss'],
-  providers: [ClientService]
+  providers: [
+    ClientService
+  ]
 })
 
 export class ClientsIndexComponent implements OnInit {
   token;
   identity;
   clients = [];
-  dataSource:any;
+  dataSource: any;
   selection = new SelectionModel<Client>(true, []);
 
+  animal: string;
+  name: string;
+
   displayedColumns: string[] = [
-    'name', 
-    'last_name', 
+    'name',
+    'last_name',
     'email',
-    'payment_method', 
-    'phone', 
+    'payment_method',
+    'phone',
     'client_type',
     'actions'
   ];
@@ -33,6 +45,7 @@ export class ClientsIndexComponent implements OnInit {
   constructor(
     private _clientService: ClientService,
     private router: Router,
+    public dialog: MatDialog
   ) {
   }
 
@@ -51,7 +64,7 @@ export class ClientsIndexComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    if(this.dataSource != null) this.dataSource.paginator = this.paginator;
+    if (this.dataSource != null) this.dataSource.paginator = this.paginator;
   }
 
   Buscar(event: Event) {
@@ -59,7 +72,19 @@ export class ClientsIndexComponent implements OnInit {
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
 
-  edit(element){
+  edit(element) {
     this.router.navigate(['/clients/edit', element.sku]);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewDelete, {
+      width: '250px',
+      data: { name: this.name, animal: this.animal }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 }

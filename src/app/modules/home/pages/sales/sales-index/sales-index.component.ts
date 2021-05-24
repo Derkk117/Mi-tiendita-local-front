@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table'
 import { Sale } from 'src/app/shared/models/Sale_model';
 import { SaleService } from 'src/app/shared/services/Sale_service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales-index',
@@ -22,7 +23,7 @@ export class SalesIndexComponent implements OnInit {
   dataSource:any;
   selection = new SelectionModel<Sale>(true, []);
 
-  constructor(private ventaService: SaleService) 
+  constructor(private ventaService: SaleService,private router: Router,) 
   {}
 
   ngOnInit() {
@@ -50,5 +51,9 @@ export class SalesIndexComponent implements OnInit {
   Buscar(event: Event) {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
+  }
+
+  add(){    
+    this.router.navigate(['sales/create/']);
   }
 }

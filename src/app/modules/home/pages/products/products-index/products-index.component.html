@@ -2,12 +2,12 @@
 
 <h2 style="text-align: center; margin-top: 10px;font-weight: bold;">Lista Productos</h2>
 <div class="container">  
-  <div fxLayoutAlign="end" fxLayoutGap="10px">     
-      <div class="inputBuscar" style="left: -10px;">
-        <input matInput (keyup) = "Buscar($event)" placeholder="Buscar"  #input id="search_bar"> 
-        <mat-icon class="iconoBusqueda">search</mat-icon>
+  <div class="row" style="justify-content: space-between;">     
+      <div class="inputBuscar row" style="left: -10px;">
+        <input matInput (keyup) = "Buscar($event)" placeholder="Buscar" #input id="search_bar"> 
+        <mat-icon>search</mat-icon>
       </div>    
-      <button class="btn-primary" (click)="add()" mat-button> Agregar Producto </button>
+      <button class="btn-primary" (click)="add()" mat-button> Nuevo Producto </button>
   </div>
 </div>
 <div id="loader" *ngIf="!dataSource">

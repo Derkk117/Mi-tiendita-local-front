@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
+import { Router } from '@angular/router';
+import { Sale } from 'src/app/shared/models/Sale_model';
 
 @Component({
   selector: 'app-sales-create',
@@ -53,14 +55,21 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class SalesCreateComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+  
+  addregreso(){    
+    this.router.navigate(['sales/']);
+  }
 
+  ingresaSales(){
+  }
   lista:string[]=["CASH", "CARD"];
   seleccionado = "";
-
   
+   
 }
 
