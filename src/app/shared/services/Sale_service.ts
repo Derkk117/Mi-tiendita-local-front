@@ -21,4 +21,26 @@ export class SaleService {
         { headers: headers }).pipe(map(res => res));
     }
 
+    getSale(token, sku): Observable<any> {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        return this._http.get(this.url + 'sales/' + sku + '/edit', { headers: headers }).pipe(map(res => res));
+    }
+
+    update(token, sku, sale) {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        let json = JSON.stringify(sale);
+        let params = json;
+
+        return this._http.put(this.url + 'sales/' + sku + '/update', params, { headers: headers }).pipe(map(res => res));
+    }
+
+
+
 }
