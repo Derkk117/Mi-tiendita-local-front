@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CortesCreateComponent } from './cortes-create/cortes-create.component';
 import { CortesEditComponent } from './cortes-edit/cortes-edit.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [CortesComponent, CortesCreateComponent, CortesEditComponent],
@@ -38,7 +39,10 @@ import { CortesEditComponent } from './cortes-edit/cortes-edit.component';
     FormsModule,
     MatListModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-top-right'
+    })
   ]
 })
 export class HomeModule { }

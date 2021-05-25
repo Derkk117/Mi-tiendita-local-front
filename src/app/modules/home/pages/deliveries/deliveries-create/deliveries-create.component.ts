@@ -1,4 +1,5 @@
 import { Component, OnInit,  ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import {FormGroup} from '@angular/forms';
 
 @Component({
@@ -9,7 +10,7 @@ import {FormGroup} from '@angular/forms';
 export class DeliveriesCreateComponent implements OnInit {
 
   public form: FormGroup;
-  constructor() { }
+  constructor (private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,5 +28,9 @@ export class DeliveriesCreateComponent implements OnInit {
       console.log(file.toString());
     }
     console.log("entre");
+  }
+
+  goBack(){
+    this.router.navigate(['deliveries/']);
   }
 }

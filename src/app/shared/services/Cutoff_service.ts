@@ -20,4 +20,24 @@ export class CutoffService {
         });
         return this._http.get(this.url + 'cutoff/' + user_id, { headers: headers }).pipe(map(res => res));
     }
+
+    getCutoff(token, sku): Observable<any> {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        return this._http.get(this.url + 'cutoff/' + sku + '/edit', { headers: headers }).pipe(map(res => res));
+    }
+
+    update(token, sku, cutoff) {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        let json = JSON.stringify(cutoff);
+        let params = json;
+
+        return this._http.put(this.url + 'cutoff/' + sku + '/update', params, { headers: headers }).pipe(map(res => res));
+    }
 }
