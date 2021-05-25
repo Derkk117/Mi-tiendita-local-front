@@ -20,6 +20,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SalesEditComponent } from './sales-edit/sales-edit.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,13 @@ import { SalesEditComponent } from './sales-edit/sales-edit.component';
     MatPaginatorModule,
     
     MatToolbarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+
+    MatDialogModule,
+    FlexLayoutModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-top-right'
+    })
   ]
 })
 export class HomeModule { }

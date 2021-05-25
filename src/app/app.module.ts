@@ -16,7 +16,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AppComponent } from './app.component';
-import { SalesEditComponent } from './modules/home/pages/sales/sales-edit/sales-edit.component';
 
 @NgModule({
   declarations: [
