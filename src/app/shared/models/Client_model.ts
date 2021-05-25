@@ -7,5 +7,6 @@ export class Client{
         public payment_method: string,
         public phone: string,
         public client_type: string,
+        public password: string,
     ){}  
 }
