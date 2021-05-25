@@ -12,4 +12,12 @@ export class CutoffService {
     constructor(private _http: HttpClient) {
         this.url = GLOBAL.url;
     }
+    
+    getCutoffs(token, user_id): Observable<any> {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        return this._http.get(this.url + 'cutoff/' + user_id, { headers: headers }).pipe(map(res => res));
+    }
 }
