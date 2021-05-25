@@ -1,1 +1,10 @@
-<p>delete-dialog works!</p>
+<form class="modal-content" action="/action_page.php">
+    <div class="container">
+      <h1>{{data.title}}</h1>
+      <h4>{{data.body}}</h4>  
+      <div class="row" style="justify-content: flex-end;">
+        <button mat-button class="btn-secondary" style="margin: 5px 10px;" (click)="onNoClick()">Cancel</button>
+        <button mat-button class="btn-primary" style="margin: 5px 10px;" [mat-dialog-close]="'Continuar'">Delete</button>
+      </div>
+    </div>
+  </form>

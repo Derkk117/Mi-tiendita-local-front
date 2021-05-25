@@ -1,24 +1,21 @@
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, ViewChild, OnInit, Inject } from '@angular/core';
 import { Client } from '../../../../../shared/models/Client_model';
+import { Component, ViewChild, OnInit, Inject } from '@angular/core';
 import { ClientService } from 'src/app/shared/services/Client_service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-clients-index',
   templateUrl: './clients-index.component.html',
   styleUrls: ['./clients-index.component.scss'],
   providers: [
-    ClientService
+    ClientService,
+    ToastrService,
   ]
 })
 
@@ -27,10 +24,9 @@ export class ClientsIndexComponent implements OnInit {
   identity;
   clients = [];
   dataSource: any;
+  pageNumber: any;
   selection = new SelectionModel<Client>(true, []);
-
-  animal: string;
-  name: string;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = [
     'name',
@@ -45,7 +41,8 @@ export class ClientsIndexComponent implements OnInit {
   constructor(
     private _clientService: ClientService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private toastr: ToastrService
   ) {
   }
 
@@ -55,16 +52,14 @@ export class ClientsIndexComponent implements OnInit {
     this._clientService.getClients(this.token, this.identity.id).subscribe(response => {
       this.clients = response;
       this.dataSource = new MatTableDataSource<Client>(this.clients);
+      if (this.dataSource != null) {
+        console.log(this.dataSource);
+        this.dataSource.paginator = this.paginator;
+      }
     },
       error => {
         console.log(error);
       });
-  }
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    if (this.dataSource != null) this.dataSource.paginator = this.paginator;
   }
 
   Buscar(event: Event) {
@@ -76,15 +71,41 @@ export class ClientsIndexComponent implements OnInit {
     this.router.navigate(['/clients/edit', element.sku]);
   }
 
-  openDialog(): void {
+  add(){
+    this.router.navigate(['/clients/store']);
+  }
+
+  goToPage() {
+    this.paginator.pageIndex = this.pageNumber, // number of the page you want to jump.
+      this.paginator.page.next({
+        pageIndex: this.pageNumber,
+        pageSize: this.paginator.pageSize,
+        length: this.paginator.length
+      });
+  }
+
+  openDialog(element): void {
     const dialogRef = this.dialog.open(DialogOverviewDelete, {
-      width: '250px',
-      data: { name: this.name, animal: this.animal }
+      width: '500px',
+      data: { title: "Eliminar cliente " + element.email, body: "¿Deseas continuar con la eliminación del cliente?" }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      if (result != undefined && result == 'Continuar') {
+        this._clientService.delete(this.token, element.sku).subscribe(result => {
+          this._clientService.getClients(this.token, this.identity.id).subscribe(response => {
+            this.clients = response;
+            this.dataSource = new MatTableDataSource<Client>(this.clients);
+          },
+          error => {
+            console.log(error);
+          });
+          this.toastr.success(":)", 'Se han guardado los cambios correctamente');
+        },
+        error => {
+            this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');
+          });
+      }
     });
   }
 }

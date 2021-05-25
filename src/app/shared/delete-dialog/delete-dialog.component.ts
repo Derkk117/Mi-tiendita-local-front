@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-dialog',
@@ -9,10 +9,18 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogOverviewDelete {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewDelete>
-  ) { }
+    public dialogRef: MatDialogRef<DialogOverviewDelete>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  ngOnInit(){
+  }
 
   onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  cancel(){
     this.dialogRef.close();
   }
 }
