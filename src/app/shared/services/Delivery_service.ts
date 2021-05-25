@@ -21,4 +21,24 @@ export class DeliveryService {
         { headers: headers }).pipe(map(res => res));
     }
 
+    getDelivery(token, sku): Observable<any> {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        return this._http.get(this.url + 'delivery/' + sku + '/edit', { headers: headers }).pipe(map(res => res));
+    }
+
+    update(token, sku, delivery) {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        let json = JSON.stringify(delivery);
+        let params = json;
+
+        return this._http.put(this.url + 'delivery/' + sku + '/update', params, { headers: headers }).pipe(map(res => res));
+    }
+
 }

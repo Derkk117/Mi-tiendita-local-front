@@ -56,4 +56,9 @@ export class SalesIndexComponent implements OnInit {
   add(){    
     this.router.navigate(['sales/create/']);
   }
+
+  edit(element)
+  {
+    this.router.navigate(['sales/edit/'+ element.sku]);
+  }
 }
