@@ -1,14 +1,19 @@
 <div class="container">
-    <div class="form column" >
+    <div class="form column" *ngIf="delivery">
         <h1 class="title">Editar Entrega</h1>
         <mat-form-field appearance="outline">
             <mat-label>Lugar de entrega</mat-label>
-            <input matInput>
+            <input  matInput [ngModel]="delivery.place">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Estatus</mat-label>
-            <input matInput>
+            <mat-select [(value)]="delivery.status">
+                <mat-option value="delivered">Entregado</mat-option>
+                <mat-option value="pending">Pendiente</mat-option>
+                <mat-option value="canceled">Cancelado</mat-option>
+                <mat-option value="on_the_way">En camino</mat-option>
+            </mat-select>
         </mat-form-field>
         
         

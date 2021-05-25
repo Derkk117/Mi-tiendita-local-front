@@ -4,7 +4,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table';
 import { Delivery } from 'src/app/shared/models/Delivery_model';
 import { DeliveryService } from 'src/app/shared/services/Delivery_service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deliveries-index',
@@ -24,8 +24,8 @@ export class DeliveriesIndexComponent implements OnInit {
   dataSource:any;
   selection = new SelectionModel<Delivery>(true, []);
 
-  constructor(private deliveryService: DeliveryService) { 
-
+  constructor(private deliveryService: DeliveryService,private router: Router,) 
+  { 
   }
 
   ngOnInit(){
@@ -53,5 +53,14 @@ export class DeliveriesIndexComponent implements OnInit {
   Buscar(event: Event) {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
+  }
+
+  add(){    
+    this.router.navigate(['deliveries/create/']);
+  }
+
+  edit(element)
+  {
+    this.router.navigate(['deliveries/edit/'+ element.sku]);
   }
 }

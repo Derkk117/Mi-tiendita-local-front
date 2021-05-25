@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="form column" *ngIf="cutoff">
+        <h1 class="title">Editar Corte</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha Inicio de Corte</mat-label>
+            <input matInput [ngModel]="cutoff.initial_date" [matDatepicker]="iniciopicker">
+            <mat-datepicker-toggle matSuffix [for]="iniciopicker"></mat-datepicker-toggle>
+            <mat-datepicker #iniciopicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha Final de Corte</mat-label>
+            <input matInput [ngModel]="cutoff.final_date" [matDatepicker]="finalpicker">
+            <mat-datepicker-toggle matSuffix [for]="finalpicker"></mat-datepicker-toggle>
+            <mat-datepicker #finalpicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Total</mat-label>
+            <input matInput [ngModel]="cutoff.total">
+        </mat-form-field>
+
+        
+
+        <div class="row actions">
+            <button class="btn-secondary" mat-button> Cancelar </button>
+            <button class="btn-primary" mat-button> Guardar </button>
+        </div>
+
+    </div>
+</div>

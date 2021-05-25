@@ -28,15 +28,15 @@ export class CortesComponent implements OnInit{
   {}
 
   ngOnInit() {
-    /*this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this._cutoffService.getCortes(this.token, this.identity.id).subscribe(response => {
+    this._cutoffService.getCutoffs(this.token, this.identity.id).subscribe(response => {
       this.cortes = response;
       this.dataSource = new MatTableDataSource<Cutoff>(this.cortes);
     },
       error => {
         console.log(error);
-      });*/
+      });
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -50,5 +50,14 @@ export class CortesComponent implements OnInit{
   {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
+  }
+
+  add(){    
+    this.router.navigate(['cortes/create/']);
+  }
+
+  edit(element)
+  {
+    this.router.navigate(['cortes/edit/'+ element.sku]);
   }
 }
