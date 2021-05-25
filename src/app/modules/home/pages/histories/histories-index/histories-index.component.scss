@@ -1,0 +1,51 @@
+@import '../../../../../../styles/colors.scss';
+
+.estiloTabla
+{
+  width: 90%;
+  margin: auto;    
+  background-color: $secondary;
+  border: none;
+}
+
+//Aqui es todo el espacio del boton de agregar y el de busqueda
+.container
+{
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+//Aqui es todo el espacio del items y la paginacion
+.container_
+{
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  
+}
+
+.inputBuscar{
+  background:#ddd;
+  border-radius: 5px;  
+  padding: 8px;
+  height: 20px;
+  width: 200px;
+}
+
+.btnEliminarEditar
+{
+  cursor:pointer; 
+  border: none; 
+  background-color: white;
+  padding: 10px;
+}
+
+th
+{
+  font-style: normal;
+  font-size: 100%;
+  color: black;
+  font-weight: bold;    
+  background-color: rgb(194, 194, 194);
+}

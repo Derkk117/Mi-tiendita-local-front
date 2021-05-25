@@ -1,20 +1,25 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HistoryService } from 'src/app/shared/services/History_service';
 import { UserService } from 'src/app/shared/services/User_service';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss'],
-  providers: [UserService]
+  providers: [UserService, HistoryService]
 })
 export class TopBarComponent implements OnInit {
   user_image_profile = "https://picsum.photos/40";
   identity;
   token;
+  history = {};
+  date = new Date;
+
   constructor(
 		private router: Router, 
-    private _userService: UserService
+    private _userService: UserService,
+    private _historyService: HistoryService
   ) { 
   }
 
@@ -41,6 +46,18 @@ export class TopBarComponent implements OnInit {
   }
 
   logOut(){
+
+    this.date = new Date();
+        
+    this.history = 
+    { 
+      "id_user": this.identity.id, 
+      "description": "Se cerro sesion",
+      "date": this.date.getFullYear() +"-"+ this.date.getMonth() +"-"+this.date.getDay(),
+      "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
+    };
+    this._historyService.create(this.history,this.token).subscribe();
+        
     this._userService.logout(this.token).subscribe(
       response =>{
         console.log(response);
@@ -52,5 +69,11 @@ export class TopBarComponent implements OnInit {
         console.log(error);
       }
     )
+    
+    
+
+    console.log(this.history);
+
+
   }
 }
