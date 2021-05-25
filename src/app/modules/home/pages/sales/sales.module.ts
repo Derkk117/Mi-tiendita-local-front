@@ -22,7 +22,8 @@ import { SalesEditComponent } from './sales-edit/sales-edit.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
-//import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
+import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
+
 @NgModule({
   declarations: [
     SalesIndexComponent,

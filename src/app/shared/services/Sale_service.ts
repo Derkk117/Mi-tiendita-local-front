@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { GLOBAL } from './global';
-import { Observable } from 'rxjs';
+
+import { from, Observable } from 'rxjs';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class SaleService {
@@ -39,6 +40,19 @@ export class SaleService {
         let params = json;
 
         return this._http.put(this.url + 'sales/' + sku + '/update', params, { headers: headers }).pipe(map(res => res));
+    }
+
+    delete(token, sku): Observable<any> {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        
+        let options = {
+            headers: headers
+        }
+        //buscamos el id de la herramienta.
+        return this._http.delete(this.url + 'sales/' + sku + '/destroy', options).pipe(map(res => res));
     }
 
 
