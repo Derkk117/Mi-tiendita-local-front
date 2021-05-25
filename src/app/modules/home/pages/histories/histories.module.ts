@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 // import { SwiperModule } from 'swiper/angular';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { SalesRoutingModule } from './sales-routing.module';
-import { SalesIndexComponent } from './sales-index/sales-index.component';
-import { SalesCreateComponent } from './sales-create/sales-create.component';
+import { HistoriesRoutingModule } from './histories-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,19 +15,16 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatPaginatorModule} from '@angular/material/paginator';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { SalesEditComponent } from './sales-edit/sales-edit.component';
-
+import { HistoriesIndexComponent } from './histories-index/histories-index.component';
 
 @NgModule({
   declarations: [
-    SalesIndexComponent,
-    SalesCreateComponent,
-    SalesEditComponent
+    HistoriesIndexComponent
 ],
   imports: [
     CommonModule,
-    SalesRoutingModule,
+    MatProgressSpinnerModule,
+    HistoriesRoutingModule,
     MatIconModule,
     MatTableModule,
     MatFormFieldModule,
@@ -41,10 +36,7 @@ import { SalesEditComponent } from './sales-edit/sales-edit.component';
     MatListModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatPaginatorModule,
-    
-    MatToolbarModule,
-    MatProgressSpinnerModule
+    MatPaginatorModule
   ]
 })
 export class HomeModule { }
