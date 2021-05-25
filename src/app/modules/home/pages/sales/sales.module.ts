@@ -18,12 +18,14 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SalesEditComponent } from './sales-edit/sales-edit.component';
 
 
 @NgModule({
   declarations: [
     SalesIndexComponent,
-    SalesCreateComponent
+    SalesCreateComponent,
+    SalesEditComponent
 ],
   imports: [
     CommonModule,
