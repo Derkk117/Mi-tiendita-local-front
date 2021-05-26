@@ -1,6 +1,9 @@
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/stylesheet.scss';
+
 .container{
     width: 90%;
-    margin: 20px 5%;
+    margin: 40px 5%;
 }
 
 .cantidad{
@@ -19,7 +22,10 @@
 
 .form{
     margin: auto;
+    padding: 10px 30px;
     width: 40%;
+    border-radius: 20px;
+    border: $primary 3px solid;
 }
 
 .actions{
