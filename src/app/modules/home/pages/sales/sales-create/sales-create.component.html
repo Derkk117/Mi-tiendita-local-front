@@ -12,6 +12,15 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
+            <mat-label>MSelecciona un cliente *</mat-label>
+            <mat-select [(value)]="client.payment_method" [(ngModel)]="client.payment_method" name="ngModel" required>
+                <span *ngFor="let client of clients">
+                    <mat-option value="client.sku">{{client.name + " " client.last_name}}</mat-option>
+                </span>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
             <mat-label>Número de tarjeta</mat-label>
             <input matInput type="number" class="example-right-align" name="card_number">
         </mat-form-field>
