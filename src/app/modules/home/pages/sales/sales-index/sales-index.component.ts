@@ -37,7 +37,7 @@ export class SalesIndexComponent implements OnInit {
   ngOnInit() {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this.ventaService.getProducts(this.token, this.identity.id).subscribe(response => {
+    this.ventaService.getSales(this.token, this.identity.id).subscribe(response => {
       this.ventas = response;
       this.dataSource = new MatTableDataSource<Sale>(this.ventas);
     },
@@ -79,7 +79,7 @@ export class SalesIndexComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined && result == 'Continuar') {
         this.ventaService.delete(this.token, element.sku).subscribe(result => {
-          this.ventaService.getProducts(this.token, this.identity.id).subscribe(response => {
+          this.ventaService.getSales(this.token, this.identity.id).subscribe(response => {
             this.ventas = response;
             this.dataSource = new MatTableDataSource<Sale>(this.ventas);
           },
