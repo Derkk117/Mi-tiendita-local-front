@@ -1,78 +1,22 @@
-<!--<button [routerLink]="['/auth/login']">Login</button>
-<button [routerLink]="['/auth/register']">Registro</button>-->
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            html, body {
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-                background-image: url(https://www.luisan.net/blog/wp-content/uploads/2014/09/color_small_mk-e1549454603143.png);
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
-    <body >
-        <div class="flex-center position-ref full-height">         
+    <body style="background-color: rgb(177, 201, 245);">
+        <div class="flex-center position-ref full-height">  
+            <div>
                 <div class="top-right links">
-                    <a style="color: white; font-size: 20px" [routerLink]="['/auth/login']">Inicio Sesion</a>
-                    <a style="color: white; font-size: 20px" [routerLink]="['/auth/register']">Registro</a>                        
+                    <a style="color: rgb(8, 8, 8); font-size: 15px" 
+                    [routerLink]="['/auth/login']">Inicio Sesion</a>
+                    <a style="color: rgb(15, 15, 15); font-size: 15px" 
+                    [routerLink]="['/auth/register']">Registro</a>                        
                 </div>
-            <div class="content">
-                <div class="title m-b-md" style="color: black;">
-                   Mi Tiendita Local
-                </div>
-                <div style="color: black; font-size: 25px">
-                    Bienvenidos a la pagina
-                </div>
-            </div>
+            </div> 
+            <div class="title m-b-md" style="color: black;">
+                Mi Tiendita Local
+             </div>   
         </div>
     </body>
 </html>

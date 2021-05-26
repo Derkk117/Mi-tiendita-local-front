@@ -18,7 +18,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 010c4170e5deb5175a811dbdf0f0942f63fa5a54
 
 @NgModule({
   declarations: [

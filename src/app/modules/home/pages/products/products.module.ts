@@ -19,6 +19,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ToastrModule } from 'ngx-toastr';
  
 @NgModule({
   declarations: [
@@ -42,7 +43,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     FormsModule,
     MatListModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-top-right'
+    })
   ]
 })
 export class HomeModule { }

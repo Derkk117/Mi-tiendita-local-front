@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 //Se importa el modelo y el servidor de producto
 import { Product } from 'src/app/shared/models/Product_model';
 import { ProductService } from 'src/app/shared/services/Product_service';
@@ -8,16 +9,19 @@ import { ProductService } from 'src/app/shared/services/Product_service';
   selector: 'app-products-create',
   templateUrl: './products-create.component.html',
   styleUrls: ['./products-create.component.scss'],
-  providers: [ProductService],  
+  providers: [ProductService, 
+    ToastrService],  
 })
 
 export class ProductsCreateComponent implements OnInit 
 {
   productSku = null;
   product: Product;
-  token;
+  token;  
 
-  constructor(private activatedRoute: ActivatedRoute, private _productService: ProductService) 
+  constructor(private activatedRoute: ActivatedRoute, 
+    private _productService: ProductService,  private router: Router,
+    private toastr: ToastrService) 
   {
     this.productSku = this.activatedRoute.snapshot.paramMap.get('sku');
   }  
@@ -36,5 +40,9 @@ export class ProductsCreateComponent implements OnInit
       });
     }    
   }  
+
+  regresarIndex(){
+    this.router.navigate(['/products/index']);
+  }
 } 
 
