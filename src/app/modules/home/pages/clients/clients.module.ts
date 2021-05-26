@@ -19,7 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
 @NgModule({
@@ -34,7 +34,6 @@ import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog
     MatProgressSpinnerModule,
     ClientsRoutingModule,
     MatIconModule,
-
     MatTableModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -48,7 +47,7 @@ import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog
     ReactiveFormsModule,
     MatPaginatorModule,
     ToastrModule.forRoot({
-      positionClass :'toast-top-right'
+      positionClass: 'toast-top-right'
     })
   ]
 })

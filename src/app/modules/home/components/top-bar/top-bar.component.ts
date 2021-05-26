@@ -1,13 +1,17 @@
+
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HistoryService } from 'src/app/shared/services/History_service';
 import { UserService } from 'src/app/shared/services/User_service';
+import { HistoryService } from 'src/app/shared/services/History_service';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss'],
-  providers: [UserService, HistoryService]
+  providers: [
+    UserService, 
+    HistoryService
+  ]
 })
 export class TopBarComponent implements OnInit {
   user_image_profile = "https://picsum.photos/40";
@@ -19,14 +23,13 @@ export class TopBarComponent implements OnInit {
   constructor(
 		private router: Router, 
     private _userService: UserService,
-    private _historyService: HistoryService
+    private _historyService: HistoryService,
   ) { 
   }
 
   ngOnInit() {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    
   }
 
   user_info() {
@@ -46,7 +49,6 @@ export class TopBarComponent implements OnInit {
   }
 
   logOut(){
-
     this.date = new Date();
         
     this.history = 
@@ -69,11 +71,5 @@ export class TopBarComponent implements OnInit {
         console.log(error);
       }
     )
-    
-    
-
-    console.log(this.history);
-
-
   }
 }

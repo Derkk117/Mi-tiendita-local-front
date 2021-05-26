@@ -39,10 +39,10 @@ export class ClientsIndexComponent implements OnInit {
   ];
 
   constructor(
-    private _clientService: ClientService,
     private router: Router,
     public dialog: MatDialog,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private _clientService: ClientService,
   ) {
   }
 
@@ -53,7 +53,6 @@ export class ClientsIndexComponent implements OnInit {
       this.clients = response;
       this.dataSource = new MatTableDataSource<Client>(this.clients);
       if (this.dataSource != null) {
-        console.log(this.dataSource);
         this.dataSource.paginator = this.paginator;
       }
     },
