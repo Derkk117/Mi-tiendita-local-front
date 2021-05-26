@@ -3,17 +3,21 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { ViewChild, Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
 //Se importa el modelo y el servidor de producto
 import { Product } from 'src/app/shared/models/Product_model';
 import { ProductService } from 'src/app/shared/services/Product_service';
+
 
 @Component({
   selector: 'app-products-index',
   templateUrl: './products-index.component.html',
   styleUrls: ['./products-index.component.scss'],
   //Se llama al servidor de producto
-  providers: [ProductService]
+  providers: [ProductService, ToastrService]
 })
 
 export class ProductsIndexComponent implements OnInit {
@@ -22,8 +26,10 @@ export class ProductsIndexComponent implements OnInit {
   identity;
   //Se declara un arreglo de productos
   products = [];
-  dataSource:any;
-  selection = new SelectionModel<Product>(true, []);
+  dataSource:any;  
+  pageNumber: any;
+  selection = new SelectionModel<Product>(true, []);  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = 
   [
@@ -31,7 +37,9 @@ export class ProductsIndexComponent implements OnInit {
     'cost','stock','image','category','Acciones'
   ];
 
-  constructor(private productoService: ProductService, private router: Router,) 
+  constructor(private productoService: ProductService, private router: Router,
+    private toastr: ToastrService, 
+    public dialog: MatDialog,) 
   {}
 
   ngOnInit() {
@@ -40,20 +48,15 @@ export class ProductsIndexComponent implements OnInit {
     this.productoService.getProducts(this.token, this.identity.id).subscribe(response => {
       this.products = response;
       this.dataSource = new MatTableDataSource<Product>(this.products);
+      if (this.dataSource != null) {
+        console.log(this.dataSource);
+        this.dataSource.paginator = this.paginator;
+      }
     },
       error => {
         console.log(error);
       });
   } 
-  
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  //Metodo de las paginas de las tabla que tiene
-  ngAfterViewInit() 
-  {
-   if(this.dataSource != null) 
-    this.dataSource.paginator = this.paginator;
-  }
 
   //Metodo para buscar dentro de la tabla 
   Buscar(event: Event) {
@@ -71,8 +74,46 @@ export class ProductsIndexComponent implements OnInit {
     this.router.navigate(['products/create/']);
   }
 
-  //Funcion para ir a la pagina de regresar
-  regresar(){    
-    this.router.navigate(['products/index/']);
+  goToPage() {
+    this.paginator.pageIndex = this.pageNumber, 
+      this.paginator.page.next({
+        pageIndex: this.pageNumber,
+        pageSize: this.paginator.pageSize,
+        length: this.paginator.length
+      });
+  }
+
+  //Funcion de desplegar un cuadro de dialogo para eliminar y guardar cambios 
+  cuadroDialogo(element): void {
+    const dialogRef = this.dialog.open(DialogOverviewDelete, 
+      {
+        width: '500px',
+        data: 
+        { 
+          title: "Eliminar producto " + element.id, 
+          body: "¿Seguro de eliminar el producto?" 
+        }
+      }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined && result == 'Continuar') 
+      {
+        this.productoService.delete(this.token, element.sku).subscribe(result => {
+          this.productoService.getProducts(this.token, this.identity.id).subscribe(response => 
+            {
+            this.products = response;
+            this.dataSource = new MatTableDataSource<Product>(this.products);
+          },
+          error => {
+            console.log(error);
+          });
+          this.toastr.success(":)", 'Se han guardado los cambios correctamente');
+        },
+        error => {
+            this.toastr.error("Error al actualizar, vuelve a intentarlo", 'Error');
+          });
+      }
+    });
   }
 }

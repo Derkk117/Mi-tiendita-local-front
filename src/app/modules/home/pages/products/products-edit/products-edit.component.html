@@ -43,13 +43,14 @@
         <div fxLayoutAlign="center" style="border: 1px solid rgb(148, 144, 144);">
             <div fxLayout="column" fxLayoutGap="20px">
                 <label for="">Seleccionar nueva imagen</label>
-                <input type="file" accept="image/png,image/jpeg" id="file" (change)="File($event)" #file>
+                <input type="file" accept="image/png,image/jpeg" 
+                id="file" (change)="File($event)" #file>
             </div>
         </div>
        <br>   
 
         <div class="row actions">
-            <button class="btn-secondary" mat-button> Cancelar </button>
+            <button class="btn-secondary" mat-button (click)="regresarIndex()"> Cancelar </button>
             <button class="btn-primary" mat-button> Guardar </button>
         </div>
     </div>

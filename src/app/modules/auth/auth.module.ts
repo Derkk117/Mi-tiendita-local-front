@@ -8,6 +8,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     LandingPageComponent
   ],
   imports: [
+    MDBBootstrapModule.forRoot(),
     CommonModule,
     AuthRoutingModule,
     RouterModule,

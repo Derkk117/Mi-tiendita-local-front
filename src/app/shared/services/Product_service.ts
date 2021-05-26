@@ -33,4 +33,16 @@ export class ProductService {
         return this._http.get(this.url + 'product/'+ sku 
         + '/edit', { headers: headers }).pipe(map(res => res));
     }
+
+    //Funcion para poder eliminar el producto 
+    delete(token, sku): Observable<any> 
+    {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });        
+        let options = {headers: headers}
+        return this._http.delete(this.url + 'product/' + 
+        sku + '/destroy', options).pipe(map(res => res));
+    }   
 }
