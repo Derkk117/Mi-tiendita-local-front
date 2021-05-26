@@ -48,4 +48,16 @@ export class SupplierService{
 
         return this._http.get(this.url + 'supplier/'+ slug + '/edit', { headers: headers }).pipe(map(res => res));
     }
+
+    delete(token, slug): Observable<any>{
+
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        
+        let options = {headers: headers}
+
+        return this._http.delete(this.url + 'supplier/' + slug + '/destroy', options).pipe(map(res => res));
+    }
 }
