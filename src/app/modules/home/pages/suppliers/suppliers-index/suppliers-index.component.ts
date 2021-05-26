@@ -1,22 +1,27 @@
+import { ToastrService } from 'ngx-toastr';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Supplier} from '../../../../../shared/models/Supplier_model';
-import { Address} from '../../../../../shared/models/Address_model';
-import { SupplierService} from '../../../../../shared/services/Supplier_service';
-import { AddressService} from '../../../../../shared/services/Address_service';
+import { Supplier } from '../../../../../shared/models/Supplier_model';
+import { Address } from '../../../../../shared/models/Address_model';
+import { AddressService } from '../../../../../shared/services/Address_service';
 import { HistoryService } from '../../../../../shared/services/History_service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-//import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
-//import { ToastrService } from 'ngx-toastr';
+import { SupplierService } from 'src/app/shared/services/Supplier_service';
+import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-suppliers-index',
   templateUrl: './suppliers-index.component.html',
   styleUrls: ['./suppliers-index.component.scss'],
-  providers: [AddressService, SupplierService, HistoryService/*, ToastrService*/]
+  providers: [
+    AddressService,
+    SupplierService,
+    HistoryService,
+    ToastrService
+  ]
 })
 
 export class SuppliersIndexComponent implements OnInit {
@@ -25,7 +30,7 @@ export class SuppliersIndexComponent implements OnInit {
   identity;
   suppliers = [];
   address = [];
-  dataSource:any;
+  dataSource: any;
   history = {};
   date = new Date();
   selection = new SelectionModel<Supplier>(true, []);
@@ -35,99 +40,77 @@ export class SuppliersIndexComponent implements OnInit {
     private _addressService: AddressService,
     private _supplierService: SupplierService,
     private _historyService: HistoryService,
-    //public dialog: MatDialog,
-    //private toastr: ToastrService
-    ) {}
+    public dialog: MatDialog,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
     this._supplierService.getSuppliers(this.token).subscribe(response => {
       this.suppliers = response;
-      console.log(response);
       this.suppliers.forEach(element => {
-          this._addressService.getAddress(element.address, this.token).subscribe( response => {
-
-            element["address"] = response["street"] + " #" + response["external_number"] + " " + response["neighborhood"];
-          },
-        )
+        element['fullAddress'] = element['street'] + " " + ((element['street2'] = "null") ? " ":element['street2'])+ " #" + element['external_number'] +" "+((element['internal_number'] = "null") ? "":element['internal_number']) +" " + element['neighborhood'];
       });
-
-      ///Necesitaba esperar una respuesta para que no se actualizara despues la direccion
-      this._addressService.getAddress(1, this.token).subscribe( response => {
-        this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
-        },
-      )
-
-      console.log(this.suppliers);
+      this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
     },
-      error => {
-        console.log(error);
-      });
-  }  
+    error => {
+      console.log(error);
+    });
+  }
 
-  displayedColumns: string[] = ['name','last_name', 'phone', 'email','address','actions'];
+  displayedColumns: string[] = ['name', 'last_name', 'phone', 'email', 'address', 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit()
-  {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  
-  Buscar(event: Event)
-  {
+
+  Buscar(event: Event) {
     const Busqueda = (event.target as HTMLInputElement).value;
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
 
-  create(){
+  create() {
     this.router.navigate(['suppliers/create']);
   }
 
-  edit($e){
-    console.log($e);
+  edit($e) {
     this.router.navigate(['/suppliers/edit', $e.slug]);
   }
 
-  openDialog(element){
+  openDialog(element) {
+    const dialogRef = this.dialog.open(DialogOverviewDelete, {
+      width: '500px',
+      data: { title: "Eliminar cliente " + element.email, body: "¿Deseas continuar con la eliminación del cliente?" }
+    });
 
-      this._supplierService.delete(this.token, element.slug).subscribe(result => {
-        
-        
-        this.date = new Date();
-        
-        this.history = 
-        { 
-          "id_user": this.identity.id, 
-          "description": "Se ha eliminado un proveedor",
-          "date": this.date.getFullYear() +"-"+ this.date.getMonth() +"-"+this.date.getDay(),
-          "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
-        };
-        this._historyService.create(this.history,this.token).subscribe();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined && result == 'Continuar') {
+        this._supplierService.delete(this.token, element.slug).subscribe(response => {
+          this.date = new Date();
+          this.toastr.success(":)", 'Se ha eliminado correctamente');
 
+          this._historyService.create({
+            "id_user": this.identity.id,
+            "description": "Se ha eliminado un proveedor",
+            "date": this.date.getFullYear() + "-" + this.date.getMonth() + "-" + this.date.getDay(),
+            "time": this.date.getHours() + ":" + this.date.getMinutes() + ":" + this.date.getSeconds()
+          }, this.token).subscribe();
 
-        this._supplierService.getSuppliers(this.token).subscribe(response => {
+          this._supplierService.getSuppliers(this.token).subscribe(response => {
             this.suppliers = response;
-            console.log(response);
             this.suppliers.forEach(element => {
-                this._addressService.getAddress(element.address, this.token).subscribe( response => {
-      
-                  element["address"] = response["street"] + " #" + response["external_number"] + " " + response["neighborhood"];
-                },
-              )
+              element['fullAddress'] = element['street'] + " " + ((element['street2'] = "null") ? " ":element['street2'])+ " #" + element['external_number'] +" "+((element['internal_number'] = "null") ? "":element['internal_number']) +" " + element['neighborhood'];
             });
-            ///Necesitaba esperar una respuesta para que no se actualizara despues la direccion
-            this._addressService.getAddress(1, this.token).subscribe( response => {
-              this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
-              },
-            )
-      
-            console.log(this.suppliers);
+            this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
           },
-            error => {
-              console.log(error);
-            });
-      });
+          error => {
+            console.log(error);
+          });
+        });
+      }
+    });
   }
 }
