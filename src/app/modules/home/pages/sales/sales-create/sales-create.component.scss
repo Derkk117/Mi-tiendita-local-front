@@ -1,1 +1,63 @@
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/stylesheet.scss';
 
+.container{
+    width: 90%;
+    margin: 40px 5%;
+}
+
+.cantidad{
+    width: 30.8%;
+    margin:5px;
+}
+
+.datosProducto{
+    display: inline;
+}
+
+.title{
+    padding: 0 0 0px 0;
+    text-align: center;
+}
+
+.form{
+    margin: auto;
+    padding: 10px 30px;
+    width: 40%;
+    border-radius: 20px;
+    border: $primary 3px solid;
+}
+
+.actions{
+    justify-content: flex-end;
+}
+
+input{
+    text-align: left;
+}
+.example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: left;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  .mat-form-field{
+      padding:0;
+      margin-bottom: 0;
+      margin-top: 0;
+  }
+
+  button{
+      margin-left: 10px;
+  }

@@ -7,7 +7,7 @@
         </mat-form-field> -->
 
         <mat-form-field appearance="outline">
-            <mat-label>MSelecciona un cliente *</mat-label>
+            <mat-label>Selecciona un cliente *</mat-label>
             <mat-select [(value)]="sale.client_id" [(ngModel)]="sale.client_id" name="ngModel" required>
                 <span *ngFor="let client of clients">
                     <mat-option value="client.sku">{{client.fullName}}</mat-option>
@@ -30,7 +30,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Card cvc</mat-label>
-            <input matInput type="number" class="example-right-align" name="card_cvc" [(ngModel)]="sale.card_cvc">
+            <input matInput type="number"  class="example-right-align" name="card_cvc" [(ngModel)]="sale.card_cvc">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -38,7 +38,35 @@
             <input matInput type="date"class="example-right-align" name="expiration_date" [(ngModel)]="sale.expiration_date">
         </mat-form-field>
         
+        <h1 class="title">Lista de Productos</h1>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Selecciona un producto *</mat-label>
+            <mat-select [(value)]="sale.products" [(ngModel)]="sale.products" name="ngModel" required>
+                <span *ngFor="let product of products">
+                    <mat-option value="product.sku">{{product.fullName}}</mat-option>
+                </span>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="datosProductos">
+            <mat-form-field appearance="outline" class="cantidad">
+                <mat-label>Cantidad</mat-label>
+                <input matInput type="number" name="card_number" min="1" max="100">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="cantidad">
+                <mat-label>Precio</mat-label>
+                <input matInput disabled type="number" name="card_number">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="cantidad">
+                <mat-label>Total</mat-label>
+                <input matInput disabled type="number" name="card_number">
+            </mat-form-field>
+        </div>
        <br>  
+
 
         <div class="row actions">
             <button class="btn-secondary" (click)="addregreso()" mat-button> Cancelar </button>
@@ -46,54 +74,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .container{
-    width: 90%;
-    margin: 20px 5%;
-}
-
-.title{
-    padding: 0 0 30px 0;
-    text-align: center;
-}
-
-.form{
-    margin: auto;
-    width: 40%;
-}
-
-.actions{
-    justify-content: flex-end;
-}
-
-input{
-    text-align: left;
-}
-.example-container .mat-form-field + .mat-form-field {
-    margin-left: 8px;
-  }
-  
-  .example-right-align {
-    text-align: left;
-  }
-  
-  input.example-right-align::-webkit-outer-spin-button,
-  input.example-right-align::-webkit-inner-spin-button {
-    display: none;
-  }
-  
-  input.example-right-align {
-    -moz-appearance: textfield;
-  }
-
-  .mat-form-field{
-      padding:0;
-      margin-bottom: 0;
-      margin-top: 0;
-  }
-
-  button{
-      margin-left: 10px;
-  }
-</style>
