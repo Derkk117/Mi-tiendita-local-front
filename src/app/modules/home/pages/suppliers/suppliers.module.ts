@@ -9,22 +9,24 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCheckboxModule} from '@angular/material/checkbox';
-import { MatButtonModule} from '@angular/material/button';
-import {FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
-import { MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { SuppliersEditComponent } from './suppliers-edit/suppliers-edit.component';
-import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ToastrModule } from 'ngx-toastr';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
     SuppliersCreateComponent,
     SuppliersIndexComponent,
     SuppliersEditComponent
-],
+  ],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
@@ -40,7 +42,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatListModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right'
+    })
   ]
 })
 export class HomeModule { }

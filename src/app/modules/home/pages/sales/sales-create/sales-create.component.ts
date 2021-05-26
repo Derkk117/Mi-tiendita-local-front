@@ -1,75 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Sale } from 'src/app/shared/models/Sale_model';
+import { ClientService } from 'src/app/shared/services/Client_service';
 
 @Component({
   selector: 'app-sales-create',
   templateUrl: './sales-create.component.html',
-  styles: [`
-  .outer{
-    height:200px;
-    line-height: 200px;
-  }
-
-  .container-form{
-    width: 50%;
-    margin: 1rem auto;
-    box-shadow: -1px 3px 66px 0px rgba(92,158,173,1);
-    padding: 1rem;
-    border-radius: 10px;
-  }
-
-  select{
-    border-radius: 10px;
-    width:75%;
-    text-align: center;
-  }
-
-  mat-form-field{
-    font-size: 14px;
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem auto;
-    border: 1px;
-    border-radius: 10px;
-  }
-
-  input{
-    border-radius: 10px;
-    width: 75%;
-    text-align: center;
-  }
-
-  textarea{
-    border-radius: 10px;
-    width: 75%;
-    text-align: center;
-  }
-
-  .mat-button{
-    color: #FFFFFF;
-    background-color: #326273;
-  }
-  `]
+  styleUrls: ['./sales-create.component.scss'],
+  providers: [
+    ClientService
+  ]
 })
 export class SalesCreateComponent implements OnInit {
+  clients: any;
+  token;
+  identity;
+  sale;
 
-
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private _clientService: ClientService
+  ) { }
 
   ngOnInit(): void {
+    this.sale = new Sale("", null, "", "", "", "", new Date());
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.token = localStorage.getItem('session');
+    this._clientService.getClients(this.token, this.identity.id).subscribe(response => {
+      this.clients = response;
+
+      this.clients.forEach(element => {
+        element['fullName'] = element['name'] + " " + element['last_name'];
+      });
+    },
+      error => {
+        console.log(error);
+      });
   }
-  
-  addregreso(){    
+
+  addregreso() {
     this.router.navigate(['sales/']);
   }
 
-  ingresaSales(){
+  ingresaSales() {
   }
-  lista:string[]=["CASH", "CARD"];
+  lista: string[] = ["CASH", "CARD"];
   seleccionado = "";
-  
-   
+
+
 }
 

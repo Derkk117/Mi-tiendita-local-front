@@ -13,7 +13,7 @@ export class SaleService {
         this.url = GLOBAL.url;
     }
     //Funcion para obtener las ventas 
-    getProducts(token, user_id) :Observable<any>{
+    getSales(token, user_id) :Observable<any>{
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
