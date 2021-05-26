@@ -5,6 +5,7 @@
     <div class="logo-short" *ngIf="width < 200 || width == 60">    
         <img src="https://picsum.photos/50" alt="">
     </div>
+    
     <div class="separator"></div>
     <div class="column" *ngFor="let ref of refs;let i = index">
         <a class="route row active" (click)="selectActive(i)" [attr.id]="'ref' + ref.name" *ngIf="ref.name == active && width > 60">
