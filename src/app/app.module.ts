@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { TopBarComponent } from './modules/home/components/top-bar/top-bar.component';
 import { SideBarComponent } from './modules/home/components/side-bar/side-bar.component';
 
