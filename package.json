@@ -28,7 +28,6 @@
     "@syncfusion/ej2-angular-lists": "^19.1.63",
     "@syncfusion/ej2-angular-navigations": "^19.1.63",
     "@types/chart.js": "^2.9.32",
-    "angular-bootstrap-md": "^11.1.0",
     "angular-resize-event": "^2.1.0",
     "animate.css": "^4.1.1",
     "apexcharts": "^3.26.3",
