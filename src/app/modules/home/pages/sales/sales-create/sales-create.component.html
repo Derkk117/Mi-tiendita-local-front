@@ -1,11 +1,6 @@
 <div class="container">
     <div class="form column">
         <h1 class="title">Agregar Venta</h1>
-        <!-- <mat-form-field appearance="outline">
-            <mat-label>Productos</mat-label>
-            <input matInput type="text" name="products">
-        </mat-form-field> -->
-
         <mat-form-field appearance="outline">
             <mat-label>MSelecciona un cliente *</mat-label>
             <mat-select [(value)]="sale.client_id" [(ngModel)]="sale.client_id" name="ngModel" required>
@@ -46,54 +41,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .container{
-    width: 90%;
-    margin: 20px 5%;
-}
-
-.title{
-    padding: 0 0 30px 0;
-    text-align: center;
-}
-
-.form{
-    margin: auto;
-    width: 40%;
-}
-
-.actions{
-    justify-content: flex-end;
-}
-
-input{
-    text-align: left;
-}
-.example-container .mat-form-field + .mat-form-field {
-    margin-left: 8px;
-  }
-  
-  .example-right-align {
-    text-align: left;
-  }
-  
-  input.example-right-align::-webkit-outer-spin-button,
-  input.example-right-align::-webkit-inner-spin-button {
-    display: none;
-  }
-  
-  input.example-right-align {
-    -moz-appearance: textfield;
-  }
-
-  .mat-form-field{
-      padding:0;
-      margin-bottom: 0;
-      margin-top: 0;
-  }
-
-  button{
-      margin-left: 10px;
-  }
-</style>
