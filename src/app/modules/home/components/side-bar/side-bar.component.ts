@@ -12,49 +12,49 @@ export class SideBarComponent implements OnInit {
   active = "Dashboard";
   refs = [
     {
-      icon: "local_convenience_store",
+      icon: "add_chart",
       name: "Dashboard",
-      route: "dashboard"
+      route: "dashboard", title:"Dashboard"
     },
     {
-      icon: "local_convenience_store",
+      icon: "add_business",
       name: "Mi tienda",
-      route: "store"
+      route: "store", title:"Mi Tienda"
     },
     {
-      icon: "groups",
+      icon: "group",
       name: "Clientes",
-      route: "clients"
+      route: "clients" , title:"Clientes"
     },
     {
-      icon: "local_cafe",
+      icon: "playlist_add_check",
       name: "Productos",
-      route: "products"
-    },
-    {
-      icon: "sell",
-      name: "Ventas",
-      route: "sales"
-    },
-    {
-      icon: "connect_without_contact",
-      name: "Proveedores",
-      route: "suppliers"
+      route: "products" , title:"Productos"
     },
     {
       icon: "point_of_sale",
+      name: "Ventas",
+      route: "sales" , title:"Ventas"
+    },
+    {
+      icon: "groups",
+      name: "Proveedores",
+      route: "suppliers", title:"Proveedores"
+    },
+    {
+      icon: "restore_page",
       name: "Cortes",
-      route: "cortes"
+      route: "cortes", title:"Cortes"
     },
     {
-      icon: "check",
+      icon: "inventory",
       name: "Entregas",
-      route: "deliveries"
+      route: "deliveries", title:"Entregas"
     },
     {
-      icon: "menu",
+      icon: "receipt_long",
       name: "Historial",
-      route: "history"
+      route: "history", title:"Historial"
     }
   ];
 

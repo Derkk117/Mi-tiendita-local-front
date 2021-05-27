@@ -49,4 +49,8 @@ export class SalesEditComponent implements OnInit {
     )
   }
 
+  regreso(){
+    this.router.navigate(['/sales/index']);
+  }
+
 }

@@ -16,7 +16,7 @@ import { ProductService } from 'src/app/shared/services/Product_service';
   selector: 'app-products-index',
   templateUrl: './products-index.component.html',
   styleUrls: ['./products-index.component.scss'],
-  //Se llama al servidor de producto
+  //Se llama al servidor de producto y al ToastrService
   providers: [ProductService, ToastrService]
 })
 
@@ -74,6 +74,7 @@ export class ProductsIndexComponent implements OnInit {
     this.router.navigate(['products/create/']);
   }
 
+  //Funcion la paginacion de los datos de la tabla
   goToPage() {
     this.paginator.pageIndex = this.pageNumber, 
       this.paginator.page.next({
@@ -90,7 +91,7 @@ export class ProductsIndexComponent implements OnInit {
         width: '500px',
         data: 
         { 
-          title: "Eliminar producto " + element.id, 
+          title: "Eliminar el producto " + element.name, 
           body: "¿Seguro de eliminar el producto?" 
         }
       }

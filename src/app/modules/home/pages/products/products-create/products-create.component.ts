@@ -44,5 +44,36 @@ export class ProductsCreateComponent implements OnInit
   regresarIndex(){
     this.router.navigate(['/products/index']);
   }
+
+	url: any; 
+	msg = "";
+	
+  //Funcion para seleccionar una imagen 
+	selectFile(event: any) 
+  { 
+		if(!event.target.files[0] || event.target.files[0].length == 0) 
+    {
+			this.msg = 'Debes seleccionar una imagen';
+			return;
+	  }
+		
+    var mimeType = event.target.files[0].type;
+      
+    if (mimeType.match(/image\/*/) == null)
+    {
+        this.msg = "Solo se admiten imágenes";
+        return;
+    }		
+		
+    var reader = new FileReader();		
+    reader.readAsDataURL(event.target.files[0]);
+      
+    reader.onload = (_event) =>
+    {
+        this.msg = "";
+        this.url = reader.result; 
+        //console.log(this.url);
+    }
+	}
 } 
 
