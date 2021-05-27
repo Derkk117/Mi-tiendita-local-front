@@ -29,6 +29,20 @@ export class DeliveryService {
         return this._http.get(this.url + 'delivery/' + sku + '/edit', { headers: headers }).pipe(map(res => res));
     }
 
+    create(delivery,token) :Observable<any> {
+        let json = JSON.stringify(delivery);
+        let params = json;
+
+        let headers = new HttpHeaders(
+            { 'Content-Type': 'application/json',
+              'Authorization': "Bearer " + token
+            });
+        return this._http.post(
+            this.url + 'deliveries', params , { headers: headers }
+            ).pipe(map(res => res)
+        );
+    }
+
     update(token, sku, delivery) {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -39,6 +53,18 @@ export class DeliveryService {
         let params = json;
 
         return this._http.put(this.url + 'delivery/' + sku + '/update', params, { headers: headers }).pipe(map(res => res));
+    }
+
+    delete(token, slug): Observable<any>{
+
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+        
+        let options = {headers: headers}
+
+        return this._http.delete(this.url + 'deliveries/' + slug + '/destroy', options).pipe(map(res => res));
     }
 
 }
