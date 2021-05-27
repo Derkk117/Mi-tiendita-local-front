@@ -15,10 +15,10 @@
             <mat-icon>{{ref.icon}}</mat-icon> <p>{{ref.name}}</p>
         </a>
         <a class="route-short row active" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name == active && (width < 60 || width == 60)">
-            <mat-icon>{{ref.icon}}</mat-icon>
+            <mat-icon title="{{ref.title}}" >{{ref.icon}}</mat-icon>
         </a>
         <a class="route-short row" (click)="selectActive(i)" id="" [attr.id]="'ref' + ref.name" *ngIf="ref.name != active && (width < 60 || width == 60)">
-            <mat-icon>{{ref.icon}}</mat-icon>
+            <mat-icon title="{{ref.title}}">{{ref.icon}}</mat-icon>
         </a>
     </div>
 </div>
