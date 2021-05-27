@@ -39,13 +39,16 @@
             </mat-select>
         </mat-form-field>
 
-        <div fxLayoutAlign="center" style="border: 1px solid rgb(148, 144, 144);">
-            <div fxLayout="column" fxLayoutGap="20px">
-                <label for="">Seleccionar nueva imagen</label>
-                <!--<input type="file" accept="image/png,image/jpeg" id="file" (change)="File($event)" #file>-->
+        <div style="text-align:center">
+            <div [innerHtml]='msg' *ngIf="msg" style="color: rgb(17, 16, 16);"></div>
+            <div>
+                <img [src]="url" *ngIf="url" style="width:100%; height:100%">
             </div>
+            <p>
+                <input type="file" (change)="selectFile($event)">
+            </p>
         </div>
-       <br>  
+        <br>  
 
         <div class="row actions">
             <button class="btn-secondary" mat-button (click)="regresarIndex()"> Cancelar </button>
