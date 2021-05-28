@@ -1,15 +1,20 @@
 
 <div class="container">
-    <div class="form column" >
-        
+    <div class="form column" *ngIf="delivery">
+        <h1 class="title">Nueva entrega</h1>
         <mat-form-field appearance="outline">
             <mat-label>Lugar de entrega</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="delivery.place" name="ngModel" required>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Estatus</mat-label>
-            <input matInput>
+            <mat-select [(value)]="delivery.status" [(ngModel)]="delivery.status" name="ngModel" required>
+                <mat-option value="Delivered">Entregado</mat-option>
+                <mat-option value="Pending">Pendiente</mat-option>
+                <mat-option value="Canceled">Cancelado</mat-option>
+                <mat-option value="On the way">En camino</mat-option>
+            </mat-select>
         </mat-form-field>
         
         
@@ -20,7 +25,7 @@
 
         <div class="row actions">
             <button class="btn-secondary" mat-button (click)="goBack()"> Cancelar </button>
-            <button class="btn-primary" mat-button> Guardar </button>
+            <button class="btn-primary" mat-button (click)="save()"> Guardar </button>
         </div>
 
     </div>
