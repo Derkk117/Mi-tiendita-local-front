@@ -20,11 +20,15 @@ export class SalesCreateComponent implements OnInit {
   token;
   identity;
   sale;
+ 
+
+  
 
   constructor(
     private router: Router,
     private _clientService: ClientService,
     private _productService: ProductService
+    
   ) { }
 
   ngOnInit(): void {
@@ -51,7 +55,21 @@ export class SalesCreateComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+        this.products=this._productService.getProducts(this.token, this.identity.id).subscribe(response => {
+          this.products = response;
+          this.products.forEach(element => {
+            element['fullName'] = element['name'];
+          });
+        },
+        error => {
+          console.log(error);
+        });
+
+        
   }
+
+ 
 
   addregreso() {
     this.router.navigate(['sales/']);
