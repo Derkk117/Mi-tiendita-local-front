@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Sale } from 'src/app/shared/models/Sale_model';
@@ -6,6 +5,15 @@ import { ClientService } from 'src/app/shared/services/Client_service';
 import { ProductService} from 'src/app/shared/services/Product_service';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import { MatLabel } from '@angular/material/form-field';
+import { Component, ViewChild, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTableDataSource} from '@angular/material/table'
+import { Product } from 'src/app/shared/models/Product_model';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatPaginator } from '@angular/material/paginator';
+import { SaleService } from 'src/app/shared/services/Sale_service';
+import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sales-create',
@@ -25,11 +33,9 @@ export class SalesCreateComponent implements OnInit {
   product: string  = '0';
   verSeleccion: string        = '';
   pro;
-  precio;
-  subtotal;
-  nombre;
   textoDeInput: number = null;
-  cantidad;
+  productos=[];
+  dataProduct:any;
 
   constructor(
     private router: Router,
@@ -75,7 +81,8 @@ export class SalesCreateComponent implements OnInit {
 
         
   }
-  
+  displayedColumns: string[] = ['cantidad','products','price','subtotal'];
+
   capturar() {
     // Pasamos el valor seleccionado a la variable verSeleccion
     this.verSeleccion = this.product;
@@ -85,16 +92,12 @@ export class SalesCreateComponent implements OnInit {
   buscaElemento()
   {
     this.pro= this.products.find(elemento=>elemento.fullName === this.verSeleccion);
-    
-    console.log(this.pro);
-    console.log(this.verSeleccion);
-    this.cantidad=this.textoDeInput;
-    this.subtotal="$"+this.pro.price*this.cantidad;
-    this.precio= "$"+this.pro.price+".00";
-    this.nombre=this.pro.fullName;
+    this.pro['subtotal']=this.pro.price*this.textoDeInput;
+    this.pro['cantidad']=this.textoDeInput;
+    this.productos.push(this.pro);
     this.product='0';
     this.textoDeInput=0;
-
+    this.dataProduct = new MatTableDataSource<Product>(this.productos);
   }
 
   addregreso() {
