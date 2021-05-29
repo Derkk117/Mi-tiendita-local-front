@@ -94,10 +94,18 @@ export class SalesCreateComponent implements OnInit {
     this.pro= this.products.find(elemento=>elemento.fullName === this.verSeleccion);
     this.pro['subtotal']=this.pro.price*this.textoDeInput;
     this.pro['cantidad']=this.textoDeInput;
-    this.productos.push(this.pro);
-    this.product='0';
-    this.textoDeInput=0;
-    this.dataProduct = new MatTableDataSource<Product>(this.productos);
+    console.log(this.pro.stock);
+    if(parseInt(this.pro.cantidad) <= parseInt(this.pro.stock)){
+      this.productos.push(this.pro);
+      this.product='0';
+      this.textoDeInput=0;
+      this.dataProduct = new MatTableDataSource<Product>(this.productos);
+		}else {
+			alert("No tenemos la cantidad suficiente, contamos con "+this.pro.stock+ " piezas");
+		}
+    
+    
+   
   }
 
   addregreso() {
