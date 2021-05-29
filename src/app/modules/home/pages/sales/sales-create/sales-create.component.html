@@ -20,49 +20,51 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Número de tarjeta</mat-label>
-            <input matInput type="number" class="example-right-align" name="card_number" [(ngModel)]="sale.card_number">
+            <input matInput type="text" class="example-right-align" name="card_number" [(ngModel)]="sale.card_number" maxlength="16">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Card cvc</mat-label>
-            <input matInput type="number"  class="example-right-align" name="card_cvc" [(ngModel)]="sale.card_cvc">
+            <input matInput type="text"  class="example-right-align" name="card_cvc" [(ngModel)]="sale.card_cvc" maxlength="3">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Expiración</mat-label>
             <input matInput type="date"class="example-right-align" name="expiration_date" [(ngModel)]="sale.expiration_date">
         </mat-form-field>
-        
-        <h1 class="title">Lista de Productos</h1>
+        <div>
+            <h1 class="title">Lista de Productos</h1>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Selecciona un producto *</mat-label>
-            <mat-select [(value)]="sale.products" [(ngModel)]="sale.products" name="ngModel" required>
-                <span *ngFor="let product of products">
-                    <mat-option value="product.sku">{{product.fullName}}</mat-option>
-                </span>
-            </mat-select>
-        </mat-form-field>
-
-        <div class="datosProductos">
-            <mat-form-field appearance="outline" class="cantidad">
-                <mat-label>Cantidad</mat-label>
-                <input matInput type="number" name="card_number" min="1" max="100">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="cantidad">
-                <mat-label>Precio</mat-label>
-                <input matInput disabled type="number" name="card_number">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="cantidad">
-                <mat-label>Total</mat-label>
-                <input matInput disabled type="number" name="card_number">
-            </mat-form-field>
-        </div>
+            
+            <select [(ngModel)]="product" (change)="capturar()" class="example-right-align">
+                <option value="0">Escoge un producto</option>
+                <option *ngFor="let dato of products">
+                  {{dato.fullName}}
+                </option>
+            </select>
+            
+                <mat-form-field appearance="outline" class="cantidad" id="cantidad">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput type="number" [(ngModel)]="textoDeInput" name="cantidad" min="1" max="100">
+                </mat-form-field> 
+                
+            <button class="btn-primary" id="botonAgregar" (click)="buscaElemento()" mat-button> Agregar </button>
+            <table>
+               <tr>
+                <th>Cantidad</th>
+                <th>Productos</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+               </tr>
+               <tr>
+                <td>{{cantidad}}</td>
+                <td>{{nombre}}</td>
+                <td>{{precio}}</td>
+                <td>{{subtotal}}</td>
+               </tr>
+            </table> 
+         </div>
        <br>  
-
-
         <div class="row actions">
             <button class="btn-secondary" (click)="addregreso()" mat-button> Cancelar </button>
             <button class="btn-primary" (click)="addregreso()" mat-button> Guardar </button>
