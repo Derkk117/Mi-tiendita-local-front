@@ -36,6 +36,7 @@ export class SalesCreateComponent implements OnInit {
   textoDeInput: number = null;
   productos=[];
   dataProduct:any;
+  total: number=0;
 
   constructor(
     private router: Router,
@@ -100,6 +101,7 @@ export class SalesCreateComponent implements OnInit {
       this.product='0';
       this.textoDeInput=0;
       this.dataProduct = new MatTableDataSource<Product>(this.productos);
+      this.total+=this.pro.subtotal;
 		}else {
 			alert("No tenemos la cantidad suficiente, contamos con "+this.pro.stock+ " piezas");
 		}
