@@ -32,7 +32,6 @@
 .route{
     align-items: center;
     color: $quartenary;
-    border-bottom: solid 1px $primary;
     height: 45px;
     justify-content: flex-start;
     margin: 0;   
@@ -49,6 +48,10 @@
     &:hover{
         transition: 0.2s;
         background-color: $primary;
+    }
+
+    p{
+        margin: 0;
     }
 }
 
