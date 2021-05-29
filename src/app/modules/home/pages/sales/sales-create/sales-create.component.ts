@@ -5,6 +5,7 @@ import { Sale } from 'src/app/shared/models/Sale_model';
 import { ClientService } from 'src/app/shared/services/Client_service';
 import { ProductService} from 'src/app/shared/services/Product_service';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
+import { MatLabel } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-sales-create',
@@ -25,6 +26,10 @@ export class SalesCreateComponent implements OnInit {
   verSeleccion: string        = '';
   pro;
   precio;
+  subtotal;
+  nombre;
+  textoDeInput: number = null;
+  cantidad;
 
   constructor(
     private router: Router,
@@ -80,9 +85,16 @@ export class SalesCreateComponent implements OnInit {
   buscaElemento()
   {
     this.pro= this.products.find(elemento=>elemento.fullName === this.verSeleccion);
-    this.precio= this.pro.fullName + " " + "$"+this.pro.price+".00";
+    
     console.log(this.pro);
     console.log(this.verSeleccion);
+    this.cantidad=this.textoDeInput;
+    this.subtotal="$"+this.pro.price*this.cantidad;
+    this.precio= "$"+this.pro.price+".00";
+    this.nombre=this.pro.fullName;
+    this.product='0';
+    this.textoDeInput=0;
+
   }
 
   addregreso() {

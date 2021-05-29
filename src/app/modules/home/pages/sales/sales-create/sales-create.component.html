@@ -45,40 +45,32 @@
             </mat-form-field>  -->
             
             <select [(ngModel)]="product" (change)="capturar()" class="example-right-align">
-                <option value="0">Selecciona una opción</option>
+                <option value="0">Escoge un producto</option>
                 <option *ngFor="let dato of products">
                   {{dato.fullName}}
                 </option>
             </select>
             
-                <mat-form-field appearance="outline" class="cantidad">
+                <mat-form-field appearance="outline" class="cantidad" id="cantidad">
                     <mat-label>Cantidad</mat-label>
-                    <input matInput type="number" name="card_number" min="1" max="100" >
+                    <input matInput type="number" [(ngModel)]="textoDeInput" name="cantidad" min="1" max="100">
                 </mat-form-field> 
-            
-            <button class="btn-primary" (click)="buscaElemento()" mat-button> Agregar </button>
-            <p>Cantidad&nbsp;&nbsp;&nbsp;&nbsp;
-                producto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                precio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subtotal</p>
-            <p>{{precio}}</p>
-            
-            <mat-form-field appearance="outline" class="cantidad">
-                <mat-label>Precio</mat-label>
-                <input matInput disabled type="number" name="card_number" >
-            </mat-form-field>
-            
-            
-    
-                <!-- <mat-form-field appearance="outline" class="cantidad">
-                    <mat-label>Precio</mat-label>
-                    <input matInput disabled type="number" name="card_number">
-                </mat-form-field> -->
-            
-                <mat-form-field appearance="outline" class="cantidad">
-                    <mat-label>Total</mat-label>
-                    <input matInput disabled type="number" name="card_number">
-                </mat-form-field> 
-            
+                
+            <button class="btn-primary" id="botonAgregar" (click)="buscaElemento()" mat-button> Agregar </button>
+            <table>
+               <tr>
+                <th>Cantidad</th>
+                <th>Productos</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+               </tr>
+               <tr>
+                <td>{{cantidad}}</td>
+                <td>{{nombre}}</td>
+                <td>{{precio}}</td>
+                <td>{{subtotal}}</td>
+               </tr>
+            </table> 
          </div>
        <br>  
 
