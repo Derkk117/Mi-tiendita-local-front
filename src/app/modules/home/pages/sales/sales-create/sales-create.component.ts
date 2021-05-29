@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Sale } from 'src/app/shared/models/Sale_model';
 import { ClientService } from 'src/app/shared/services/Client_service';
 import { ProductService} from 'src/app/shared/services/Product_service';
+import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-sales-create',
@@ -20,9 +21,10 @@ export class SalesCreateComponent implements OnInit {
   token;
   identity;
   sale;
- 
-
-  
+  product: string  = '0';
+  verSeleccion: string        = '';
+  pro;
+  precio;
 
   constructor(
     private router: Router,
@@ -68,17 +70,24 @@ export class SalesCreateComponent implements OnInit {
 
         
   }
+  
+  capturar() {
+    // Pasamos el valor seleccionado a la variable verSeleccion
+    this.verSeleccion = this.product;
+    
+  }
 
- 
+  buscaElemento()
+  {
+    this.pro= this.products.find(elemento=>elemento.fullName === this.verSeleccion);
+    this.precio= this.pro.fullName + " " + "$"+this.pro.price+".00";
+    console.log(this.pro);
+    console.log(this.verSeleccion);
+  }
 
   addregreso() {
     this.router.navigate(['sales/']);
   }
-
-  ingresaSales() {
-  }
-  lista: string[] = ["CASH", "CARD"];
-  seleccionado = "";
 
 
 }

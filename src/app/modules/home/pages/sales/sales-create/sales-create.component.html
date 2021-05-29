@@ -32,35 +32,53 @@
             <mat-label>Expiración</mat-label>
             <input matInput type="date"class="example-right-align" name="expiration_date" [(ngModel)]="sale.expiration_date">
         </mat-form-field>
-        
-        <h1 class="title">Lista de Productos</h1>
+        <div>
+            <h1 class="title">Lista de Productos</h1>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Selecciona un producto *</mat-label>
-            <mat-select [(value)]="sale.products" [(ngModel)]="sale.products" name="ngModel" >
-                <span *ngFor="let product of products">
-                    <mat-option value="product.sku">{{product.fullName + " "+ "$"+product.price}}</mat-option>
-                </span>
-            </mat-select>
-        </mat-form-field>
-
-        
-
-        <div class="datosProductos">
+             <!-- <mat-form-field appearance="outline">
+                <mat-label>Selecciona un producto *</mat-label>
+                <mat-select [(value)]="sale.products" [(ngModel)]="sale.products" name="ngModel" >
+                    <span *ngFor="let product of products">
+                        <mat-option value="product.sku">{{product.fullName + " "+ "$"+product.price}}</mat-option>
+                    </span>
+                </mat-select>
+            </mat-form-field>  -->
+            
+            <select [(ngModel)]="product" (change)="capturar()" class="example-right-align">
+                <option value="0">Selecciona una opción</option>
+                <option *ngFor="let dato of products">
+                  {{dato.fullName}}
+                </option>
+            </select>
+            
+                <mat-form-field appearance="outline" class="cantidad">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput type="number" name="card_number" min="1" max="100" >
+                </mat-form-field> 
+            
+            <button class="btn-primary" (click)="buscaElemento()" mat-button> Agregar </button>
+            <p>Cantidad&nbsp;&nbsp;&nbsp;&nbsp;
+                producto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                precio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subtotal</p>
+            <p>{{precio}}</p>
+            
             <mat-form-field appearance="outline" class="cantidad">
-                <mat-label>Cantidad</mat-label>
-                <input matInput type="number" name="card_number" min="1" max="100">
-            </mat-form-field> 
- 
-             <mat-form-field appearance="outline" class="cantidad">
                 <mat-label>Precio</mat-label>
-                <input matInput disabled type="number" name="card_number">
+                <input matInput disabled type="number" name="card_number" >
             </mat-form-field>
-        
-             <mat-form-field appearance="outline" class="cantidad">
-                <mat-label>Total</mat-label>
-                <input matInput disabled type="number" name="card_number">
-            </mat-form-field> 
+            
+            
+    
+                <!-- <mat-form-field appearance="outline" class="cantidad">
+                    <mat-label>Precio</mat-label>
+                    <input matInput disabled type="number" name="card_number">
+                </mat-form-field> -->
+            
+                <mat-form-field appearance="outline" class="cantidad">
+                    <mat-label>Total</mat-label>
+                    <input matInput disabled type="number" name="card_number">
+                </mat-form-field> 
+            
          </div>
        <br>  
 
