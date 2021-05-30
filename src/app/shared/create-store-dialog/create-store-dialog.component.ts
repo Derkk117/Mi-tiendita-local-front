@@ -5,8 +5,10 @@ import { Store } from '../models/Store_model';
 @Component({
   selector: 'app-create-store-dialog',
   templateUrl: './create-store-dialog.component.html',
-  styleUrls: ['./create-store-dialog.component.scss']
+  styleUrls: ['./create-store-dialog.component.scss'],
+  // providers: [{ provide: NGX_MAT_FILE_INPUT_CONFIG, useValue: config }]
 })
+
 export class CreateStoreDialogComponent implements OnInit {
   store = new Store(0 , 0, "", "", "", 0, "");
   

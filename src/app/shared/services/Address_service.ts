@@ -26,4 +26,25 @@ export class AddressService{
 
         return this._http.get(this.url+ 'address/' + address_id + '/edit', options).pipe(map(res => res));
     }
+
+    create(token, address):Observable<any>{
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        let json = JSON.stringify(address);
+        let params = json;
+
+        return this._http.post(this.url + 'address', params, { headers: headers }).pipe(map(res => res));
+    }
+
+    getLast(token):Observable<any>{
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        return this._http.get(this.url+ 'addressLast',{ headers: headers }).pipe(map(res => res));
+    }
 }

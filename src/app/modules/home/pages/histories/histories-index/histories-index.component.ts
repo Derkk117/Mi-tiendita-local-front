@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { History} from '../../../../../shared/models/History_model';
@@ -18,6 +19,7 @@ export class HistoriesIndexComponent implements OnInit {
   identity;
   histories = [];
   dataSource:any;
+  pageNumber: any;
   selection = new SelectionModel<History>(true, []);
 
   constructor(
@@ -31,9 +33,10 @@ export class HistoriesIndexComponent implements OnInit {
     this._HistoryService.getHistories(this.token,this.identity.id).subscribe(response => {
       this.histories = response;
       this.dataSource = new MatTableDataSource<History>(this.histories);
-      console.log(response);
-      
-      console.log(this.histories);
+      if(this.dataSource != null){
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator._intl.itemsPerPageLabel="Elementos por pagina";
+      }
     },
       error => {
         console.log(error);
@@ -55,6 +58,14 @@ export class HistoriesIndexComponent implements OnInit {
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
 
+  goToPage(){
+    this.paginator.pageIndex = this.pageNumber,
+      this.paginator.page.next({
+        pageIndex: this.pageNumber,
+        pageSize: this.paginator.pageSize,
+        length: this.paginator.length
+      });
+  }
 }
 
 

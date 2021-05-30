@@ -2,36 +2,36 @@
     <div class="form column">
         <h1 class="title">Agregar Producto</h1>
         <mat-form-field appearance="outline">
-            <mat-label>Nombre</mat-label>
+            <mat-label>Nombre*</mat-label>
             <input matInput>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Descripcion</mat-label>
+            <mat-label>Descripcion*</mat-label>
             <textarea matInput></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Precio</mat-label>
+            <mat-label>Precio*</mat-label>
             <input matInput type="number" class="example-right-align">
             <span matPrefix>$&nbsp;</span>
             <span matSuffix>.00</span>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Costo</mat-label>
+            <mat-label>Costo*</mat-label>
             <input matInput type="number" class="example-right-align">
             <span matPrefix>$&nbsp;</span>
             <span matSuffix>.00</span>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Stock</mat-label>
+            <mat-label>Stock*</mat-label>
             <input matInput type="number"class="example-right-align">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Categoria *</mat-label>
+            <mat-label>Categoria*</mat-label>
             <mat-select>
                 <mat-option value="drinks">Bebidas</mat-option>
                 <mat-option value="food">Comida</mat-option>
@@ -52,7 +52,7 @@
 
         <div class="row actions">
             <button class="btn-secondary" mat-button (click)="regresarIndex()"> Cancelar </button>
-            <button class="btn-primary" mat-button> Guardar </button>
+            <button class="btn-primary" mat-button (click)="guardarCambios()"> Guardar </button>
         </div>
     </div>
 </div>

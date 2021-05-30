@@ -50,7 +50,7 @@ export class ClientStoreComponent implements OnInit {
         { 
           "id_user": this.identity.id, 
           "description": "Registro de cliente",
-          "date": this.date.getFullYear() +"-"+ this.date.getMonth() +"-"+this.date.getDay(),
+          "date": this.date.getFullYear() +"-"+ (this.date.getMonth()+1) +"-"+this.date.getDate(),
           "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
         };
         this._historyService.create(this.history,this.token).subscribe();

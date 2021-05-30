@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MaterialFileInputModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     })

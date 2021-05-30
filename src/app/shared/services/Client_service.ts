@@ -36,7 +36,6 @@ export class ClientService {
         });
 
         client.user_id = user_id; //add param to client model.
-        client.password = "unacontrasena"; //Lo agregue solo para que funcionara el historial
         let json = JSON.stringify(client);
         let params = json;
 

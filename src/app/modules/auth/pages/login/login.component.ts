@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
               { 
                 "id_user": JSON.parse(localStorage.getItem('identity')).id,
                 "description": "Inicio de sesion",
-                "date": this.date.getFullYear() +"-"+ this.date.getMonth() +"-"+this.date.getDay(),
+                "date": this.date.getFullYear() +"-"+ (this.date.getMonth()+1) +"-"+this.date.getDate(),
                 "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
               };
               this._historyService.create(this.history,this.token).subscribe();

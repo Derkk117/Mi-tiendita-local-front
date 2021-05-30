@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import * as AOS from 'aos';
+
 @Component({
-  selector: 'app-pagina',
-  templateUrl: './pagina.component.html',
-  styleUrls: ['./pagina.component.scss']
+  selector: 'app-landingPage',
+  templateUrl: './landingPage.component.html',
+  styleUrls: ['./landingPage.component.scss']
 })
-export class PaginaComponent implements OnInit {
+export class LandingPageComponent implements OnInit {
 
   public token = "";
 
@@ -17,7 +19,7 @@ export class PaginaComponent implements OnInit {
     if(this.token != null && this.token != "") this.router.navigate(['/dashboard']);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    AOS.init();
   }
-
 }

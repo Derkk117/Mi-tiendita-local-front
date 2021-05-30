@@ -1,46 +1,62 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { ActivatedRoute,Router } from '@angular/router';
+import { MatDialog , MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { Address } from 'src/app/shared/models/Address_model';
-import { Router } from '@angular/router';
-import { SupplierService } from 'src/app/shared/services/Supplier_service';
 import { Supplier } from 'src/app/shared/models/Supplier_model';
 import { UserService } from 'src/app/shared/services/User_service';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
+import { HistoryService } from 'src/app/shared/services/History_service';
+import { AddressService } from 'src/app/shared/services/Address_service';
+import { SupplierService } from 'src/app/shared/services/Supplier_service';
+import { CreateAddressDialogComponent} from 'src/app/shared/create-address-dialog/create-address-dialog.component';
+
 
 @Component({
   selector: 'app-suppliers-create',
   templateUrl: './suppliers-create.component.html',
   styleUrls: ['./suppliers-create.component.scss'],
-  providers:[SupplierService, UserService],
+  providers:[
+    SupplierService, 
+    UserService,
+    ToastrService, 
+    HistoryService, 
+    AddressService],
 })
 
 export class SuppliersCreateComponent implements OnInit {
 
-  public supplier;
-  public supplierAddress;
+  public supplier: Supplier;
+  public supplierAddress: Address;
   identity;
   token;
+  history ={};
+  date = new Date();
 
   constructor(
-    private _supplierService: SupplierService,
     private router: Router,
-    private _userService: UserService
+    private toastr: ToastrService,
+    public dialog: MatDialog,
+    private _addressService: AddressService,
+    private _supplierService: SupplierService,
+    private _userService: UserService,
+    private _historyService: HistoryService
   ){ 
-    this.supplier = new Supplier(null,"","","",null);
-    this.supplierAddress = new Address(null, "", "", "", "", "", "", "", "");
-    this.identity = JSON.parse(localStorage.getItem('identity'));
-    this.token = localStorage.getItem('session');
+
   }
 
   ngOnInit(): void {
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.token = localStorage.getItem('session');
+    this.supplier = new Supplier(null,"","","","",null,"");
+    this.supplierAddress = new Address(null, "", "", "", "", "", "", "", "");
   }
 
-  lista:string[]=["address 1", "address2"];
-  seleccionado = "";
+  /*lista:string[]=["address 1", "address2"];
+  seleccionado = "";*/
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  /*email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -48,23 +64,64 @@ export class SuppliersCreateComponent implements OnInit {
     }
 
     return this.email.hasError('email') ? 'Email invalid' : '';
-  }
+  }*/
 
   create(){
-    console.log(this.supplier);
-    console.log(this.token);
-    //console.log("holi");*
-    if(this.supplier.name != "" && this.supplier.last_name &&
-        this.supplier.email != ""){
-        this._supplierService.create(this.supplier,this.token).subscribe(
+    //console.log(this.supplier);
+    //console.log(this.supplierAddress);
+    //this._addressService.
+    this._addressService.create(this.token,this.supplierAddress).subscribe(
+      response => {
+        this._addressService.getLast(this.token).subscribe(
           response => {
-            //this.router.navigate(['suppliers']);
-          }//response
-        )///create-subscribe
-    }////if campos
+            this.supplier['address'] = response.id;
+            console.log(this.supplier);
+            this._supplierService.create(this.supplier,this.token).subscribe(
+              response=>{
+                this.date = new Date();
+                this.history = 
+                { 
+                  "id_user": this.identity.id, 
+                  "description": "Registro de proveedor",
+                  "date": this.date.getFullYear() +"-"+ (this.date.getMonth()+1) +"-"+this.date.getDate(),
+                  "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
+                };
+                this._historyService.create(this.history,this.token).subscribe(
+                  response=>{
+                    this.toastr.success("Se ha creado exitosamente el proveedor");
+                    this.router.navigate(['/suppliers/index']);
+                  }
+                )
+
+              }
+            )
+          }
+        )
+      },error =>{
+        this.toastr.error("Error al ingresar al proveedor, vuelte a intentarlo");
+      }
+    )
   }
 
-  back(){
-    this.router.navigate(['suppliers']);
+  goBack(){
+    this.router.navigate(['/suppliers/index']);
+  }
+
+  openDialog():void {
+
+
+
+    /*const dialogRef = this.dialog.open(CreateAddressDialogComponent,{
+      disableClose: true,
+      width: '500px',
+      height: '500px',
+      data: { title: "Ingresa la direccion del proveedor :)", body: "Para terminar de registrar al nuevo proveedor ingresa su direccion." }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined && result == 'Continuar') {
+        
+      }
+    });*/
   }
 }

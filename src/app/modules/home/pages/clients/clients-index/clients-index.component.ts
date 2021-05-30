@@ -54,6 +54,7 @@ export class ClientsIndexComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Client>(this.clients);
       if (this.dataSource != null) {
         this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator._intl.itemsPerPageLabel="Elementos por pagina";
       }
     },
       error => {

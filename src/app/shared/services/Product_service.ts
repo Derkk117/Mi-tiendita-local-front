@@ -58,4 +58,17 @@ export class ProductService {
         return this._http.put(this.url + 'product/' + sku + 
         '/update', params, { headers: headers }).pipe(map(res => res));
     }
+
+    create(token, sku, product) {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        let json = JSON.stringify(product);
+        let params = json;
+
+        return this._http.put(this.url + 'product/' + sku + 
+        '/store', params, { headers: headers }).pipe(map(res => res));
+    }
 }

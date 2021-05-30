@@ -22,10 +22,8 @@ export class SupplierService{
             { 'Content-Type': 'application/json',
               'Authorization': "Bearer " + token
             });
-        return this._http.post(
-            this.url + 'suppliers', params , { headers: headers }
-            ).pipe(map(res => res)
-        );
+
+        return this._http.post(this.url + 'suppliers', params , { headers: headers }).pipe(map(res => res));
     }
     
     getSuppliers(token) :Observable<any>{

@@ -1,56 +1,24 @@
- @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/stylesheet.scss';
 
-
-
-.outer{
-    height:200px;
-    line-height: 200px;
-  }
-
-  .container-form{
-    width: 25%;
-    margin: 1rem auto;
-    //box-shadow: -1px 3px 66px 0px rgba(92,158,173,1);
-    padding: 1rem;
-    border-radius: 10px;
-  }
-
-  .mat-button{
-    color: #FFFFFF;
-    background-color: #326273;
-    //right: 0%;
-    //position: inherit;
-  }
-
-  fieldset {
-    border-radius: 10px;
-    padding: 1.5em;
-    border-width: 2px;
-    margin: 20px;
-    margin-top: 50px;
-    border-style: groove;
-    border-color: mediumturquoise;
-    background-color: rgb(235, 250, 253);
+.container{
+    width: 90%;
+    margin: 40px 5%;
 }
 
-legend {
-    display: block;
-    padding-inline-start: 2px;
-    padding-inline-end: 2px;
+.title{
+    padding: 0 0 30px 0;
+    text-align: center;
 }
 
-input {
-    cursor: text;
-    border-width: 2px;
-    border-radius: 2px;
+.form{
+    margin: auto;
+    padding: 10px 30px;
+    width: 40%;
+    border-radius: 20px;
+    border: $primary 3px solid;
 }
 
-select{
-    border-radius: 10px;
-}
-
-input:hover{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.actions{
+    justify-content: flex-end;
 }

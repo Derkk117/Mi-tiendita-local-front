@@ -8,6 +8,6 @@ export class Address{
         public neighborhood: string,
         public state: string,
         public country: string,
-        public zipcode: string  
+        public zip_code: string  
     ){}  
 }

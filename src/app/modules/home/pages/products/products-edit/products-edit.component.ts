@@ -75,4 +75,10 @@ export class ProductsEditComponent implements OnInit
     }
 	}
 
+    //Para guardar cambios de un nuevo producto
+    guardarCambios()
+    {
+      this._productService.update(this.token, this.productSku, this.product).subscribe(Response => {});
+    }
+
 }
