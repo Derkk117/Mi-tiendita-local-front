@@ -14,7 +14,7 @@ export class HistoryService{
         this.url = GLOBAL.url;
     }
 
-    create(history,token) :Observable<any> {
+    create(history,token):Observable<any> {
         let json = JSON.stringify(history);
         let params = json;
 

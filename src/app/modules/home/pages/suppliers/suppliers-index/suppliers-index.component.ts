@@ -1,15 +1,15 @@
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Supplier } from '../../../../../shared/models/Supplier_model';
 import { Address } from '../../../../../shared/models/Address_model';
 import { AddressService } from '../../../../../shared/services/Address_service';
 import { HistoryService } from '../../../../../shared/services/History_service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SupplierService } from 'src/app/shared/services/Supplier_service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
 @Component({
@@ -32,8 +32,10 @@ export class SuppliersIndexComponent implements OnInit {
   address = [];
   dataSource: any;
   history = {};
+  pageNumber: any;
   date = new Date();
   selection = new SelectionModel<Supplier>(true, []);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private router: Router,
@@ -53,6 +55,9 @@ export class SuppliersIndexComponent implements OnInit {
         element['fullAddress'] = element['street'] + " " + ((element['street2'] = "null") ? " ":element['street2'])+ " #" + element['external_number'] +" "+((element['internal_number'] = "null") ? "":element['internal_number']) +" " + element['neighborhood'];
       });
       this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
+      if(this.dataSource != null){
+        this.dataSource.paginator = this.paginator;
+      }
     },
     error => {
       console.log(error);
@@ -60,8 +65,6 @@ export class SuppliersIndexComponent implements OnInit {
   }
 
   displayedColumns: string[] = ['name', 'last_name', 'phone', 'email', 'address', 'actions'];
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -89,9 +92,9 @@ export class SuppliersIndexComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined && result == 'Continuar') {
         this._supplierService.delete(this.token, element.slug).subscribe(response => {
-          this.date = new Date();
           this.toastr.success(":)", 'Se ha eliminado correctamente');
 
+          this.date = new Date();
           this._historyService.create({
             "id_user": this.identity.id,
             "description": "Se ha eliminado un proveedor",
@@ -112,5 +115,14 @@ export class SuppliersIndexComponent implements OnInit {
         });
       }
     });
+  }
+
+  goToPage(){
+    this.paginator.pageIndex = this.pageNumber,
+      this.paginator.page.next({
+        pageIndex: this.pageNumber,
+        pageSize: this.paginator.pageSize,
+        length: this.paginator.length
+      });
   }
 }

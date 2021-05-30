@@ -31,9 +31,6 @@ export class HistoriesIndexComponent implements OnInit {
     this._HistoryService.getHistories(this.token,this.identity.id).subscribe(response => {
       this.histories = response;
       this.dataSource = new MatTableDataSource<History>(this.histories);
-      console.log(response);
-      
-      console.log(this.histories);
     },
       error => {
         console.log(error);
