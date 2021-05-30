@@ -1,134 +1,58 @@
-<!DOCTYPE html>
-<html style="overflow-y: scroll !important;">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <body>
-        <div style="min-height: auto !important; overflow-y: scroll !important;">
-            <div class="w3-top">
-                <div class="w3-bar w3-theme-d2 w3-left-align">
-                    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" 
-                        href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i>
-                    </a>
-                    <a href="#" class="w3-bar-item w3-button w3-teal">
-                    <i class="fa fa-home w3-margin-right"></i>Mi Tiendita Local
-                    </a>
-    
-                    <a [routerLink]="['/auth/login']" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">Inicio Sesion</a>
-                    <a [routerLink]="['/auth/register']" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">Registrate</a>
-                </div>        
-            </div>
-    
-            <div class="w3-display-container w3-animate-opacity">
-                <img src="../../../../../assets/Back.jpeg">
-                <div class="w3-container w3-display-bottomleft w3-margin-bottom">  
-                    <button class="w3-button w3-xlarge w3-theme w3-hover-teal" >
-                        Proyecto Integrador
-                    </button>
+<div class="container">
+    <div class="column">
+        <div class="banner">
+            <div class="row">
+                <button class="banner-item"><i></i>Mi Tiendita Local</button>
+                <div class="links">
+                    <button [routerLink]="['/auth/login']">Inicio Sesion</button>
+                    <button [routerLink]="['/auth/register']">Registrate</button>
                 </div>
             </div>
-    
-            <div class="w3-container w3-padding-64 w3-center" id="team">        
-                <div class="w3-row"><br>
-                    <div class="w3-quarter">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" style="width:45%" class="w3-circle w3-hover-opacity">
-                        <h3>GENOVEVA VIRIDIANA SILVA RODRIGUEZ</h3>
-                        <p>viridiana.silva@uaslp.mx</p>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <img 
-                        src="https://static.vecteezy.com/system/resources/previews/000/566/866/non_2x/vector-person-icon.jpg"
-                        style="width:45%" class="w3-circle w3-hover-opacity">
-                        <h3>ANDRES ALEJANDRO ARAIZA VILLA</h3>
-                        <p>a208151@alumnos.uaslp.mx</p>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" style="width:45%" class="w3-circle w3-hover-opacity">
-                        <h3>MOISES GONZALEZ TORRES</h3>
-                        <p>a260941@alumnos.uaslp.mx</p>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" style="width:45%" class="w3-circle w3-hover-opacity">
-                        <h3>LILIANA BERENICE HERNANDEZ HERNANDEZ</h3>
-                        <p>a253105@alumnos.uaslp.mx</p>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" style="width:45%" class="w3-circle w3-hover-opacity">
-                        <h3>IVONNE MONTSERRAT ESTRADA LOPEZ</h3>
-                        <p>a247019@alumnos.uaslp.mx</p>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" style="width:45%" class="w3-circle w3-hover-opacity">
-                        <h3>LUIS ANGEL AGUILAR TORRES</h3>
-                        <p>a255388@alumnos.uaslp.mx</p>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
-                    <div class="w3-quarter">
-                        <h2>Acerca del proyecto</h2>
-                        <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit, sed do eiusmod tempor 
-                            incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation 
-                            ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                            Duis aute irure dolor in reprehenderit in voluptate velit 
-                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <div class="w3-card w3-white">
-                            <img src="https://www.zion.com.ec/wp-content/uploads/2019/04/fideicomiso-granolel-l-j-zion.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h3>Customer 1</h3>
-                                <h4>Trade</h4>
-                                <p>Texto</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <div class="w3-card w3-white">
-                            <img src="https://www.zion.com.ec/wp-content/uploads/2019/04/fideicomiso-granolel-l-j-zion.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h3>Customer 2</h3>
-                                <h4>Trade</h4>
-                                <p>Texto</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="w3-quarter">
-                        <div class="w3-card w3-white">
-                            <img src="https://www.zion.com.ec/wp-content/uploads/2019/04/fideicomiso-granolel-l-j-zion.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h3>Customer 3</h3>
-                                <h4>Trade</h4>
-                                <p>Texto</p>
-                            </div>
-                        </div>
-                    </div>
-            </div>     
-    
-            <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
-            
-                <p>Proyecto Mi Tiendita Local</p>
-    
-                <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
-                    <span class="w3-text w3-padding w3-teal w3-hide-small">Inicio</span>   
-                    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
-                    <i class="fa fa-chevron-circle-up"></i></span></a>
-                </div>
-            </footer>
         </div>
-    </body>
-</html>
+        <div class="content">
+            <div class="back">
+                <img src="../../../../../assets/Back.png">
+                <div class="title">
+                    <h2>Mejor administración, mejores resultados en tu negocio.</h2>
+                </div>
+            </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In soluta laudantium consequuntur sunt repellat quidem repudiandae, autem tenetur non aspernatur ea tempore enim quasi. Incidunt, nemo aut libero fuga pariatur rerum! Perferendis vel minus commodi iste? Consequuntur eaque illum reiciendis eligendi iste velit sint iure perspiciatis. Error earum repellat dignissimos vel corporis dolorem consectetur reprehenderit quo non quas assumenda aliquam vitae saepe beatae est aut, consequuntur totam ratione dolor quibusdam nesciunt obcaecati molestias aspernatur tempora. Aliquam odio quae pariatur odit eum, error neque maiores sint voluptatum minima animi libero exercitationem quas veritatis totam? Corporis, eum repellendus? Neque perspiciatis iste inventore.
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div data-aos="fade-left" data-aos-duration="1000">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque rerum cum accusamus dolorum ducimus quae dicta repudiandae facere quod minus rem ipsa aperiam dignissimos ratione corporis laborum dolor voluptatem temporibus possimus, eius amet quibusdam asperiores reiciendis? Optio esse perspiciatis et earum delectus nobis quos officiis assumenda, sunt rem sit quis hic at ea repudiandae atque voluptatibus? Voluptates, earum. Ducimus explicabo id officiis ex iste facere voluptate, repellat quae vel veritatis incidunt dolorum molestias minus nihil eveniet recusandae nulla, ea accusantium magni inventore! Vero harum a aut accusamus unde molestiae soluta culpa repellat temporibus quasi, ab rem ipsa autem et earum!
+          </div>
+          
+          <br>
+          <br>
+          <br>
+          <br>
+          <div data-aos="fade-down" data-aos-duration="1000">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta et dolores doloribus! Laboriosam ea veritatis temporibus expedita, obcaecati sapiente veniam quasi, repellendus suscipit deserunt, dicta consequatur quam iste iure. Ipsa est debitis corrupti error beatae dolorem, nisi numquam nostrum, ut facilis veniam repudiandae sint. Aspernatur, labore dicta fugiat provident praesentium maxime fuga id, inventore odio consequatur soluta voluptates quasi accusantium reiciendis culpa, maiores beatae eaque repudiandae? Quas, iste, alias minus similique nobis doloribus est tempore voluptates quibusdam minima aperiam consequuntur laborum et vitae? Aliquam repudiandae quos adipisci atque ex consectetur temporibus quis maxime, nihil, laudantium veritatis asperiores sunt accusantium. Dolores.
+          </div>
+          
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div data-aos="fade-up" data-aos-duration="1000">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus at quae voluptas inventore nobis quam. Accusantium in tenetur dolorem, reiciendis neque odio vero impedit autem error aspernatur nihil animi natus.
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+    </div>
+</div>
+

@@ -30,6 +30,7 @@
     "@types/chart.js": "^2.9.32",
     "angular-resize-event": "^2.1.0",
     "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "apexcharts": "^3.26.3",
     "chart.js": "^2.5.0",
     "composer": "^4.1.0",

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import * as AOS from 'aos';
+
 @Component({
   selector: 'app-landingPage',
   templateUrl: './landingPage.component.html',
@@ -17,7 +19,7 @@ export class LandingPageComponent implements OnInit {
     if(this.token != null && this.token != "") this.router.navigate(['/dashboard']);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    AOS.init();
   }
-
 }
