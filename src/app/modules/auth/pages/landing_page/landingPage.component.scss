@@ -1,0 +1,76 @@
+@import "../../../../../styles/colors.scss";
+
+.banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin:0 50px;
+}
+
+.banner-item{
+    background-color: #009688;
+    color: white;
+    height: 100%;
+    text-decoration: none;
+    margin: 0;
+    border: none;
+    padding: 0 20px;
+}
+
+.links{
+    height: 40px;
+    
+    button{
+        background-color: transparent;
+        color: white;
+        text-decoration: none;
+        height: 40px;
+        padding: auto;
+        margin: 0;
+        border: none;
+        padding: 0 5px;
+    }
+    button:hover{
+        transition: 0.3s;
+        background-color: #009688;
+        cursor: pointer;
+    }
+}
+
+.content{
+    margin-top: 40px;
+    background-color: $quartenary;
+}
+
+.back{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    height: 681px;
+}
+
+.title{
+    color: white;
+    background-color: $tertiary-back;
+    height: 100%;
+}
+
+.aos-effect{
+    overflow: hidden;
+}
+ 

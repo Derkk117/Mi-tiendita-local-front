@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource} from '@angular/material/table'
+import { MatTableDataSource} from '@angular/material/table';
 import { Sale } from 'src/app/shared/models/Sale_model';
 import { SaleService } from 'src/app/shared/services/Sale_service';
 import { Router } from '@angular/router';

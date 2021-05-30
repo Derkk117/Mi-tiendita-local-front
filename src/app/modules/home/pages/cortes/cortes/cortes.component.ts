@@ -1,9 +1,9 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { ViewChild, Component, OnInit } from '@angular/core';
-import { MatPaginator} from '@angular/material/paginator';
-import { MatTableDataSource} from '@angular/material/table'
 import { Router } from '@angular/router';
+import { MatPaginator} from '@angular/material/paginator';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource} from '@angular/material/table'
 import { Cutoff } from 'src/app/shared/models/Cutoff_model';
+import { ViewChild, Component, OnInit } from '@angular/core';
 import { CutoffService } from 'src/app/shared/services/Cutoff_service';
 
 @Component({
