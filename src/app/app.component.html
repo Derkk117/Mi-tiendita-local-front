@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <div class="row body" *ngIf="!router.url.includes('/auth')">
-    <div class="sidebar" id="sidebar" (resized)="onResized($event)">
+     <div class="sidebar" id="sidebar" (resized)="onResized($event)">
         <app-side-bar [size]="width"></app-side-bar>
     </div>
     <div class="column toggle" id="content">
