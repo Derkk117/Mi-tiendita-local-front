@@ -51,6 +51,7 @@ export class ProductsIndexComponent implements OnInit {
       if (this.dataSource != null) {
         console.log(this.dataSource);
         this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator._intl.itemsPerPageLabel="Elementos por pagina";
       }
     },
       error => {

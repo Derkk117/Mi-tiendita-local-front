@@ -5,7 +5,7 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Supplier } from '../../../../../shared/models/Supplier_model';
-import { Address } from '../../../../../shared/models/Address_model';
+import { History} from '../../../../../shared/models/History_model';
 import { AddressService } from '../../../../../shared/services/Address_service';
 import { HistoryService } from '../../../../../shared/services/History_service';
 import { SupplierService } from 'src/app/shared/services/Supplier_service';
@@ -31,7 +31,7 @@ export class SuppliersIndexComponent implements OnInit {
   suppliers = [];
   address = [];
   dataSource: any;
-  history = {};
+  history: History;
   pageNumber: any;
   date = new Date();
   selection = new SelectionModel<Supplier>(true, []);
@@ -95,12 +95,13 @@ export class SuppliersIndexComponent implements OnInit {
           this.toastr.success(":)", 'Se ha eliminado correctamente');
 
           this.date = new Date();
+          console.log(this.token);
           this._historyService.create({
             "id_user": this.identity.id,
             "description": "Se ha eliminado un proveedor",
-            "date": this.date.getFullYear() + "-" + this.date.getMonth() + "-" + this.date.getDay(),
+            "date": this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+this.date.getDate(),
             "time": this.date.getHours() + ":" + this.date.getMinutes() + ":" + this.date.getSeconds()
-          }, this.token).subscribe();
+          }, this.token).subscribe(response=>{console.log(response)});
 
           this._supplierService.getSuppliers(this.token).subscribe(response => {
             this.suppliers = response;
@@ -108,6 +109,9 @@ export class SuppliersIndexComponent implements OnInit {
               element['fullAddress'] = element['street'] + " " + ((element['street2'] = "null") ? " ":element['street2'])+ " #" + element['external_number'] +" "+((element['internal_number'] = "null") ? "":element['internal_number']) +" " + element['neighborhood'];
             });
             this.dataSource = new MatTableDataSource<Supplier>(this.suppliers);
+            if(this.dataSource != null){
+              this.dataSource.paginator = this.paginator;
+            }
           },
           error => {
             console.log(error);

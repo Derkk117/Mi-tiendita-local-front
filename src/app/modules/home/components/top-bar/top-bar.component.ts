@@ -55,7 +55,7 @@ export class TopBarComponent implements OnInit {
     { 
       "id_user": this.identity.id, 
       "description": "Se cerro sesion",
-      "date": this.date.getFullYear() +"-"+ this.date.getMonth() +"-"+this.date.getDay(),
+      "date": this.date.getFullYear() +"-"+ (this.date.getMonth()+1) +"-"+this.date.getDate(),
       "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
     };
     this._historyService.create(this.history,this.token).subscribe();

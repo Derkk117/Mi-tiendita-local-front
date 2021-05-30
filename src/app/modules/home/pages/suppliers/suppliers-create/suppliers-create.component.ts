@@ -83,12 +83,13 @@ export class SuppliersCreateComponent implements OnInit {
                 { 
                   "id_user": this.identity.id, 
                   "description": "Registro de proveedor",
-                  "date": this.date.getFullYear() +"-"+ this.date.getMonth() +"-"+this.date.getDay(),
+                  "date": this.date.getFullYear() +"-"+ (this.date.getMonth()+1) +"-"+this.date.getDate(),
                   "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
                 };
                 this._historyService.create(this.history,this.token).subscribe(
                   response=>{
                     this.toastr.success("Se ha creado exitosamente el proveedor");
+                    this.router.navigate(['/suppliers/index']);
                   }
                 )
 
