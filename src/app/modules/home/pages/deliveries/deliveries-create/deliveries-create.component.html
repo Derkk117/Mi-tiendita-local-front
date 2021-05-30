@@ -3,6 +3,14 @@
     <div class="form column" *ngIf="delivery">
         <h1 class="title">Nueva entrega</h1>
         <mat-form-field appearance="outline">
+            <mat-label>Selecciona el folio de la venta</mat-label>
+            <mat-select [(value)]="delivery.sale_id" [(ngModel)]="delivery.sale_id" name="ngModel" required>
+                <span *ngFor="let sale of sales">
+                    <mat-option value="sale.sku">{{sale.fullName}}</mat-option>
+                </span>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>Lugar de entrega</mat-label>
             <input matInput [(ngModel)]="delivery.place" name="ngModel" required>
         </mat-form-field>

@@ -21,7 +21,10 @@ import { CortesEditComponent } from './cortes-edit/cortes-edit.component';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [CortesComponent, CortesCreateComponent, CortesEditComponent],
+  declarations: [
+    CortesComponent, 
+    CortesCreateComponent, 
+    CortesEditComponent],
   imports: [
     MatDatepickerModule,
     MatProgressSpinnerModule,
