@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pagina',
-  templateUrl: './pagina.component.html',
-  styleUrls: ['./pagina.component.scss']
+  selector: 'app-landingPage',
+  templateUrl: './landingPage.component.html',
+  styleUrls: ['./landingPage.component.scss']
 })
-export class PaginaComponent implements OnInit {
+export class LandingPageComponent implements OnInit {
 
   public token = "";
 

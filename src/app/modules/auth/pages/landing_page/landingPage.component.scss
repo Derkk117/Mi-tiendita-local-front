@@ -1,0 +1,14 @@
+@import "../../../../../styles/colors.scss";
+
+.w3-display-container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    
+    img{
+        height: 100vh;
+    }
+}

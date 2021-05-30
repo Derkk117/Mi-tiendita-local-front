@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { LandingPageComponent } from './pages/landing_page/landingPage.component';
 
 import { LoginComponent } from './pages/login/login.component';
-import { PaginaComponent } from './pages/pagina/pagina.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
@@ -25,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'welcome',        
-        component: PaginaComponent
+        component: LandingPageComponent
       },
     ]
   }
