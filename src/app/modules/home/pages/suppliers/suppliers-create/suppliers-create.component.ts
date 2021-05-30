@@ -10,7 +10,6 @@ import { UserService } from 'src/app/shared/services/User_service';
 import { HistoryService } from 'src/app/shared/services/History_service';
 import { AddressService } from 'src/app/shared/services/Address_service';
 import { SupplierService } from 'src/app/shared/services/Supplier_service';
-import { CreateAddressDialogComponent} from 'src/app/shared/create-address-dialog/create-address-dialog.component';
 
 
 @Component({
