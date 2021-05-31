@@ -8,6 +8,7 @@
     height: 40px;
     width: 100%;
     background-color: black;
+    z-index: 10;
 }
 
 .row{
@@ -49,16 +50,12 @@
     }
 }
 
-.content{
+.back{
     margin-top: 40px;
     background-color: $quartenary;
-}
-
-.back{
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin: auto;
     align-items: center;
     justify-content: center;
     height: 681px;
