@@ -35,14 +35,7 @@
         <div>
             <h1 class="title">Lista de Productos</h1>
 
-            <!-- <mat-form-field appearance="outline">
-                <mat-label>Selecciona un producto</mat-label>
-                <mat-select [(value)]="sale.products" [(ngModel)]="sale.products" name="ngModel" >
-                    <span *ngFor="let dato of products">
-                        <mat-option [value]="dato.name">{{dato.fullName}}</mat-option>
-                    </span>
-                </mat-select>
-            </mat-form-field> -->
+            
             <select [(ngModel)]="product" (change)="capturar()" class="example-right-align">
                 <option value="0">Escoge un producto</option>
                 <option *ngFor="let dato of products">
@@ -57,20 +50,6 @@
                 
                 
             <button class="btn-primary" id="botonAgregar" (click)="buscaElemento()" mat-button> Agregar </button>
-            <!-- <table>
-               <tr>
-                <th>Cantidad</th>
-                <th>Productos</th>
-                <th>Precio</th>
-                <th>Subtotal</th>
-               </tr>
-               <tr>
-                <td>{{cantidad}}</td>
-                <td>{{nombre}}</td>
-                <td>{{precio}}</td>
-                <td>{{subtotal}}</td>
-               </tr>
-            </table>  -->
 
             <table *ngIf="dataProduct" mat-table [dataSource]="dataProduct" class= "estiloTabla">
                 <ng-container matColumnDef="cantidad">
