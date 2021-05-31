@@ -1,8 +1,9 @@
 <div class="container">
-    <div class="form column" >
+    <div class="form column" *ngIf="cutoff">
+        <h1 class="title">Nuevo Corte</h1>
         <mat-form-field appearance="outline">
             <mat-label>Elige Fecha Inicio de Corte</mat-label>
-            <input matInput [matDatepicker]="iniciopicker">
+            <input matInput [(ngModel)]="cutoff.initial_date" [matDatepicker]="iniciopicker">
             <mat-datepicker-toggle matSuffix [for]="iniciopicker"></mat-datepicker-toggle>
             <mat-datepicker #iniciopicker></mat-datepicker>
         </mat-form-field>
@@ -19,7 +20,7 @@
 
         <div class="row actions">
             <button class="btn-secondary" mat-button (click)="goBack()"> Cancelar </button>
-            <button class="btn-primary" mat-button> Guardar </button>
+            <button class="btn-primary" mat-button (click)="save()"> Guardar </button>
         </div>
 
     </div>

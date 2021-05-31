@@ -10,7 +10,6 @@ import { UserService } from 'src/app/shared/services/User_service';
 import { HistoryService } from 'src/app/shared/services/History_service';
 import { AddressService } from 'src/app/shared/services/Address_service';
 import { SupplierService } from 'src/app/shared/services/Supplier_service';
-import { CreateAddressDialogComponent} from 'src/app/shared/create-address-dialog/create-address-dialog.component';
 
 
 @Component({
@@ -67,15 +66,11 @@ export class SuppliersCreateComponent implements OnInit {
   }*/
 
   create(){
-    //console.log(this.supplier);
-    //console.log(this.supplierAddress);
-    //this._addressService.
     this._addressService.create(this.token,this.supplierAddress).subscribe(
       response => {
         this._addressService.getLast(this.token).subscribe(
           response => {
             this.supplier['address'] = response.id;
-            console.log(this.supplier);
             this._supplierService.create(this.supplier,this.token).subscribe(
               response=>{
                 this.date = new Date();
@@ -108,20 +103,5 @@ export class SuppliersCreateComponent implements OnInit {
   }
 
   openDialog():void {
-
-
-
-    /*const dialogRef = this.dialog.open(CreateAddressDialogComponent,{
-      disableClose: true,
-      width: '500px',
-      height: '500px',
-      data: { title: "Ingresa la direccion del proveedor :)", body: "Para terminar de registrar al nuevo proveedor ingresa su direccion." }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result != undefined && result == 'Continuar') {
-        
-      }
-    });*/
   }
 }

@@ -12,12 +12,12 @@ export class DeliveryService {
         this.url = GLOBAL.url;
     }
     //Funcion para obtener los productos
-    getDeliveries(token, sale_id) :Observable<any>{
+    getDeliveries(token, user_id) :Observable<any>{
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
         });
-        return this._http.get(this.url + 'deliveries/'+ sale_id,
+        return this._http.get(this.url + 'deliveries/'+ user_id,
         { headers: headers }).pipe(map(res => res));
     }
 
@@ -55,7 +55,7 @@ export class DeliveryService {
         return this._http.put(this.url + 'delivery/' + sku + '/update', params, { headers: headers }).pipe(map(res => res));
     }
 
-    delete(token, slug): Observable<any>{
+    delete(token, sku): Observable<any>{
 
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export class DeliveryService {
         
         let options = {headers: headers}
 
-        return this._http.delete(this.url + 'deliveries/' + slug + '/destroy', options).pipe(map(res => res));
+        return this._http.delete(this.url + 'deliveries/' + sku + '/destroy', options).pipe(map(res => res));
     }
 
 }

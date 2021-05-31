@@ -19,9 +19,6 @@ export class DeliveriesEditComponent implements OnInit {
   deliverySku = null;
   delivery: Delivery;
   token;
-
-
-
   
   constructor(
     private activatedRoute: ActivatedRoute, 

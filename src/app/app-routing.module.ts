@@ -39,7 +39,8 @@ const routes: Routes = [
 			{
 				path: 'cortes',
 				loadChildren: () => import('./modules/home/pages/cortes/cortes.module').then(m => m.HomeModule)
-			},			{
+			},			
+			{
 				path: 'history',
 				loadChildren: () => import('./modules/home/pages/histories/histories.module').then(m => m.HomeModule)
 			},

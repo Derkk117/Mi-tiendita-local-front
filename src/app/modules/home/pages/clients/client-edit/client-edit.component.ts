@@ -39,7 +39,6 @@ export class ClientEditComponent implements OnInit {
     if(this.clientSku && this.token != null){
       this._clientService.getClient(this.token, this.clientSku).subscribe(response=>{
         this.client = response;
-        console.log(this.client);
       },
       error =>{
         console.log(error)

@@ -32,6 +32,12 @@ export class DeliveriesIndexComponent implements OnInit {
   selection = new SelectionModel<Delivery>(true, []);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  displayedColumns: string[] = [
+    'place',
+    'status',
+    'Acciones'
+  ];
+
   constructor(
     private _deliveryService: DeliveryService,
     private router: Router,
@@ -45,19 +51,16 @@ export class DeliveriesIndexComponent implements OnInit {
     this._deliveryService.getDeliveries(this.token, this.identity.id).subscribe(response => {
       this.deliveries = response;
       this.dataSource = new MatTableDataSource<Delivery>(this.deliveries);
+      if (this.dataSource != null) {
+        console.log(this.dataSource);
+        this.dataSource.paginator = this.paginator;
+      }
     },
       error => {
         console.log(error);
       });
   }
 
-  displayedColumns: string[] = ['place','status','Acciones'];
-
- 
-  //Metodo de las paginas de las tabla que tiene
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
 
   //Metodo para buscar dentro de la tabla 
   Buscar(event: Event) {
@@ -66,12 +69,12 @@ export class DeliveriesIndexComponent implements OnInit {
   }
 
   add(){    
-    this.router.navigate(['deliveries/create/']);
+    this.router.navigate(['/deliveries/create']);
   }
 
   edit(element)
   {
-    this.router.navigate(['deliveries/edit/'+ element.sku]);
+    this.router.navigate(['/deliveries/edit'+ element.sku]);
   }
 
   goToPage() {
@@ -86,7 +89,7 @@ export class DeliveriesIndexComponent implements OnInit {
   openDialog(element) {
     const dialogRef = this.dialog.open(DialogOverviewDelete, {
       width: '500px',
-      data: { title: "Eliminar entrega " + element.email, body: "¿Deseas continuar con la eliminación de la entrega?" }
+      data: { title: "Eliminar entrega " + element.sale_id, body: "¿Deseas continuar con la eliminación de la entrega?" }
     });
 
     dialogRef.afterClosed().subscribe(result => {

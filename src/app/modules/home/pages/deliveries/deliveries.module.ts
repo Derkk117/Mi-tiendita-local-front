@@ -17,13 +17,17 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
  
 @NgModule({
   declarations: [
     DeliveriesIndexComponent,
-    DeliveriesCreateComponent,
     DeliveriesEditComponent,   
+    DeliveriesCreateComponent
 ],
   imports: [
     MatProgressSpinnerModule,
@@ -42,7 +46,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FormsModule,
     MatListModule,
     MatSelectModule,
-    ReactiveFormsModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right'
+    })
   ]
 })
 export class HomeModule { }
