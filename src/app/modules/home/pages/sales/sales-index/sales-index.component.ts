@@ -46,7 +46,7 @@ export class SalesIndexComponent implements OnInit {
       });
   }
 
-  displayedColumns: string[] = ['Products','payment_method','Card_Number','Card_cvc','expiration','Acciones'];
+  displayedColumns: string[] = ['client_id','payment_method','Card_Number','Card_cvc','expiration','Acciones'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
