@@ -47,4 +47,16 @@ export class AddressService{
 
         return this._http.get(this.url+ 'addressLast',{ headers: headers }).pipe(map(res => res));
     }
+
+    update(token, id, address){
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        let json = JSON.stringify(address);
+        let params = json;
+
+        return this._http.put(this.url + 'address/' + id + '/update', params, { headers: headers }).pipe(map(res => res));
+    }
 }

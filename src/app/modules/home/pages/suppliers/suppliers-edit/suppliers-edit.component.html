@@ -1,42 +1,61 @@
-
 <div class="container">
-    <div class="form column" *ngIf="supplier">
-        <h1 class="title">Editar cliente</h1>
+    <div class="form column" *ngIf="supplier && supplierAddress">
+        <h1 class="title">Nuevo proveedor</h1>
+        <mat-lab>Datos del proveedor</mat-lab>
         <mat-form-field appearance="outline">
             <mat-label>Nombre (s) *</mat-label>
-            <input matInput [ngModel]="supplier.name">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Apellido (s) *</mat-label>
-            <input matInput [ngModel]="supplier.last_name">
+            <input matInput [(ngModel)]="supplier.name" name="ngModel" required>
         </mat-form-field>
         
+        <mat-form-field appearance="outline">
+            <mat-label>Apellidos (s) *</mat-label>
+            <input matInput [(ngModel)]="supplier.last_name" name="ngModel" required>
+        </mat-form-field>
+
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput disabled [ngModel]="supplier.email">
+            <input matInput disabled [(ngModel)]="supplier.email" name="ngModel" required>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline"> 
             <mat-label>Teléfono *</mat-label>
-            <input matInput [ngModel]="supplier.phone">
+            <input matInput [(ngModel)]="supplier.phone" name="ngModel" required>
         </mat-form-field>
         
-        <mat-form-field appearance="outline">
-            <mat-label>Direccion *</mat-label>
-            <input matInput [ngModel]="supplier.address">
+        <mat-lab>Direccion</mat-lab>
+        <mat-form-field appearance="outline"> 
+            <mat-label>Calle </mat-label>
+            <input matInput [(ngModel)]="supplierAddress.street" name="ngModel" required>
         </mat-form-field>
 
-        
-            <!-- <mat-form-field appearance="outline">
-            <mat-label>Textarea</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field> -->
+        <mat-form-field appearance="outline"> 
+            <mat-label>Numero Exterior </mat-label>
+            <input matInput [(ngModel)]="supplierAddress.external_number" name="ngModel" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline"> 
+            <mat-label>Vecindario </mat-label>
+            <input matInput [(ngModel)]="supplierAddress.neighborhood" name="ngModel" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline"> 
+            <mat-label>Pais </mat-label>
+            <input matInput [(ngModel)]="supplierAddress.country" name="ngModel" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline"> 
+            <mat-label>Estado </mat-label>
+            <input matInput [(ngModel)]="supplierAddress.state" name="ngModel" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline"> 
+            <mat-label>Codigo Postal </mat-label>
+            <input matInput [(ngModel)]="supplierAddress.zip_code" name="ngModel" required>
+        </mat-form-field>
 
         <div class="row actions">
-            <button class="btn-secondary" mat-button> Cancelar </button>
-            <button class="btn-primary" mat-button> Guardar </button>
+            <button class="btn-secondary" mat-button (click)="goToBack()"> Cancelar </button>
+            <button class="btn-primary" mat-button (click)="save()"> Guardar </button>
         </div>
-
     </div>
 </div>
