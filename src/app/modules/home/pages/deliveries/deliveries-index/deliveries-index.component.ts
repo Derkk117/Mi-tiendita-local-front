@@ -33,6 +33,7 @@ export class DeliveriesIndexComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = [
+    'Sales',
     'place',
     'status',
     'Acciones'
@@ -42,8 +43,8 @@ export class DeliveriesIndexComponent implements OnInit {
     private _deliveryService: DeliveryService,
     private router: Router,
     public dialog: MatDialog,
-    private toastr: ToastrService
-    ) { }
+    private toastr: ToastrService,
+  ) { }
 
   ngOnInit(){
     this.identity = JSON.parse(localStorage.getItem('identity'));
