@@ -1,6 +1,7 @@
 <div class="container">
     <div class="form column" *ngIf="supplier && supplierAddress">
         <h1 class="title">Nuevo proveedor</h1>
+        <mat-lab>Datos del proveedor</mat-lab>
         <mat-form-field appearance="outline">
             <mat-label>Nombre (s) *</mat-label>
             <input matInput [(ngModel)]="supplier.name" name="ngModel" required>
@@ -21,6 +22,7 @@
             <input matInput [(ngModel)]="supplier.phone" name="ngModel" required>
         </mat-form-field>
         
+        <mat-lab>A continuacion ingresa los datos de su direccion</mat-lab>
         <mat-form-field appearance="outline"> 
             <mat-label>Calle </mat-label>
             <input matInput [(ngModel)]="supplierAddress.street" name="ngModel" required>

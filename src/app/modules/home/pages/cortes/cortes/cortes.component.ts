@@ -1,5 +1,4 @@
 import { ToastrService } from 'ngx-toastr';
-import { SelectionModel } from '@angular/cdk/collections';
 import { ViewChild, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatPaginator} from '@angular/material/paginator';
@@ -8,6 +7,7 @@ import { MatDialog} from '@angular/material/dialog';
 import { Cutoff } from 'src/app/shared/models/Cutoff_model';
 import { CutoffService } from 'src/app/shared/services/Cutoff_service';
 import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-cortes',
