@@ -31,9 +31,9 @@
   </div>
 </div>
 <table *ngIf="dataSource" mat-table [dataSource]="dataSource" class= "estiloTabla">
-  <ng-container matColumnDef="Products">
-    <th mat-header-cell *matHeaderCellDef> Productos </th>
-    <td mat-cell *matCellDef="let element"> {{element.products}} </td>
+  <ng-container matColumnDef="client_id">
+    <th mat-header-cell *matHeaderCellDef> Cliente </th>
+    <td mat-cell *matCellDef="let element"> {{element.client_id}} </td>
   </ng-container>
 
     <ng-container matColumnDef="payment_method">

@@ -38,7 +38,7 @@ export class SupplierService{
         );
     }
 
-    getSupplier(token, slug){
+    getSupplier(token, slug): Observable<any>{
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
@@ -57,5 +57,17 @@ export class SupplierService{
         let options = {headers: headers}
 
         return this._http.delete(this.url + 'supplier/' + slug + '/destroy', options).pipe(map(res => res));
+    }
+
+    update(token, slug, supplier){
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
+
+        let json = JSON.stringify(supplier);
+        let params = json;
+
+        return this._http.put(this.url + 'supplier/' + slug + '/update', params, { headers: headers }).pipe(map(res => res));
     }
 }

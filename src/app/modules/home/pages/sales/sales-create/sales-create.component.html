@@ -2,10 +2,10 @@
     <div class="form column">
         <h1 class="title">Agregar Venta</h1>
         <mat-form-field appearance="outline">
-            <mat-label>Selecciona un cliente *</mat-label>
+            <mat-label>Selecciona un cliente</mat-label>
             <mat-select [(value)]="sale.client_id" [(ngModel)]="sale.client_id" name="ngModel" required>
-                <span *ngFor="let client of clients">
-                    <mat-option value="client.sku">{{client.fullName}}</mat-option>
+                <span *ngFor="let dato of clients">
+                    <mat-option [value]="dato.sku">{{dato.fullName}}</mat-option>
                 </span>
             </mat-select>
         </mat-form-field>
@@ -30,7 +30,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Expiración</mat-label>
-            <input matInput type="date"class="example-right-align" name="expiration_date" [(ngModel)]="sale.expiration_date">
+            <input matInput type="text" class="example-right-align" name="expiration_date" [(ngModel)]="sale.expiration_date">
         </mat-form-field>
         <div>
             <h1 class="title">Lista de Productos</h1>
@@ -50,20 +50,6 @@
                 
                 
             <button class="btn-primary" id="botonAgregar" (click)="buscaElemento()" mat-button> Agregar </button>
-            <!-- <table>
-               <tr>
-                <th>Cantidad</th>
-                <th>Productos</th>
-                <th>Precio</th>
-                <th>Subtotal</th>
-               </tr>
-               <tr>
-                <td>{{cantidad}}</td>
-                <td>{{nombre}}</td>
-                <td>{{precio}}</td>
-                <td>{{subtotal}}</td>
-               </tr>
-            </table>  -->
 
             <table *ngIf="dataProduct" mat-table [dataSource]="dataProduct" class= "estiloTabla">
                 <ng-container matColumnDef="cantidad">
@@ -98,7 +84,7 @@
 
         <div class="row actions">
             <button class="btn-secondary" (click)="addregreso()" mat-button> Cancelar </button>
-            <button class="btn-primary" (click)="addregreso()" mat-button> Guardar </button>
+            <button class="btn-primary" (click)="save()" mat-button> Guardar </button>
         </div>
     </div>
 </div>

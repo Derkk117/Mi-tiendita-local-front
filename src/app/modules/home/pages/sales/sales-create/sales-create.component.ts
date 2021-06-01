@@ -14,6 +14,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { SaleService } from 'src/app/shared/services/Sale_service';
 import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 import { ToastrService } from 'ngx-toastr';
+import { HistoryService } from 'src/app/shared/services/History_service';
+
 
 @Component({
   selector: 'app-sales-create',
@@ -21,10 +23,15 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sales-create.component.scss'],
   providers: [
     ClientService,
-    ProductService
+    ProductService,
+    ToastrService,
+    SaleService,
+    HistoryService
   ]
 })
 export class SalesCreateComponent implements OnInit {
+  history = {};
+  date = new Date();
   clients: any;
   products: any;
   token;
@@ -37,16 +44,19 @@ export class SalesCreateComponent implements OnInit {
   productos=[];
   dataProduct:any;
   total: number=0;
+  listProducts: string='';
 
   constructor(
     private router: Router,
     private _clientService: ClientService,
-    private _productService: ProductService
-    
+    private _productService: ProductService,
+    private _saleService: SaleService,
+    private toastr: ToastrService,
+    private _historyService: HistoryService,
   ) { }
 
   ngOnInit(): void {
-    this.sale = new Sale("", null, "", "", "", "", new Date());
+    this.sale = new Sale("", null, "", "", "", "", "");
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
     this._clientService.getClients(this.token, this.identity.id).subscribe(response => {
@@ -105,11 +115,38 @@ export class SalesCreateComponent implements OnInit {
 		}else {
 			alert("No tenemos la cantidad suficiente, contamos con "+this.pro.stock+ " piezas");
 		}
-    
-    
-   
   }
 
+  save(){
+    console.log(this.sale);
+    console.log(this.dataProduct);
+    this.productos.forEach(element => {
+      this.listProducts+=element.name+"\n";
+    });
+    this.sale.products=this.listProducts;
+    console.log(this.sale);
+    this._saleService.store(this.token, this.sale, this.identity.id).subscribe(
+      response =>{
+
+        this.date = new Date();
+        
+        this.history = 
+        { 
+          "id_user": this.identity.id, 
+          "description": "Registro de sale",
+          "date": this.date.getFullYear() +"-"+ (this.date.getMonth()+1) +"-"+this.date.getDate(),
+          "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
+        };
+        this._historyService.create(this.history,this.token).subscribe();
+
+        this.toastr.success(":)", 'Se han creado correctamente');
+        this.router.navigate(['/sales/index']);
+      },
+      error =>{
+        this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
+      }
+    )
+  }
   addregreso() {
     this.router.navigate(['sales/']);
   }

@@ -55,6 +55,17 @@ export class SaleService {
         return this._http.delete(this.url + 'sales/' + sku + '/destroy', options).pipe(map(res => res));
     }
 
+    store(token, sale, user_id){
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        });
 
+        sale.user_id = user_id; //add param to client model.
+        
+        let json = JSON.stringify(sale);
+        let params = json;
+        return this._http.post(this.url + 'sales', params, { headers: headers }).pipe(map(res => res));
+    }
 
 }

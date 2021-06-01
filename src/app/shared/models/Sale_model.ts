@@ -7,6 +7,6 @@ export class Sale {
         public payment_method: string,
         public card_number: string,
         public card_cvc: string,
-        public expiration_date: Date
+        public expiration_date: string
     ){}
 }
