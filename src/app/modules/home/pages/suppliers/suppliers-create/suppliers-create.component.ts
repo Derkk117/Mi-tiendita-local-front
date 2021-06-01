@@ -48,7 +48,7 @@ export class SuppliersCreateComponent implements OnInit {
   ngOnInit(): void {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this.supplier = new Supplier(null,"","","","",null,"");
+    this.supplier = new Supplier(null,"","","","",null,"", this.identity.id);
     this.supplierAddress = new Address(null, "", "", "", "", "", "", "", "");
   }
 

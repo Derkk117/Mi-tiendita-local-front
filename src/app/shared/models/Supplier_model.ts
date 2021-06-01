@@ -6,6 +6,7 @@ export class Supplier{
         public phone: string,
         public email: string,
         public address: number,
-        public slug: string
+        public slug: string,
+        public user_id: number
     ){}
 }

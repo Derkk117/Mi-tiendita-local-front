@@ -26,16 +26,13 @@ export class SupplierService{
         return this._http.post(this.url + 'suppliers', params , { headers: headers }).pipe(map(res => res));
     }
     
-    getSuppliers(token) :Observable<any>{
+    getSuppliers(token,user_id):Observable<any>{
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
         });
 
-        return this._http.get(
-            this.url + "suppliers" , { headers: headers }
-            ).pipe(map(res => res)
-        );
+        return this._http.get(this.url + "suppliers/" + user_id, { headers: headers }).pipe(map(res => res));
     }
 
     getSupplier(token, slug): Observable<any>{
