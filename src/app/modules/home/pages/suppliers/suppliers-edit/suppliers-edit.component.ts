@@ -45,11 +45,10 @@ export class SuppliersEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.supplier = new Supplier(null,"","","","",null,"");
-    this.supplierAddress = new Address(null, "", "", "", "", "", "", "", "");
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
+    this.supplier = new Supplier(null,"","","","",null,"", this.identity.id);
+    this.supplierAddress = new Address(null, "", "", "", "", "", "", "", "");
     if(this.supplierSlug && this.token != null){
       this._supplierService.getSupplier(this.token, this.supplierSlug).subscribe(response=>{
         this.supplier = response;
