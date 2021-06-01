@@ -52,7 +52,12 @@
   </div>
 </div>
   
-  <table *ngIf="dataSource" mat-table [dataSource]="dataSource" class= "estiloTabla">      
+  <table *ngIf="dataSource" mat-table [dataSource]="dataSource" class= "estiloTabla">
+    <ng-container matColumnDef="Sales">
+      <th mat-header-cell *matHeaderCellDef> Folio de la venta </th>
+      <td mat-cell *matCellDef="let element"> {{element.sale_id}} </td>
+    </ng-container>
+  
     <ng-container matColumnDef="place">
       <th mat-header-cell *matHeaderCellDef> Lugar de entrega </th>
       <td mat-cell *matCellDef="let element"> {{element.place}} </td>

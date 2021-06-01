@@ -1,20 +1,11 @@
-<<<<<<< HEAD
 import { ToastrService } from 'ngx-toastr';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ViewChild, Component, OnInit } from '@angular/core';
-=======
 import { Router } from '@angular/router';
->>>>>>> 0d465eb01d5735410e9ff8006ff2231df84a2922
 import { MatPaginator} from '@angular/material/paginator';
-import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource} from '@angular/material/table'
-<<<<<<< HEAD
-import { Router } from '@angular/router';
 import { MatDialog} from '@angular/material/dialog';
-=======
->>>>>>> 0d465eb01d5735410e9ff8006ff2231df84a2922
 import { Cutoff } from 'src/app/shared/models/Cutoff_model';
-import { ViewChild, Component, OnInit } from '@angular/core';
 import { CutoffService } from 'src/app/shared/services/Cutoff_service';
 import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog.component';
 
