@@ -9,30 +9,18 @@
             <mat-label>Fecha Final</mat-label>
             <input matInput type="date" [(ngModel)]="cutoff.final_date" name="ngModel" readonly>
         </mat-form-field>
-        <!-- <mat-form-field appearance="outline">
-            <mat-label>Fecha Inicio de Corte</mat-label>
-            <input matInput [(ngModel)]="cutoff.initial_date" name="ngModel" [matDatepicker]="iniciopicker">
-            <mat-datepicker-toggle matSuffix [for]="iniciopicker"></mat-datepicker-toggle>
-            <mat-datepicker #iniciopicker></mat-datepicker>
-        </mat-form-field>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Fecha Final de Corte</mat-label>
-            <input matInput [(ngModel)]="cutoff.final_date" name="ngModel" [matDatepicker]="finalpicker">
-            <mat-datepicker-toggle matSuffix [for]="finalpicker"></mat-datepicker-toggle>
-            <mat-datepicker #finalpicker></mat-datepicker>
-        </mat-form-field> -->
         
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
             <mat-label>Total</mat-label>
             <input matInput [(ngModel)]="cutoff.total" name="ngModel" readonly>
-        </mat-form-field>
+        </mat-form-field> -->
 
         
 
         <div class="row actions">
             <button class="btn-secondary" mat-button (click)="goBack()"> Cancelar </button>
-            <button class="btn-primary" mat-button (click)="save()"> Guardar </button>
+            <!-- <button class="btn-primary" mat-button (click)="save()"> Guardar </button> -->
         </div>
 
     </div>

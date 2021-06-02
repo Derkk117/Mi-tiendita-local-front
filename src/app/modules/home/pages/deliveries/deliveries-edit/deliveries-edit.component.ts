@@ -18,6 +18,7 @@ export class DeliveriesEditComponent implements OnInit {
 
   deliverySku = null;
   delivery: Delivery;
+  deliverySaleId = null;
   token;
   
   constructor(
@@ -38,7 +39,7 @@ export class DeliveriesEditComponent implements OnInit {
       this._deliveryService.getDelivery(this.token, this.deliverySku).subscribe(response=>{
         this.delivery = response;
         console.log(this.delivery);
-        console.log(this.deliverySku);
+        
       },
       
       error =>{
@@ -48,6 +49,7 @@ export class DeliveriesEditComponent implements OnInit {
   }
 
   save(){
+    console.log(this.deliverySaleId);
     this._deliveryService.update(this.token, this.deliverySku, this.delivery).subscribe(
       response =>{
         this.toastr.success(":)", 'Se han guardado los cambios correctamente');
