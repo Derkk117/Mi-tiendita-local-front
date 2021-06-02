@@ -70,4 +70,45 @@
 .aos-effect{
     overflow: hidden;
 }
- 
+
+#footer {
+    background:black;
+    color:white;
+    text-align:center;
+}
+
+#footer li{
+    float: left;
+    //text-align: center;
+    background-color: black;
+    padding: 10px;
+    min-width: 100px;
+}
+
+ul{ list-style: none}
+#correos div{
+    align-items: center;
+}
+
+#contacto{
+    text-align: center;
+}
+
+.ima2{
+    float:left;
+    width:100px;
+    margin:0px;
+}
+
+.contenido{
+    background-size: cover;
+    display: flex;
+    font-weight: bold;
+    padding-bottom: 100px;
+    margin: 15px;
+}
+
+.content-title{
+    margin: 15px;
+}
+

@@ -55,7 +55,7 @@ export class ClientEditComponent implements OnInit {
         this.history = 
         { 
           "id_user": this.identity.id, 
-          "description": "Actualizacion de datos del cliente",
+          "description": "Actualización de datos del cliente",
           "date": this.date.getFullYear() +"-"+ this.date.getMonth() +"-"+this.date.getDay(),
           "time": this.date.getHours() +":"+this.date.getMinutes()+":"+this.date.getSeconds()
         };
