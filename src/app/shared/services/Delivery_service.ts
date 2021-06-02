@@ -53,8 +53,6 @@ export class DeliveryService {
 
         let json = JSON.stringify(delivery);
         let params = json;
-
-        
         
         return this._http.put(this.url + 'deliveries/' + id + '/update', params, { headers: headers }).pipe(map(res => res));
     }
