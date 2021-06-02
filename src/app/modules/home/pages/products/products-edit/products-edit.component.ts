@@ -3,13 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 //Se importa el modelo y el servidor de producto
 import { Product } from 'src/app/shared/models/Product_model';
+import { HistoryService } from 'src/app/shared/services/History_service';
 import { ProductService } from 'src/app/shared/services/Product_service';
 
 @Component({
   selector: 'app-products-edit',
   templateUrl: './products-edit.component.html',
   styleUrls: ['./products-edit.component.scss'],
-  providers: [ProductService, ToastrService],
+  providers: [ProductService, ToastrService, HistoryService],
 })
 
 export class ProductsEditComponent implements OnInit 
@@ -17,10 +18,14 @@ export class ProductsEditComponent implements OnInit
   productSku = null;
   product: Product;
   token;
+  history = {}
+  date = new Date();
+  identity;
 
   constructor(private activatedRoute: ActivatedRoute, private _productService: ProductService,
     private router: Router,
-    private toastr: ToastrService) 
+    private toastr: ToastrService, 
+    private _historyService: HistoryService) 
   {
     this.productSku = this.activatedRoute.snapshot.paramMap.get('sku');
   }  
@@ -75,10 +80,16 @@ export class ProductsEditComponent implements OnInit
     }
 	}
 
-  //Para guardar cambios de un nuevo producto
+  //Para guardar cambios del producto para actualizar
   guardarCambios()
   {
-     this._productService.update(this.token, this.productSku, this.product).subscribe(Response => {});
+     this._productService.update(this.token, this.productSku, this.product).subscribe(
+       Response => {
+        this.toastr.success(":)", 'Se han guardado los cambios correctamente');
+        this.router.navigate(['/products/index']);
+       },       
+       error =>{
+        this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
+      });
   }
-
 }
