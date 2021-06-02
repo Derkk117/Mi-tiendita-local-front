@@ -3,10 +3,7 @@
 <div class="container">
     <div class="form column" *ngIf="delivery">
         <h1 class="title">Editar Entrega</h1>
-        <mat-form-field appearance="outline">
-            <mat-label>Folio de la venta</mat-label>
-            <input matInput [(ngModel)]="delivery.sale_id" name="ngModel">
-        </mat-form-field>
+        
         <mat-form-field appearance="outline">
             <mat-label>Lugar de entrega</mat-label>
             <input  matInput [(ngModel)]="delivery.place" name="ngModel">

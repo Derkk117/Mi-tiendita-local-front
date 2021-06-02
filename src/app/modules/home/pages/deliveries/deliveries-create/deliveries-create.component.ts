@@ -99,13 +99,13 @@ export class DeliveriesCreateComponent implements OnInit {
   ngOnInit(): void {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this.delivery = new Delivery("","", "","");
+    this.delivery = new Delivery(null,"","","");
     this._saleService.getSales(this.token, this.identity.id).subscribe(response => {
       this.sales = response;
       
       this.sales.forEach(element => {
         element['fullName'] =  "Folio: " + element['sku'];
-        this.saleSku = element.sku;
+        
       });
       
     },
@@ -117,8 +117,6 @@ export class DeliveriesCreateComponent implements OnInit {
   }
 
   save(){
-
-    this.delivery.sale_id = this.saleSku;
     console.log(this.delivery);
     this._deliveryService.create(this.delivery, this.token).subscribe(
       
