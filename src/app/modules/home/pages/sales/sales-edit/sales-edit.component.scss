@@ -31,15 +31,23 @@ table{
     background-color: $dropdown-content;
 }
 
-#client{
-    text-align: center;
-}
 
 #total{
     text-align: right;
     margin-right:22%;
 }
 
-h2{
+#client-folio{
+    display: inline;
+    float:left;
+    width: 100%;
     text-align: center;
+}
+#client{
+    width: 50%;
+    float: left;
+}
+#folio{
+    width: 50%;
+    float: left;
 }

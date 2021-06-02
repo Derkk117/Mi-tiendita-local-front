@@ -1,9 +1,9 @@
 <div class="container">
     <div class="info">
         <h1 id="detail">Detalle de Venta</h1>
-        <div>
-            <h2 id="client">Cliente: {{cli.name + " "+ cli.last_name}}</h2>
-            <h2>Venta: {{saleSku}}</h2>
+        <div id="client-folio">
+            <div id="client"><h2>Cliente: {{cli.name + " "+ cli.last_name}}</h2></div>
+           <div id="folio"><h2>Folio: {{saleSku}}</h2></div> 
         </div>
 
         <table  mat-table [dataSource]="products" class= "estiloTabla">
