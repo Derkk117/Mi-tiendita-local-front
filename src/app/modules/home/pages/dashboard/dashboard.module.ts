@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateStoreDialogComponent } from 'src/app/shared/create-store-dialog/create-store-dialog.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ChartsModule } from 'ng2-charts';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -24,13 +25,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     DashboardRoutingModule,
     MatIconModule,
-    ToastrModule,
     MatTabsModule,
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
     MaterialFileInputModule,
+    ChartsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     })

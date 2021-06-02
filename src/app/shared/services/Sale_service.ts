@@ -30,7 +30,7 @@ export class SaleService {
         return this._http.get(this.url + 'sales/' + sku + '/edit', { headers: headers }).pipe(map(res => res));
     }
 
-    update(token, sku, sale) {
+    update(token, sku, sale): Observable<any> {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
@@ -55,7 +55,7 @@ export class SaleService {
         return this._http.delete(this.url + 'sales/' + sku + '/destroy', options).pipe(map(res => res));
     }
 
-    store(token, sale, user_id){
+    store(token, sale, user_id) : Observable<any>{
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
@@ -67,5 +67,4 @@ export class SaleService {
         let params = json;
         return this._http.post(this.url + 'sales', params, { headers: headers }).pipe(map(res => res));
     }
-
 }

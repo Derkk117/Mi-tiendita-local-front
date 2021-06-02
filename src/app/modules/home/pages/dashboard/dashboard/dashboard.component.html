@@ -1,1 +1,13 @@
-hello form dashbord
+<div *ngIf="barChartData && barChartLabels">
+    <h2 style="text-align: center;">Productos más vendidos durante el mes</h2>
+    <div style="display: block;" >
+        <canvas baseChart 
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+    </div>
+</div>

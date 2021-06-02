@@ -25,17 +25,76 @@
                         <mat-label>Ingresa un número telefónico de contacto</mat-label>
                         <input matInput [(ngModel)]="store.phone" name="ngModel" required>
                     </mat-form-field>
+                    <hr>
+                    <h3>Puedes agregar logo principal de tu tienda (opcional).</h3>
+                    <span style="color:red;" *ngIf="message">{{message}}</span>
+                    <input #file type="file" accept='image/*' (change)="select($event)" />
+                    <img [src]="imgURL" height="200" *ngIf="imgURL">
+                    <br>
+                    <br>
+                    <hr>
+                    <h3>Tambien puedes agregar un icono o imagen más pequeña (opcional).</h3>
+                    <span style="color:red;" *ngIf="message">{{message}}</span>
+                    <input #file2 type="file" accept='image/*' (change)="select2($event)" />
+                    <img [src]="imgURL2" height="50" *ngIf="imgURL2">
+                    <hr>
 
-                    <input type="file" placeholder="selecciona tu logo">
-                    
                     <div class="row" style="justify-content: flex-end;">
-                        <button mat-button class="btn-primary" style="margin: 5px 10px;" [mat-dialog-close]="'Continuar'">Guardar</button>
+                        <button mat-button class="btn-secondary" style="margin: 5px 10px;" (click)="tabGroup.selectedIndex=0">Regresar</button>
+                        <button mat-button class="btn-primary" style="margin: 5px 10px;" [disabled]="store.name === '' || store.phone === ''" (click)="tabGroup.selectedIndex=2">Continuar</button>
                     </div>
                 </div>
             </form>
         </div>    
     </mat-tab>
-    <mat-tab label="Datos de dirección"> 
-        <h1>hello</h1>
+    <mat-tab label="Datos de dirección">
+        <div>
+            <form class="modal-content">
+                <div class="container column">
+                    <h1 class="text-center">Solo nos falta la dirección de tu negocio</h1>
+                    <mat-form-field appearance="outline"> 
+                        <mat-label>Calle </mat-label>
+                        <input matInput [(ngModel)]="address.street" name="ngModel" required>
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline"> 
+                        <mat-label>Número Exterior </mat-label>
+                        <input matInput [(ngModel)]="address.external_number" name="ngModel" required>
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline"> 
+                        <mat-label>Número Interior </mat-label>
+                        <input matInput [(ngModel)]="address.internal_number" name="ngModel">
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline"> 
+                        <mat-label>Colonia </mat-label>
+                        <input matInput [(ngModel)]="address.neighborhood" name="ngModel" required>
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline"> 
+                        <mat-label>País </mat-label>
+                        <input matInput [(ngModel)]="address.country" name="ngModel" required>
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline"> 
+                        <mat-label>Estado </mat-label>
+                        <input matInput [(ngModel)]="address.state" name="ngModel" required>
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline"> 
+                        <mat-label>Código Postal </mat-label>
+                        <input matInput [(ngModel)]="address.zip_code" name="ngModel" required>
+                    </mat-form-field>
+            
+                    <div class="row" style="justify-content: flex-end;">
+                        <button mat-button class="btn-secondary" style="margin: 5px 10px;" (click)="tabGroup.selectedIndex=1">Regresar</button>
+                        <button mat-button class="btn-primary" style="margin: 5px 10px;" (click)="confirm()" 
+                        [disabled]="address.street === '' || address.external_number === '' || address.neighborhood === ''
+                        || address.country === '' || address.state === '' || address.zip_code === ''">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div> 
     </mat-tab>
 </mat-tab-group>

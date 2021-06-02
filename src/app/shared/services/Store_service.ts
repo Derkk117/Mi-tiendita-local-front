@@ -27,4 +27,14 @@ export class StoreService {
 
         return this._http.get(this.url+ 'store/' + store_id + '/edit', options).pipe(map(res => res));
     }
+
+    create(token, data):Observable<any>{
+        let headers = new HttpHeaders(
+            {
+                'Authorization': "Bearer " + token,
+            }
+        );
+        
+        return this._http.post(this.url + 'stores', data, { headers: headers }).pipe(map(res => res));
+    }
 }
