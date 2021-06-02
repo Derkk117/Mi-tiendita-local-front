@@ -11,7 +11,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Metodo de pago *</mat-label>
+            <mat-label>Método de pago *</mat-label>
             <mat-select [(value)]="sale.payment_method" [(ngModel)]="sale.payment_method" name="ngModel" required>
                 <mat-option value="cash">Efectivo</mat-option>
                 <mat-option value="card">Tarjeta de crédito</mat-option>
@@ -84,7 +84,7 @@
                     </td>
                   </ng-container>
               </table>
-              <h3>Total= ${{total}}</h3>
+              <h3 id="total">Total= ${{total}}</h3>
          </div>
        <br>  
 

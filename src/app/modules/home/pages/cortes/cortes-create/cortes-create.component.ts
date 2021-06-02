@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cutoff } from '../../../../../shared/models/Cutoff_model';
 import { CutoffService } from 'src/app/shared/services/Cutoff_service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-cortes-create',
@@ -19,6 +21,7 @@ export class CortesCreateComponent implements OnInit {
   cutoff: Cutoff;
   token
   identity
+  events : string[]
   date = new Date();
   
 
@@ -34,23 +37,32 @@ export class CortesCreateComponent implements OnInit {
   ngOnInit(): void {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this.cutoff = new Cutoff("","","","",""); 
+    this.cutoff = new Cutoff( this.cutoffSku , this.identity.id ,"","",""); 
   }
 
   save(){
-    console.log(this.cutoff);
-    console.log(this.token);
-    if(this.cutoff.initial_date != "" && this.cutoff.final_date &&
-    this.cutoff.total != "")
-        {
-        this._cutoffService.create(this.cutoff,this.token).subscribe(
-        
-        )
-    }
+    this._cutoffService.create(this.cutoff, this.token ).subscribe(
+      response =>{
+
+        this.toastr.success(":)", 'Se ha creado correctamente');
+        this.router.navigate(['/cortes/index']);
+      },
+      error =>{
+        this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
+      }
+    )
   }
 
   goBack(){
-    this.router.navigate(['cortes/']);
+    this.router.navigate(['/cortes/index']);
+  }
+
+  
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    console.log(event);
+    this.events.push(`${type}: ${event.value}`);
+    console.log("hola");
+    console.log(this.events);
   }
 
 }

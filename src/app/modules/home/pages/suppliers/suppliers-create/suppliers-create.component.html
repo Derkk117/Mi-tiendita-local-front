@@ -27,12 +27,17 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline"> 
-            <mat-label>Numero Exterior </mat-label>
+            <mat-label>Número Exterior </mat-label>
             <input matInput [(ngModel)]="supplierAddress.external_number" name="ngModel" required>
         </mat-form-field>
 
         <mat-form-field appearance="outline"> 
-            <mat-label>Colonia </mat-label>
+            <mat-label>Número Interior </mat-label>
+            <input matInput [(ngModel)]="supplierAddress.internal_number" name="ngModel" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline"> 
+            <mat-label>Vecindario </mat-label>
             <input matInput [(ngModel)]="supplierAddress.neighborhood" name="ngModel" required>
         </mat-form-field>
 
@@ -47,7 +52,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline"> 
-            <mat-label>Codigo Postal </mat-label>
+            <mat-label>Código Postal </mat-label>
             <input matInput [(ngModel)]="supplierAddress.zip_code" name="ngModel" required>
         </mat-form-field>
 

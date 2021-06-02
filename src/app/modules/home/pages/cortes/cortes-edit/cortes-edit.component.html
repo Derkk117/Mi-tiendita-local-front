@@ -1,23 +1,31 @@
 <div class="container">
     <div class="form column" *ngIf="cutoff">
-        <h1 class="title">Editar Corte</h1>
+        <h1 class="title">Información del Corte</h1>
         <mat-form-field appearance="outline">
+            <mat-label>Fecha Inicial</mat-label>
+            <input matInput type= "date"  [(ngModel)]="cutoff.initial_date" name="ngModel" readonly>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha Final</mat-label>
+            <input matInput type="date" [(ngModel)]="cutoff.final_date" name="ngModel" readonly>
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline">
             <mat-label>Fecha Inicio de Corte</mat-label>
-            <input matInput [ngModel]="cutoff.initial_date" [matDatepicker]="iniciopicker">
+            <input matInput [(ngModel)]="cutoff.initial_date" name="ngModel" [matDatepicker]="iniciopicker">
             <mat-datepicker-toggle matSuffix [for]="iniciopicker"></mat-datepicker-toggle>
             <mat-datepicker #iniciopicker></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Fecha Final de Corte</mat-label>
-            <input matInput [ngModel]="cutoff.final_date" [matDatepicker]="finalpicker">
+            <input matInput [(ngModel)]="cutoff.final_date" name="ngModel" [matDatepicker]="finalpicker">
             <mat-datepicker-toggle matSuffix [for]="finalpicker"></mat-datepicker-toggle>
             <mat-datepicker #finalpicker></mat-datepicker>
-        </mat-form-field>
+        </mat-form-field> -->
         
         <mat-form-field appearance="outline">
             <mat-label>Total</mat-label>
-            <input matInput [ngModel]="cutoff.total">
+            <input matInput [(ngModel)]="cutoff.total" name="ngModel" readonly>
         </mat-form-field>
 
         

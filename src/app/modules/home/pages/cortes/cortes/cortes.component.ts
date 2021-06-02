@@ -68,12 +68,13 @@ export class CortesComponent implements OnInit{
   }
 
   add(){    
-    this.router.navigate(['cortes/create/']);
+    this.router.navigate(['/cortes/create/']);
   }
 
   edit(element)
   {
-    this.router.navigate(['cortes/edit/'+ element.sku]);
+    console.log(element);
+    this.router.navigate(['/cortes/edit/'+ element.sku]);
   }
 
   goToPage() {
