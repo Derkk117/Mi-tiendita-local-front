@@ -49,7 +49,7 @@ export class SuppliersIndexComponent implements OnInit {
   ngOnInit() {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this._supplierService.getSuppliers(this.token).subscribe(response => {
+    this._supplierService.getSuppliers(this.token, this.identity.id).subscribe(response => {
       this.suppliers = response;
       this.suppliers.forEach(element => {
         element['fullAddress'] = element['street'] + " " + ((element['street2'] = "null") ? " ":element['street2'])+ " #" + element['external_number'] +" "+((element['internal_number'] = "null") ? "":element['internal_number']) +" " + element['neighborhood'];
@@ -103,7 +103,7 @@ export class SuppliersIndexComponent implements OnInit {
             "time": this.date.getHours() + ":" + this.date.getMinutes() + ":" + this.date.getSeconds()
           }, this.token).subscribe(response=>{console.log(response)});
 
-          this._supplierService.getSuppliers(this.token).subscribe(response => {
+          this._supplierService.getSuppliers(this.token, this.identity.id).subscribe(response => {
             this.suppliers = response;
             this.suppliers.forEach(element => {
               element['fullAddress'] = element['street'] + " " + ((element['street2'] = "null") ? " ":element['street2'])+ " #" + element['external_number'] +" "+((element['internal_number'] = "null") ? "":element['internal_number']) +" " + element['neighborhood'];

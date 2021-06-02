@@ -48,22 +48,9 @@ export class SuppliersCreateComponent implements OnInit {
   ngOnInit(): void {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this.supplier = new Supplier(null,"","","","",null,"");
+    this.supplier = new Supplier(null,"","","","",null,"", this.identity.id);
     this.supplierAddress = new Address(null, "", "", "", "", "", "", "", "");
   }
-
-  /*lista:string[]=["address 1", "address2"];
-  seleccionado = "";*/
-
-  /*email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return '';
-    }
-
-    return this.email.hasError('email') ? 'Email invalid' : '';
-  }*/
 
   create(){
     this._addressService.create(this.token,this.supplierAddress).subscribe(
