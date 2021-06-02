@@ -65,11 +65,6 @@ export class LoginComponent implements OnInit {
               ////Fin de registro en historial
 
               this.router.navigate(['dashboard']);
-              this._storeService.getStore((JSON.parse(localStorage.getItem('identity'))).store_id,this.token).subscribe(
-                response => {
-                  localStorage.setItem('store',JSON.stringify(response));
-                }      
-              );
             },
             error =>{
               this.toastr.error(error.message, 'Error');

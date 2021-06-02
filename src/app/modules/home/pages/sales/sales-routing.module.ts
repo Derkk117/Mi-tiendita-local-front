@@ -7,7 +7,6 @@ export const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'index', component: SalesIndexComponent },
   { path: 'create', component: SalesCreateComponent},
-  
   { path: 'edit/:sku', component: SalesEditComponent},
 //   { path: 'products/:id', component:  productseditcompo},
 ];

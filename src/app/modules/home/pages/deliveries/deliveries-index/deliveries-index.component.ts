@@ -23,7 +23,6 @@ import { DialogOverviewDelete } from 'src/app/shared/delete-dialog/delete-dialog
 
 
 export class DeliveriesIndexComponent implements OnInit {
-
   token;
   identity;
   deliveries = [];

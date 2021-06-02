@@ -5,7 +5,7 @@ export class Store{
         public name: string,
         public thumbnails: string,
         public image: string,
-        public address_id: number,
+        public address: number,
         public phone: string
     ){}
 }
