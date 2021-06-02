@@ -92,10 +92,10 @@ export class DeliveriesIndexComponent implements OnInit {
       width: '500px',
       data: { title: "Eliminar entrega " + element.sale_id, body: "¿Deseas continuar con la eliminación de la entrega?" }
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined && result == 'Continuar') {
-        this._deliveryService.delete(this.token, element.sku).subscribe(result => {
+        this._deliveryService.delete(this.token, element.id).subscribe(result => {
           this._deliveryService.getDeliveries(this.token, this.identity.id).subscribe(response => {
             this.deliveries = response;
             this.dataSource = new MatTableDataSource<Delivery>(this.deliveries);
