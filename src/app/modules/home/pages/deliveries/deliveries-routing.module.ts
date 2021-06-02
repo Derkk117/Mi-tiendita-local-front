@@ -7,7 +7,7 @@ import { DeliveriesEditComponent } from './deliveries-edit/deliveries-edit.compo
 export const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'index', component: DeliveriesIndexComponent },
-  { path: 'edit/sku', component: DeliveriesEditComponent },
+  { path: 'edit/:sku', component: DeliveriesEditComponent },
   { path: 'create', component: DeliveriesCreateComponent },
 //   { path: 'products/:id', component:  productseditcompo},
 ];

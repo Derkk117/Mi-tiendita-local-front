@@ -2,20 +2,16 @@
     <div class="form column" *ngIf="cutoff">
         <h1 class="title">Nuevo Corte</h1>
         <mat-form-field appearance="outline">
-            <mat-label>Elige Fecha Inicio de Corte</mat-label>
-            <input matInput [(ngModel)]="cutoff.initial_date" [matDatepicker]="iniciopicker">
-            <mat-datepicker-toggle matSuffix [for]="iniciopicker"></mat-datepicker-toggle>
-            <mat-datepicker #iniciopicker></mat-datepicker>
+            <mat-label>Fecha Inicial</mat-label>
+            <input matInput type="date" name="initial_date" id="initial_date" [(ngModel)]="cutoff.initial_date">
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label>Elige Fecha Inicio de Corte</mat-label>
-            <input matInput [matDatepicker]="finalpicker">
-            <mat-datepicker-toggle matSuffix [for]="finalpicker"></mat-datepicker-toggle>
-            <mat-datepicker #finalpicker></mat-datepicker>
+            <mat-label>Fecha Final</mat-label>
+            <input matInput type="date" name="final_date" id="final_date" [(ngModel)]="cutoff.final_date">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Total</mat-label>
-            <input matInput>
+            <input matInput name="total" [(ngModel)]="cutoff.total">
         </mat-form-field>
 
         <div class="row actions">

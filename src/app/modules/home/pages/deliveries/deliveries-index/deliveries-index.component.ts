@@ -75,7 +75,8 @@ export class DeliveriesIndexComponent implements OnInit {
 
   edit(element)
   {
-    this.router.navigate(['/deliveries/edit'+ element.sku]);
+    console.log(element);
+    this.router.navigate(['/deliveries/edit/'+ element.id]);
   }
 
   goToPage() {

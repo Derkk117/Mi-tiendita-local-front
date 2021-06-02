@@ -24,7 +24,7 @@ export class CortesEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute, 
     private _cutoffService: CutoffService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) 
   {
     this.cutoffSku = this.activatedRoute.snapshot.paramMap.get('sku');
@@ -35,7 +35,7 @@ export class CortesEditComponent implements OnInit {
     this.token = localStorage.getItem('session');
     if(this.cutoffSku && this.token != null)
     {
-      this._cutoffService.getCutoffs(this.token, this.cutoffSku).subscribe(response=>{
+      this._cutoffService.getCutoff(this.token, this.cutoffSku).subscribe(response=>{
         this.cutoff = response;
         console.log(this.cutoff);
       },
@@ -49,7 +49,7 @@ export class CortesEditComponent implements OnInit {
     this._cutoffService.update(this.token, this.cutoffSku, this.cutoff).subscribe(
       response =>{
         this.toastr.success(":)", 'Se han guardado los cambios correctamente');
-        this.router.navigate(['/cutoff/index']);
+        this.router.navigate(['/cortes/index']);
       },
       error =>{
         this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
@@ -58,7 +58,7 @@ export class CortesEditComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['cortes/']);
+    this.router.navigate(['/cortes/index']);
   }
 }
 

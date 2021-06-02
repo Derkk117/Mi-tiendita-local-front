@@ -24,7 +24,7 @@ export class DeliveriesEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute, 
     private _deliveryService: DeliveryService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
     ) 
   {
     this.deliverySku = this.activatedRoute.snapshot.paramMap.get('sku');
@@ -35,10 +35,12 @@ export class DeliveriesEditComponent implements OnInit {
     this.token = localStorage.getItem('session');
     if(this.deliverySku && this.token != null)
     {
-      this._deliveryService.getDeliveries(this.token, this.deliverySku).subscribe(response=>{
+      this._deliveryService.getDelivery(this.token, this.deliverySku).subscribe(response=>{
         this.delivery = response;
         console.log(this.delivery);
+        console.log(this.deliverySku);
       },
+      
       error =>{
         console.log(error)
       });
@@ -49,7 +51,7 @@ export class DeliveriesEditComponent implements OnInit {
     this._deliveryService.update(this.token, this.deliverySku, this.delivery).subscribe(
       response =>{
         this.toastr.success(":)", 'Se han guardado los cambios correctamente');
-        this.router.navigate(['/delivery/index']);
+        this.router.navigate(['/deliveries/index']);
       },
       error =>{
         this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
@@ -58,7 +60,7 @@ export class DeliveriesEditComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['deliveries/']);
+    this.router.navigate(['/deliveries/index']);
   }
 
 }

@@ -20,6 +20,7 @@ import { CortesCreateComponent } from './cortes-create/cortes-create.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CortesEditComponent } from './cortes-edit/cortes-edit.component';
 
+
 @NgModule({
   declarations: [
     CortesComponent,

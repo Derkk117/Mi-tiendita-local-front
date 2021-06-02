@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'index', component: CortesComponent},
   { path: 'create', component: CortesCreateComponent},
-  { path: 'edit', component: CortesEditComponent},
+  { path: 'edit/:sku', component: CortesEditComponent},
 ];
 
 

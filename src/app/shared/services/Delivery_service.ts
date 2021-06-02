@@ -21,29 +21,31 @@ export class DeliveryService {
         { headers: headers }).pipe(map(res => res));
     }
 
-    getDelivery(token, sku): Observable<any> {
+    getDelivery(token, id): Observable<any> {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
         });
-        return this._http.get(this.url + 'delivery/' + sku + '/edit', { headers: headers }).pipe(map(res => res));
+        return this._http.get(this.url + 'deliveries/' + id + '/edit', { headers: headers }).pipe(map(res => res));
     }
 
     create(delivery,token) :Observable<any> {
-        let json = JSON.stringify(delivery);
-        let params = json;
-
         let headers = new HttpHeaders(
             { 'Content-Type': 'application/json',
               'Authorization': "Bearer " + token
-            });
+        });
+
+        
+
+        let json = JSON.stringify(delivery);
+        let params = json;
         return this._http.post(
             this.url + 'deliveries', params , { headers: headers }
             ).pipe(map(res => res)
         );
     }
 
-    update(token, sku, delivery) {
+    update(token, id, delivery) {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
@@ -52,10 +54,12 @@ export class DeliveryService {
         let json = JSON.stringify(delivery);
         let params = json;
 
-        return this._http.put(this.url + 'delivery/' + sku + '/update', params, { headers: headers }).pipe(map(res => res));
+        
+        
+        return this._http.put(this.url + 'deliveries/' + id + '/update', params, { headers: headers }).pipe(map(res => res));
     }
 
-    delete(token, sku): Observable<any>{
+    delete(token, id): Observable<any>{
 
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -64,7 +68,7 @@ export class DeliveryService {
         
         let options = {headers: headers}
 
-        return this._http.delete(this.url + 'deliveries/' + sku + '/destroy', options).pipe(map(res => res));
+        return this._http.delete(this.url + 'deliveries/' + id + '/destroy', options).pipe(map(res => res));
     }
 
 }
