@@ -22,25 +22,6 @@ export class StoreIndexComponent implements OnInit {
     private _storeService: StoreService,
     private _addressService: AddressService
   ) { 
-    /*this.identity = JSON.parse(localStorage.getItem('identity'));
-    this.token = localStorage.getItem('session');
-    this.store = JSON.parse(localStorage.getItem('store'));*/
-    
-    /*this._addressService.getAddress(1,this.token).subscribe(
-      response => {
-        this.address = JSON.parse(JSON.stringify(response));
-        console.log(response);
-      }
-    );*/
-
-    /*this._addressService.getAddress(1,this.token).subscribe(
-      response => {
-        this.address = JSON.parse(JSON.stringify(response));
-        console.log(response);
-        //address.value = this.address.street;
-       
-      }
-    );*/
   }
 
   ngOnInit()/*:void*/ {
@@ -51,7 +32,6 @@ export class StoreIndexComponent implements OnInit {
     this._storeService.getStore(this.identity.store_id, this.token).subscribe(
       response => {
         this.store = JSON.parse(JSON.stringify(response));
-        console.log(this.store.address);
 
         this._addressService.getAddress(this.store.address,this.token).subscribe(
           response => {

@@ -1,15 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StoreService } from 'src/app/shared/services/Store_service';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss']
+  styleUrls: ['./side-bar.component.scss'],
+  providers: [
+    StoreService
+  ]
 })
 export class SideBarComponent implements OnInit {
+  apiUrl = "http://localhost:8000/api/store/";
   @Input() size: number;
   width = 0;
   active = "Dashboard";
+  identity;
+  store;
+  token;
   refs = [
     {
       icon: "add_chart",
@@ -60,9 +68,21 @@ export class SideBarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private _storeService: StoreService,
   ) { }
 
   ngOnInit(): void {
+    this.token  = localStorage.getItem('session');
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this._storeService.getStore(this.identity.store_id, this.token).subscribe(
+      response =>{
+        this.store = response;
+        console.log(this.store);
+      },
+      error =>{
+        console.log(error);
+      }
+    )
     this.width = this.size;
     this.active = "Dashboard";
     if(document.getElementById("ref" + this.active))

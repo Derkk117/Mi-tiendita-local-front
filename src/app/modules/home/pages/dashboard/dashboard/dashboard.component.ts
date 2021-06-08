@@ -81,7 +81,6 @@ export class DashboardComponent implements OnInit {
           count++;
         });
         this.barChartData = datas;
-        console.log(this.barChartData)
         this.loading = false;
       },
       error => {
