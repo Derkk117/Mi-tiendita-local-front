@@ -2,7 +2,7 @@
     <div class="column">
         <div class="banner">
             <div class="row">
-                <button class="banner-item"><i></i>Mi Tiendita Local</button>
+                <button class="banner-item">Mi Tiendita Local</button>
                 <div class="links">
                     <button [routerLink]="['/auth/login']">Inicio Sesion</button>
                     <button [routerLink]="['/auth/register']">Regístrate</button>
@@ -12,10 +12,10 @@
 
         <div class="aos-effect">
             <div class="back" data-aos="fade-right" data-aos-once="true" data-aos-duration="1200">
-                <img src="../../../../../assets/Back.png">
+                <img class="imgBack" src="../../../../../assets/Back.png">
                 <div class="title">
                     <div id="margin1" class="intro">
-                        <h2 style="text-align: justify;"> <i> Mejor administración, mejores resultados en tu negocio.</i></h2>
+                        <h1 style="text-align: justify;"> Mejor administración, mejores resultados en tu negocio.</h1>
                         <h2 style="text-align: justify;">
                             <i>
                                 En el mercado tecnológico se encuentran productos que ofrecen apoyo para los emprendedores locales, sin embargo, 
@@ -33,10 +33,14 @@
                 <div class="content-title">
                     <h1>Emprendedores locales administran todos los recursos de negocio en su software MiTienditaLocal, la mejor plataforma de gestion para pequenos empresarios.</h1>
                 </div>-->
-
-                <div>
+                
+                <div class="contenidoPrincipal">
+                    <div class="nuestrosServicios"  data-aos="fade-right" data-aos-once="true" data-aos-duration="1200">
+                        <h1>Nuestros Servicios</h1>
+                    </div>
                     <div class="contenido"  fxLayout="row" class="contenido" fxLayoutGap="30px">
-                        <div fxLayout="column" data-aos="fade-right" data-aos-duration="3000">
+                        
+                        <div class="textContenido" fxLayout="column" data-aos="fade-right" data-aos-duration="3000">
                             <h2 style="text-align: justify;">
                                 Administra de que forman operan tus clientes, métodos de pago y 
                                 redes social por el cual te han contactado realizar sus compras. 
@@ -44,13 +48,13 @@
                         </div>
                         <div fxLayout="column">
                             <div data-aos="fade-left" data-aos-once="false" data-aos-duration="3000">
-                                <img src="../../../../../assets/Client.PNG" alt="">
+                                <img src="../../../../../assets/Client.PNG" alt="" width="800px">
                             </div>
                         </div>   
                     </div>
                 </div>
 
-                <div>
+                <div class="contenidoPrincipal2">
                     <div class="contenido2" id="gradient" fxLayout="row" fxLayoutGap="30px">
                         <div fxLayout="column" data-aos="fade-right" data-aos-once="false" data-aos-duration="3000">
                             <img src="../../../../../assets/tienda.PNG" alt="">
@@ -67,31 +71,34 @@
                     </div>
                 </div>
 
-                <div>
-                    <div class="contenido"  fxLayout="row" class="contenido" fxLayoutGap="30px">
+                <div class="contenidoPrincipal">
+                    <div class="contenido"  fxLayout="row"  fxLayoutGap="30px">
                         <div fxLayout="column" data-aos="fade-right" data-aos-once="false" data-aos-duration="3000">
                             <h2 style="text-align: justify;"> 
                                 Logra ver todas tus estadísticas basadas en tus ventas, 
-                                que productos sobresalen y en que periodos tus ventas han generado más impacto.</h2>                           
+                                que productos son los más vendidos, 
+                                quien es tu mejor cliente y en que periodos tus ventas han generado más impacto.</h2>                           
                         </div>
                         <div fxLayout="column">
                             <div data-aos="fade-left" data-aos-once="false" data-aos-duration="3000">
-                                <img src="../../../../../assets/Estadisticas.jpg" alt="">
+                                <img src="../../../../../assets/Estadisticas.jpg" alt="" width="100%">
                             </div>
                         </div>   
                     </div>
                 </div>
 
-                <div>
+                <div class="contenidoPrincipal2">
                     <div class="contenido2"  fxLayout="row" id="gradient" fxLayoutGap="30px">
                         <div fxLayout="column" data-aos="fade-right" data-aos-once="false" data-aos-duration="3000">
-                            <img src="../../../../../assets/historial.PNG" alt="">
+                            <img src="../../../../../assets/historial.PNG" alt="" style="width: 150%; padding-top:50px;
+                            padding-bottom: 50px;">
                         </div>
                         <div fxLayout="column">
                             <div data-aos="fade-left" data-aos-once="false" data-aos-duration="3000">
-                                <h2 style="text-align: justify;"> 
-                                    ¿Eres olvidadizo y crees que algún movimiento lo has hecho mal? MiTienditaLocal guarda registro de todos 
-                                    tus movimientos, ve que todas las operaciones realizadas desde que inicias sesión a la plataforma.</h2>
+                                <h2 style="text-align: justify;" style="width: 40%;float: right;"> 
+                                    ¿Eres olvidadizo y crees que algún movimiento lo has hecho 
+                                    mal? MiTienditaLocal guarda registro de todos tus movimientos, 
+                                    ve que todas las operaciones realizadas desde que inicias sesión a la plataforma.</h2>
                             </div>
                         </div>   
                     </div>
@@ -99,12 +106,12 @@
             </div>
 
             <div id="footer">
-                <div id="contacto">Contactos</div>
+                <div id="contacto"><h2>Contactos</h2></div>
                 
                 <div fxLayout="column" fxLayoutAlign="center" id="correos" fxlayoutGap="10px">
                 </div>
                 <div fxLayout="row" fxLayoutAlign="center" id="correos">
-                    <div fxLayoutAlign="space-around" fxLayoutGap="80px">
+                    <div class="footerClass" fxLayoutAlign="space-around" fxLayoutGap="80px">
                         <div fxLayout="column">
                             <div>Moisés González Torres</div>
                             <div>a260941@alumnos.uaslp.mx</div>
@@ -127,6 +134,10 @@
                         </div>
                     </div>
                 </div>
+                <div fxLayout="row"  fxLayoutAlign="center" style="align-items: center;">
+                    <h3>&#169; Mi Tiendita Local</h3>
+                </div>
+                
             </div>
         </div>
     </div>
