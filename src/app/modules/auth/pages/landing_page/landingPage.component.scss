@@ -33,6 +33,7 @@
 .links{
     height: 40px;
     
+    
     button{
         background-color: transparent;
         color: white;
@@ -184,8 +185,8 @@ ul{ list-style: none}
 }
 
 #gradient{
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(67,159,149,1) 100%, rgba(0,212,255,1) 100%);
+    // background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgb(136, 132, 214) 0%, rgba(67,159,149,1) 100%, rgba(0,212,255,1) 100%);
 }
 
 .intro{
