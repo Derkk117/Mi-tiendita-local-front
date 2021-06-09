@@ -61,13 +61,11 @@ export class ProductService {
         '/update', params, { headers: headers }).pipe(map(res => res));
     }
 
-    store(token, product, user_id) : Observable<any>{
+    store(token, product) : Observable<any>{
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
         });
-
-        product.user_id = user_id; //add param to client model.
         let json = JSON.stringify(product);
         let params = json;
         return this._http.post(this.url + 'product', params, { headers: headers }).pipe(map(res => res));

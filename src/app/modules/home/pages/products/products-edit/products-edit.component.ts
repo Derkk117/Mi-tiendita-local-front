@@ -18,6 +18,8 @@ export class ProductsEditComponent implements OnInit
   productSku = null;
   product: Product;
   token;
+  public imagePath;
+  imgURL: any;
   history = {}
   date = new Date();
   identity;
@@ -49,36 +51,17 @@ export class ProductsEditComponent implements OnInit
   regresarIndex(){
     this.router.navigate(['/products/index']);
   }
-
-  url: any; 
-	msg = "";
 	
   //Funcion para seleccionar una imagen 
-	selectFile(event: any) 
-  { 
-		if(!event.target.files[0] || event.target.files[0].length == 0) 
-    {
-			this.msg = 'Debes de seleccionar una imagen';
-			return;
-	  }
-		
-    var mimeType = event.target.files[0].type;
-      
-    if (mimeType.match(/image\/*/) == null)
-    {
-        this.msg = "Solo se admiten imágenes";
-        return;
-    }		
-		
-    var reader = new FileReader();		
-    reader.readAsDataURL(event.target.files[0]);
-      
-    reader.onload = (_event) =>
-    {
-        this.msg = "";
-        this.url = reader.result; 
+  seleccionaImagen(event: any){
+    let files = [].slice.call(event.target.files);
+    var reader = new FileReader();
+    this.imagePath = event.target.files[0];
+    reader.readAsDataURL(event.target.files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
     }
-	}
+  }
 
   //Para guardar cambios del producto para actualizar
   guardarCambios()

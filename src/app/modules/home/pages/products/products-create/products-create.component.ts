@@ -11,8 +11,7 @@ import { ProductService } from 'src/app/shared/services/Product_service';
   selector: 'app-products-create',
   templateUrl: './products-create.component.html',
   styleUrls: ['./products-create.component.scss'],
-  providers: [ProductService, 
-    ToastrService],  
+  providers: [ProductService, ToastrService],  
 })
 
 export class ProductsCreateComponent implements OnInit 
@@ -25,28 +24,44 @@ export class ProductsCreateComponent implements OnInit
   token;  
   identity;
 
-  constructor(
-    private router: Router,
-    private toastr: ToastrService,
-    private _productService: ProductService
-  ) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router,
+    private toastr: ToastrService, private _productService: ProductService) 
+  {
+    this.productSku = this.activatedRoute.snapshot.paramMap.get('sku');
   }
   
-  ngOnInit(): void {
-    this.product = new Product(null,"",null,"","","",null,"",""); //Intialize new client
-    this.identity = JSON.parse(localStorage.getItem('identity'));
-
+  ngOnInit(): void 
+  {
     this.token = localStorage.getItem('session');
-    
+    this.product = new Product(null,"","","","","","","","");   
+    if(this.productSku && this.token != null)
+    {
+      this._productService.getProduct(this.token, this.productSku).subscribe(response=>{
+        this.product = response;
+        console.log(this.product);
+      },
+      error =>{
+        console.log(error)
+      });
+    }    
   }
 
-  save(){
-    console.log(this.product);
-    this._productService.store(this.token, this.product, this.identity.id).subscribe(
+  //Funcion para seleccionar una imagen 
+  seleccionaImagen(event: any){
+    let files = [].slice.call(event.target.files);
+    var reader = new FileReader();
+    this.imagePath = event.target.files[0];
+    reader.readAsDataURL(event.target.files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
+  }
+  
+  //Funcion para guardar un nuevo producto
+  guardarCambios(){
+    this._productService.store(this.token, this.product).subscribe(
       response =>{
-
-        this.toastr.success(":)", 'Se han creado correctamente');
-
+        this.toastr.success("Correcto", 'Se han creado correctamente');
         this.router.navigate(['/products/index']);
       },
       error =>{
@@ -55,7 +70,7 @@ export class ProductsCreateComponent implements OnInit
     )
   }
 
-  goBack(){
+  regresarIndex(){
     this.router.navigate(['/products/index']);
   }
 }
