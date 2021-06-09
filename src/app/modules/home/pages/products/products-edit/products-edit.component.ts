@@ -85,7 +85,7 @@ export class ProductsEditComponent implements OnInit
   {
      this._productService.update(this.token, this.productSku, this.product).subscribe(
        Response => {
-        this.toastr.success(":)", 'Se han guardado los cambios correctamente');
+        this.toastr.success("Correcto", 'Se han guardado los cambios correctamente');
         this.router.navigate(['/products/index']);
        },       
        error =>{

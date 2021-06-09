@@ -17,7 +17,11 @@ import { ProductService } from 'src/app/shared/services/Product_service';
 
 export class ProductsCreateComponent implements OnInit 
 {
+
   product: Product;
+  productSku = null;
+  public imagePath;
+  imgURL: any;
   token;  
   identity;
 
@@ -31,6 +35,7 @@ export class ProductsCreateComponent implements OnInit
   ngOnInit(): void {
     this.product = new Product(null,"",null,"","","",null,"",""); //Intialize new client
     this.identity = JSON.parse(localStorage.getItem('identity'));
+
     this.token = localStorage.getItem('session');
     
   }
@@ -41,6 +46,7 @@ export class ProductsCreateComponent implements OnInit
       response =>{
 
         this.toastr.success(":)", 'Se han creado correctamente');
+
         this.router.navigate(['/products/index']);
       },
       error =>{

@@ -9,21 +9,29 @@
         <mat-form-field appearance="outline">
             <mat-label>Descripción</mat-label>
             <input matInput [(ngModel)]="product.description" name="ngModel" required>
+
         </mat-form-field>
         
         <mat-form-field appearance="outline">
-            <mat-label>Precio*</mat-label>
-            <input matInput [(ngModel)]="product.price" name="ngModel" required>
+
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" [(ngModel)]="product.price" name="ngModel" required class="example-right-align">
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
         </mat-form-field>
 
-        <mat-form-field appearance="outline"> 
-            <mat-label>Costo *</mat-label>
-            <input matInput [(ngModel)]="product.cost" name="ngModel" required>
+        <mat-form-field appearance="outline">
+            <mat-label>Costo</mat-label>
+            <input matInput type="number" [(ngModel)]="product.cost" name="ngModel" required requiredclass="example-right-align">
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Stock</mat-label>
+
             <input matInput [(ngModel)]="product.stock" name="ngModel" required>
+
         </mat-form-field>
         
         <mat-form-field appearance="outline">
@@ -35,16 +43,9 @@
             </mat-select>
         </mat-form-field>
 
-        <div style="text-align:center">
-            <div [innerHtml]='msg' *ngIf="msg" style="color: rgb(17, 16, 16);"></div>
-            <div>
-                <img [src]="url" *ngIf="url" style="width:100%; height:100%">
-            </div>
-            <p>
-                <input type="file" (change)="selectFile($event)">
-            </p>
-        </div>
-        <br>  
+        <input #file type="file" accept='image/*' (change)="seleccionaImagen($event)">
+        <img [src]="imgURL" height="50" *ngIf="imgURL">
+       <br>   
 
         <div class="row actions">
             <button class="btn-secondary" mat-button (click)="goBack()"> Cancelar </button>
