@@ -26,7 +26,6 @@ export class CreateStoreDialogComponent implements OnInit {
 
   ngOnInit(){
   }
-
   select(event: any){
     let files = [].slice.call(event.target.files);
     var reader = new FileReader();

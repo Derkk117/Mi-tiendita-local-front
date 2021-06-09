@@ -77,7 +77,6 @@ export class SideBarComponent implements OnInit {
     this._storeService.getStore(this.identity.store_id, this.token).subscribe(
       response =>{
         this.store = response;
-        console.log(this.store);
       },
       error =>{
         console.log(error);

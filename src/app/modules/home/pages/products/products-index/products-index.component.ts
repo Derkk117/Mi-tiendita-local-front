@@ -16,12 +16,14 @@ import { ProductService } from 'src/app/shared/services/Product_service';
   selector: 'app-products-index',
   templateUrl: './products-index.component.html',
   styleUrls: ['./products-index.component.scss'],
-  //Se llama al servidor de producto y al ToastrService
-  providers: [ProductService, ToastrService]
+  providers: [
+    ProductService, 
+    ToastrService
+  ]
 })
 
 export class ProductsIndexComponent implements OnInit {
-
+  apiUrl = "http://localhost:8000/api/product/";
   token;
   identity;
   //Se declara un arreglo de productos

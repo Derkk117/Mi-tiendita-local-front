@@ -42,8 +42,10 @@
                 <mat-option value="desserts">Postre</mat-option>
             </mat-select>
         </mat-form-field>
-
-        <input #file type="file" accept='image/*' (change)="seleccionaImagen($event)">
+        
+        <hr>
+        <h3>Imagen del producto.</h3>
+        <input #file type="file" accept='image/*' (change)="select($event)" required>
         <img [src]="imgURL" style="width:100%; height:100%" *ngIf="imgURL">
        <br>   
 

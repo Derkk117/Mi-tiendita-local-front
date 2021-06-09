@@ -58,7 +58,7 @@
 
   <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef> Imagen </th>
-    <td mat-cell *matCellDef="let row"> <img [src]="row.image" /></td>
+    <td mat-cell *matCellDef="let row"> <img [src]="apiUrl + row.image" style="width: 45px; height: 45px;" /></td>
   </ng-container>
 
   <ng-container matColumnDef="category">
