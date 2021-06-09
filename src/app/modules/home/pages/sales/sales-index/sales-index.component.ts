@@ -25,8 +25,10 @@ export class SalesIndexComponent implements OnInit {
   identity;
   //Se declara un arreglo de ventas
   ventas = [];
+  pageNumber: any;
   dataSource:any;
   selection = new SelectionModel<Sale>(true, []);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private ventaService: SaleService,
     private router: Router,
@@ -40,6 +42,10 @@ export class SalesIndexComponent implements OnInit {
     this.ventaService.getSales(this.token, this.identity.id).subscribe(response => {
       this.ventas = response;
       this.dataSource = new MatTableDataSource<Sale>(this.ventas);
+      if (this.dataSource != null) {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator._intl.itemsPerPageLabel="Elementos por pagina";
+      }
     },
       error => {
         console.log(error);
@@ -48,7 +54,6 @@ export class SalesIndexComponent implements OnInit {
 
   displayedColumns: string[] = ['client_id','payment_method','Card_Number','Card_cvc','expiration','Acciones'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   //Metodo de las paginas de las tabla que tiene
   ngAfterViewInit() {
@@ -61,9 +66,20 @@ export class SalesIndexComponent implements OnInit {
     this.dataSource.filter = Busqueda.trim().toLowerCase();
   }
 
+  goToPage() {
+    this.paginator.pageIndex = this.pageNumber, // number of the page you want to jump.
+      this.paginator.page.next({
+        pageIndex: this.pageNumber,
+        pageSize: this.paginator.pageSize,
+        length: this.paginator.length
+      });
+  }
+
   add(){    
     this.router.navigate(['sales/create/']);
   }
+
+
 
   edit(element)
   {
