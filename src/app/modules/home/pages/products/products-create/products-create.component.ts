@@ -44,7 +44,7 @@ export class ProductsCreateComponent implements OnInit
         this.router.navigate(['/products/index']);
       },
       error =>{
-        this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
+        this.toastr.error("Error al actualizar,, vuelve a intentarlo más tarde", 'Error');     
       }
     )
   }
