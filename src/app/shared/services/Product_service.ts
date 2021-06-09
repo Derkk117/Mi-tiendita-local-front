@@ -68,6 +68,7 @@ export class ProductService {
         let json = JSON.stringify(product);
         let params = json;
 
-        return this._http.post(this.url + 'product/', params, { headers: headers }).pipe(map(res => res));
+        return this._http.post(this.url + 'product', params, 
+        { headers: headers }).pipe(map(res => res));
     }
 }

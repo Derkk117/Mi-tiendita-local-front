@@ -1,54 +1,47 @@
 <div class="container">
-    <div class="form column">
-        <h1 class="title">Agregar Producto</h1>
+    <div class="form column" *ngIf="product">
+        <h1 class="title">Nuevo Producto</h1>        
         <mat-form-field appearance="outline">
-            <mat-label>Nombre*</mat-label>
-            <input matInput>
+            <mat-label>Nombre *</mat-label>
+            <input matInput [(ngModel)]="product.name" name="ngModel" required>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Descripción*</mat-label>
-            <textarea matInput></textarea>
+            <mat-label>Descripción</mat-label>
+            <textarea matInput [(ngModel)]="product.description" name="ngModel" required></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Precio*</mat-label>
-            <input matInput type="number" class="example-right-align">
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" [(ngModel)]="product.price" name="ngModel" required class="example-right-align">
             <span matPrefix>$&nbsp;</span>
             <span matSuffix>.00</span>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Costo*</mat-label>
-            <input matInput type="number" class="example-right-align">
+            <mat-label>Costo</mat-label>
+            <input matInput type="number" [(ngModel)]="product.cost" name="ngModel" required requiredclass="example-right-align">
             <span matPrefix>$&nbsp;</span>
             <span matSuffix>.00</span>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Stock*</mat-label>
-            <input matInput type="number"class="example-right-align">
+            <mat-label>Stock</mat-label>
+            <input matInput type="number" [(ngModel)]="product.stock" name="ngModel" required requiredclass="example-right-align">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Categoría*</mat-label>
-            <mat-select>
+            <mat-label>Categoría *</mat-label>
+            <mat-select [(value)]="product.category" [(ngModel)]="product.category" name="ngModel" required>
                 <mat-option value="drinks">Bebidas</mat-option>
                 <mat-option value="food">Comida</mat-option>
                 <mat-option value="dessert">Postres</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <div style="text-align:center">
-            <div [innerHtml]='msg' *ngIf="msg" style="color: rgb(17, 16, 16);"></div>
-            <div>
-                <img [src]="url" *ngIf="url" style="width:100%; height:100%">
-            </div>
-            <p>
-                <input type="file" (change)="selectFile($event)">
-            </p>
-        </div>
-        <br>  
+        <input #file type="file" accept='image/*' (change)="seleccionaImagen($event)">
+        <img [src]="imgURL" height="50" *ngIf="imgURL">
+       <br>   
 
         <div class="row actions">
             <button class="btn-secondary" mat-button (click)="regresarIndex()"> Cancelar </button>
