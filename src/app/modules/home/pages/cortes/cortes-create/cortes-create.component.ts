@@ -37,7 +37,7 @@ export class CortesCreateComponent implements OnInit {
   ngOnInit(): void {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this.cutoff = new Cutoff( this.cutoffSku , this.identity.id ,"","",""); 
+    this.cutoff = new Cutoff( this.cutoffSku , this.identity.id ,"","","0"); 
   }
 
   save(){
