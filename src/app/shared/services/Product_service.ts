@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { GLOBAL } from './global';
-import { Observable } from 'rxjs';
+
+import { from, Observable } from 'rxjs';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable()
 export class ProductService {
@@ -59,15 +61,15 @@ export class ProductService {
         '/update', params, { headers: headers }).pipe(map(res => res));
     }
 
-    create(token, product) {
+    store(token, product, user_id) : Observable<any>{
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
         });
 
+        product.user_id = user_id; //add param to client model.
         let json = JSON.stringify(product);
         let params = json;
-
-        return this._http.post(this.url + 'product/', params, { headers: headers }).pipe(map(res => res));
+        return this._http.post(this.url + 'product', params, { headers: headers }).pipe(map(res => res));
     }
 }

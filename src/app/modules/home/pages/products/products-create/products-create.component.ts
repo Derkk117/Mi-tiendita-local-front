@@ -17,79 +17,40 @@ import { ProductService } from 'src/app/shared/services/Product_service';
 
 export class ProductsCreateComponent implements OnInit 
 {
-  productSku = null;
-  public product: Product;
+  product: Product;
   token;  
+  identity;
 
-  constructor(private activatedRoute: ActivatedRoute, 
-    private _productService: ProductService,  private router: Router,
-    private toastr: ToastrService) 
-  {
-    this.productSku = this.activatedRoute.snapshot.paramMap.get('sku');
-  }  
-
-  ngOnInit(): void 
-  {
+  constructor(
+    private router: Router,
+    private toastr: ToastrService,
+    private _productService: ProductService
+  ) {
+  }
+  
+  ngOnInit(): void {
+    this.product = new Product(null,"",null,"","","",null,"",""); //Intialize new client
+    this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    if(this.productSku && this.token != null)
-    {
-      this._productService.getProduct(this.token, this.productSku).subscribe(response=>{
-        this.product = response;
-        console.log(this.product);
-      },
-      error =>{
-        console.log(error)
-      });
-    }    
-  }  
-
-  regresarIndex(){
-    this.router.navigate(['/products/index']);
+    
   }
 
-	url: any; 
-	msg = "";
-  public lastPK: number;
-	
-  //Funcion para seleccionar una imagen 
-	selectFile(event: any) 
-  { 
-		if(!event.target.files[0] || event.target.files[0].length == 0) 
-    {
-			this.msg = 'Debes seleccionar una imagen';
-			return;
-	  }
-		
-    var mimeType = event.target.files[0].type;
-      
-    if (mimeType.match(/image\/*/) == null)
-    {
-        this.msg = "Solo se admiten imágenes";
-        return;
-    }		
-		
-    var reader = new FileReader();		
-    reader.readAsDataURL(event.target.files[0]);
-      
-    reader.onload = (_event) =>
-    {
-        this.msg = "";
-        this.url = reader.result; 
-        //console.log(this.url);
-    }
-	}  
+  save(){
+    console.log(this.product);
+    this._productService.store(this.token, this.product, this.identity.id).subscribe(
+      response =>{
 
-  //Para guardar cambios de un nuevo producto
-  guardarCambios()
-  {
-    this._productService.create(this.token, this.product).subscribe(Response => {
-        this.toastr.success(":)", 'Se ha creado correctamente el producto');
+        this.toastr.success(":)", 'Se han creado correctamente');
         this.router.navigate(['/products/index']);
       },
       error =>{
-        this.toastr.error("Error al guardar, vuelve a intentarlo más tarde", 'Error');     
+        this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
       }
-    );
+    )
   }
-} 
+
+  goBack(){
+    this.router.navigate(['/products/index']);
+  }
+}
 
