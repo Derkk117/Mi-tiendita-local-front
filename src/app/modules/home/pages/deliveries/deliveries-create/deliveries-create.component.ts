@@ -99,7 +99,7 @@ export class DeliveriesCreateComponent implements OnInit {
   ngOnInit(): void {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('session');
-    this.delivery = new Delivery(null,"","","");
+    this.delivery = new Delivery("","","","");
     this._saleService.getSales(this.token, this.identity.id).subscribe(response => {
       this.sales = response;
       
