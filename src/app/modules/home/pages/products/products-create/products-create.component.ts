@@ -82,12 +82,12 @@ export class ProductsCreateComponent implements OnInit
   //Para guardar cambios de un nuevo producto
   guardarCambios()
   {
-    this._productService.create(this.token, this.productSku, this.product).subscribe(Response => {
+    this._productService.create(this.token, this.product).subscribe(Response => {
         this.toastr.success(":)", 'Se ha creado correctamente el producto');
         this.router.navigate(['/products/index']);
       },
       error =>{
-        this.toastr.error("Error al actualizar, vuelve a intentarlo más tarde", 'Error');     
+        this.toastr.error("Error al guardar, vuelve a intentarlo más tarde", 'Error');     
       }
     );
   }
