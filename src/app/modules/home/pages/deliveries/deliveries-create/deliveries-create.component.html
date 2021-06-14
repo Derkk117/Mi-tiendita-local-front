@@ -6,7 +6,7 @@
             <mat-label>Selecciona el folio de la venta</mat-label>
             <mat-select [(value)]="delivery.sale_id" [(ngModel)]="delivery.sale_id" name="ngModel" required>
                 <span *ngFor="let sale of sales">
-                    <mat-option value="sale.sku">{{sale.fullName}}</mat-option>
+                    <mat-option [value]="sale.sku">{{sale.fullName}}</mat-option>
                 </span>
             </mat-select>
         </mat-form-field>
@@ -21,7 +21,7 @@
                 <mat-option value="Delivered">Entregado</mat-option>
                 <mat-option value="Pending">Pendiente</mat-option>
                 <mat-option value="Canceled">Cancelado</mat-option>
-                <mat-option value="On_the_way">En camino</mat-option>
+                <mat-option value="On the way">En camino</mat-option>
             </mat-select>
         </mat-form-field>
         

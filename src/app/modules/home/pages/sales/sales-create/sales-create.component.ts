@@ -116,6 +116,7 @@ export class SalesCreateComponent implements OnInit {
     this.dataProducts = new MatTableDataSource<Product>(this.productsList);
   }
 
+
   save(){
     this.sale.products = JSON.stringify(this.productsList);
     this._saleService.store(this.token, this.sale, this.identity.id).subscribe(
