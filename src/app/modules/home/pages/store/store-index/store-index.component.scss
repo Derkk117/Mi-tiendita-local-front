@@ -1,49 +1,24 @@
-.container
-{
-    width: 45%;
-    margin: 1rem auto;
-    border: 1px solid black;
-    padding: 1rem;
-    border-radius: 10px;
-} 
+@import '../../../../../../styles/colors.scss';
+@import '../../../../../../styles/stylesheet.scss';
 
-.mat-form-field
-{
-    font-size: 14px;
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem auto;
-    border: 1px;
-    border-radius: 10px;
+.container{
+    width: 90%;
+    margin: 40px 5%;
 }
 
-button
-{
-    color: #FFFFFF;
-    background-color: #326273;
+.title{
+    padding: 0 0 30px 0;
+    text-align: center;
 }
 
-.logo
-{
-    border: 1px;
-    border-radius: 10px;
+.form{
+    margin: auto;
+    padding: 10px 30px;
+    width: 50%;
+    border-radius: 20px;
+    border: $primary 3px solid;
 }
 
- img
-{
-    border: 5px;
-    border-style: solid;
-    border-radius: 10px;
-    border-color: #808080;  
+.actions{
+    justify-content: flex-end;
 }
-
-th{
-    font-style: normal;
-    font-size: 100%;
-    color: black;
-    font-weight: bold;
-  }
-
-  table{
-    background-color: rgb(196, 228, 243);
-  }

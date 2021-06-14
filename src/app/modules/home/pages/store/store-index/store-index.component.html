@@ -1,28 +1,71 @@
 <div class="container">
-    <form action="" *ngIf="store && address">
-        <div fxLayout="column" fxLayoutGap="20px">
-            <div fxLayoutAlign="center">
-                <div class="logo">
-                    <img style="width: 400px; height: 300px;"
-                    src="https://www.peru-retail.com/wp-content/uploads/tiendas-de-conveniencia-2.jpg" alt="Preview logo">
-                </div>
-            </div>
-            <div fxLayoutAlign="center" fxLayoutGap="20px">
-                <div fxLayout="column" fxLayoutGap="20px">
-                    <label for="">Nombre de la tienda</label>
-                    <label for="">Direccion</label>
-                    <label for="">Telefono</label>
-                </div>
-                <div fxLayout="column" fxLayoutGap="20px">
-                    <input type="text" disabled="true" [(ngModel)]="store.name" name="name">
-                    <input type="text" disabled="true" value="{{address.street}}  #{{address.external_number}} {{address.neighborhood}}" name="street">
-                    <input type="text" disabled="true" [(ngModel)]="store.phone" name="phone">
-                </div>
-            </div>
-            <div class="button" fxLayoutAlign="flex-end">
-                <button mat-button>Editar Informacion</button>
-            </div>
+    <form class="form column" *ngIf="store && address">
+        <h1 class="title">Datos básicos de tu empresa</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="store.name" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Teléfono de contacto</mat-label>
+            <input matInput [(ngModel)]="store.phone" name="phone" required>
+        </mat-form-field>
+        <hr>
+        <h3>Logo principal (opcional).</h3>
+        <span style="color:red;" *ngIf="message">{{message}}</span>
+        <input #file type="file" accept='image/*' (change)="select($event)" />
+        <img [src]="imgURL" height="200" *ngIf="imgURL && !store.image">
+        <img src="{{apiUrl}}{{store.image}}" height="200" *ngIf="store.image">
+        <br>
+        <br>
+        <hr>
+        <h3>Icono de la aplicación (opcional).</h3>
+        <span style="color:red;" *ngIf="message">{{message}}</span>
+        <input #file2 type="file" accept='image/*' (change)="select2($event)" />
+        <img [src]="imgURL2" height="50" *ngIf="imgURL2 && !store.thumbnails">
+        <img src="{{apiUrl}}{{store.thumbnails}}" height="200" *ngIf="store.thumbnails">
+        <hr>
+        <br>
+        <br>
+
+        <h1 class="title">Datos de dirección</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Calle </mat-label>
+            <input matInput [(ngModel)]="address.street" name="street" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Número Exterior </mat-label>
+            <input matInput [(ngModel)]="address.external_number" name="ext" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Número Interior </mat-label>
+            <input matInput [(ngModel)]="address.internal_number" name="int">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Colonia </mat-label>
+            <input matInput [(ngModel)]="address.neighborhood" name="neighborhood" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>País </mat-label>
+            <input matInput [(ngModel)]="address.country" name="country" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Estado </mat-label>
+            <input matInput [(ngModel)]="address.state" name="state" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Código Postal </mat-label>
+            <input matInput [(ngModel)]="address.zip_code" name="zip_code" required>
+        </mat-form-field>
+
+        <div class="row actions">
+            <button class="btn-primary" mat-button (click)="save()"> Guardar </button>
         </div>
     </form>
 </div>
-

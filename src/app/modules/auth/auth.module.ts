@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthRoutingModule } from './auth-routing.module';
 
+import { CronJobsModule } from 'ngx-cron-jobs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -33,6 +34,7 @@ import { LandingPageComponent } from './pages/landing_page/landingPage.component
     MatInputModule,
     MatIconModule,
     FormsModule,
+    CronJobsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     })

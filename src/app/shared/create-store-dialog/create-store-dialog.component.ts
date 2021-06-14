@@ -55,7 +55,4 @@ export class CreateStoreDialogComponent implements OnInit {
       thum: (this.imagePath2 == null)?null:this.imagePath2
     } )
   }
-  // cancel(){
-  //   this.dialogRef.close();
-  // }
 }

@@ -1,30 +1,41 @@
 <div class="column">
-    <div class="logo" *ngIf="width > 180 && !store">    
-        <img src="https://picsum.photos/200/100" alt="">
+    <div *ngIf="width > 180 && !store">    
+        <button class="storePhoto logo" [routerLink]="['/store/index']">
+            <img src="../../../../../assets/store.jpeg" alt="">
+        </button>
     </div>
-    <div class="logo-short" *ngIf="(width < 200 || width == 60) && !store">    
-        <img src="https://picsum.photos/50" alt="">
+    <div *ngIf="(width < 200 || width == 60) && !store">    
+        <button class="storePhoto logo-short" [routerLink]="['/store/index']">
+            <img src="../../../../../assets/store.jpeg" alt="">
+        </button>
     </div>
     <div *ngIf="width > 180">    
         <span *ngIf="store">
-            <span class="logo" *ngIf="store.image">
-                <img src="{{apiUrl}}{{store.image}}" alt="">
+            <span *ngIf="store.image">
+                <button class="storePhoto logo" [routerLink]="['/store/index']">
+                    <img src="{{apiUrl}}{{store.image}}" alt="">
+                </button>
             </span>
-            <span class="logo" *ngIf="!store.image">
-                <img src="https://picsum.photos/200/100" alt="">
+            <span *ngIf="!store.image">
+                <button class="storePhoto logo" [routerLink]="['/store/index']">
+                    <img src="../../../../../assets/store.jpeg" alt="">
+                </button>
             </span>
         </span>
     </div>
-    <div class="logo-short" *ngIf="width < 200 || width == 60">
+    <div *ngIf="width < 200 || width == 60">
         <span *ngIf="store">
-            <span class="logo" *ngIf="store.thumbnails">
-                <img src="{{apiUrl}}{{store.thumbnails}}" alt="">
+            <span *ngIf="store.thumbnails">
+                <button class="storePhoto logo-short" [routerLink]="['/store/index']">
+                    <img src="{{apiUrl}}{{store.thumbnails}}" alt="">
+                </button>
             </span>
-            <span class="logo" *ngIf="!store.thumbnails">
-                <img src="https://picsum.photos/50" alt="">
+            <span *ngIf="!store.thumbnails">
+                <button class="storePhoto logo-short" [routerLink]="['/store/index']">
+                    <img src="../../../../../assets/store.jpeg" alt="">
+                </button>
             </span>
         </span>
-        
     </div>
     
     <div class="separator"></div>
